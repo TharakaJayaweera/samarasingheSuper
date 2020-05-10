@@ -1,4 +1,4 @@
-package lk.lankaDrivingSchool.DrivingSchool;
+package lk.samarasingherSuper.DrivingSchool;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
