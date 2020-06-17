@@ -1,8 +1,13 @@
 package lk.samarasingherSuper.asset.employee.controller;
 
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.CivilStatus;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.Gender;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.Title;
 import lk.samarasingherSuper.asset.commonAsset.service.CommonService;
 import lk.samarasingherSuper.asset.employee.entity.Employee;
 import lk.samarasingherSuper.asset.employee.entity.EmployeeFiles;
+import lk.samarasingherSuper.asset.employee.entity.Enum.Designation;
 import lk.samarasingherSuper.asset.employee.entity.Enum.EmployeeStatus;
 import lk.samarasingherSuper.asset.employee.service.EmployeeFilesService;
 import lk.samarasingherSuper.asset.employee.service.EmployeeService;
@@ -47,7 +52,13 @@ public class EmployeeController {
 
     // Common things for an employee add and update
     private String commonThings(Model model) {
-        commonService.commonEmployeeAndOffender(model);
+        model.addAttribute("title", Title.values());
+        model.addAttribute("gender", Gender.values());
+        model.addAttribute("designation", Designation.values());
+        model.addAttribute("bloodGroup", BloodGroup.values());
+        model.addAttribute("civilStatus", CivilStatus.values());
+        model.addAttribute("employeeStatus", EmployeeStatus.values());
+
         return "employee/addEmployee";
     }
 
