@@ -18,7 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonFilter("Supplier")
-@ToString
 public class Supplier extends AuditEntity {
 
     @Size(min = 5, message = "Your Company name cannot be accepted")
@@ -44,6 +43,6 @@ public class Supplier extends AuditEntity {
     @OneToMany(mappedBy = "supplier")
     private List<PurchaseOrder> purchaseOrders;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "supplier")
     private List<SupplierItem> supplierItems;
 }

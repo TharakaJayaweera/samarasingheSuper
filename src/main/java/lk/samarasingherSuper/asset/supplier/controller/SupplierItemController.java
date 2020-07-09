@@ -1,7 +1,9 @@
 package lk.samarasingherSuper.asset.supplier.controller;
 
 import lk.samarasingherSuper.asset.commonAsset.service.CommonService;
+import lk.samarasingherSuper.asset.item.entity.Item;
 import lk.samarasingherSuper.asset.item.service.ItemService;
+import lk.samarasingherSuper.asset.supplier.entity.Enum.ItemSupplierStatus;
 import lk.samarasingherSuper.asset.supplier.entity.Supplier;
 import lk.samarasingherSuper.asset.supplier.entity.SupplierItem;
 import lk.samarasingherSuper.asset.supplier.service.SupplierItemService;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/supplierItem")
@@ -30,11 +35,6 @@ public class SupplierItemController {
         this.commonService = commonService;
         this.supplierItemService = supplierItemService;
     }
-
-    //suppliers find form
-    //suppler 1 or suppliers -> need to select 1
-    // suppler with items form
-    //save supplierItem
 
     @GetMapping
     public String addForm(Model model) {
@@ -56,19 +56,71 @@ public class SupplierItemController {
     }
 
     @PostMapping
-    public String supplierItemPersist(@Valid @ModelAttribute Supplier supplier, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
-        System.out.println(" i herer ");
+    public String supplierItemPersist(@Valid @ModelAttribute("supplier") Supplier supplier, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/supplierItem/" + supplier.getId();
-
+            var value = false;
+            for (SupplierItem supplierItem : supplier.getSupplierItems()) {
+                if (supplierItem.getId() != null) {
+                    value = true;
+                    break;
+                }
+            }
+            if (value) {
+                return "redirect:/supplierItem/edit/" + supplier.getId();
+            } else {
+                return "redirect:/supplierItem/" + supplier.getId();
+            }
         }
-        for (SupplierItem supplierItem : supplier.getSupplierItems()) {
-            supplierItem.setSupplier(supplier);
-            System.out.println(supplierItem.toString());
+        //items from front item relevant to supplier
+        List<SupplierItem> supplierItems = supplier.getSupplierItems();
+        for (SupplierItem supplierItem : supplierItems) {
+            if (supplierItem.getId() == null) {
+                supplierItem.setSupplier(supplier);
+            }
+           // System.out.println("  hhhh  " + supplierItem.getItem().getId().toString());
+            supplierItemService.persist(supplierItem);
         }
-        redirectAttributes.addFlashAttribute("items", supplierService.persist(supplier).getSupplierItems());
         return "redirect:/supplier";
+    }
+
+    @GetMapping("/supplier/{id}")
+    public String addPriceToSupplierItem(@PathVariable int id, Model model) {
+        Supplier supplier = supplierService.findById(id);
+        List<SupplierItem> supplierItems = supplierItemService.findBySupplier(supplier);
+        // supplier.setSupplierItems(supplierItems);
+        model.addAttribute("itemSupplierStatus", ItemSupplierStatus.values());
+        model.addAttribute("supplierDetail", supplier);
+      //aluthin hadapu thena-baka baka
+        //model.addAttribute("supplier", new Supplier());
+        model.addAttribute("supplierDetailShow", false);
+        model.addAttribute("supplierItemEdit", false);
+        model.addAttribute("currentlyBuyingItems", supplierItems);
+        List<Item> items = itemService.findAll();
+
+        if (!supplierItems.isEmpty()) {
+            for (Item item : itemService.findAll()) {
+                for (SupplierItem supplierItem : supplierItems) {
+                    if (item.equals(supplierItem.getItem())) {
+                        items.remove(item);
+                    }
+                }
+            }
+        }
+
+        model.addAttribute("items", items);
+        return "supplier/addSupplierItem";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String addEditToSupplierItem(@PathVariable int id, Model model) {
+        Supplier supplier = supplierService.findById(id);
+        List<SupplierItem> supplierItems = supplierItemService.findBySupplier(supplier);
+        model.addAttribute("itemSupplierStatus", ItemSupplierStatus.values());
+        model.addAttribute("supplierDetail", supplier);
+        model.addAttribute("supplierDetailShow", false);
+        model.addAttribute("currentlyBuyingItems", supplierItems);
+        model.addAttribute("supplierItemEdit", true);
+        return "supplier/addSupplierItem";
     }
 
 }

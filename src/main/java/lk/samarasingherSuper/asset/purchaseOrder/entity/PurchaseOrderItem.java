@@ -1,5 +1,6 @@
 package lk.samarasingherSuper.asset.purchaseOrder.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingherSuper.asset.item.entity.Item;
 import lk.samarasingherSuper.util.audit.AuditEntity;
@@ -29,12 +30,13 @@ public class PurchaseOrderItem extends AuditEntity {
     private String code;
 
     @Column(precision = 10, scale = 2)
-    private BigDecimal price;
+    private BigDecimal linetotal;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 
     @ManyToOne
     private Item item;
+
 
 }
