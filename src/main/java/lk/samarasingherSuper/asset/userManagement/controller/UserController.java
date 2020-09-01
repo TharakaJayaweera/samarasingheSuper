@@ -1,5 +1,6 @@
 package lk.samarasingherSuper.asset.userManagement.controller;
 
+
 import lk.samarasingherSuper.asset.employee.entity.Employee;
 import lk.samarasingherSuper.asset.employee.entity.Enum.Designation;
 import lk.samarasingherSuper.asset.employee.entity.Enum.EmployeeStatus;
@@ -27,7 +28,7 @@ public class UserController {
 
     @Autowired
     public UserController(UserService userService, EmployeeService employeeService, RoleService roleService
-                         ) {
+    ) {
         this.userService = userService;
         this.employeeService = employeeService;
         this.roleService = roleService;

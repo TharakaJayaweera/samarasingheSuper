@@ -1,6 +1,7 @@
 package lk.samarasingherSuper.asset.branch.controller;
 
 
+
 import lk.samarasingherSuper.asset.branch.entity.Branch;
 import lk.samarasingherSuper.asset.branch.service.BranchService;
 import lk.samarasingherSuper.util.interfaces.AbstractController;
@@ -15,8 +16,8 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/branch")
-public class BranchController implements AbstractController<Branch, Integer> {
-    private final BranchService branchService;
+   public  class BranchController  implements AbstractController< Branch, Integer> {
+        private final BranchService branchService;
 
     @Autowired
     public BranchController(BranchService branchService) {
@@ -31,13 +32,8 @@ public class BranchController implements AbstractController<Branch, Integer> {
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("branchs", branchService.findAll());
+        model.addAttribute("branches", branchService.findAll());
         return "branch/branch";
-    }
-
-    @Override
-    public String findById(Integer id, Model model) {
-        return null;
     }
 
     @GetMapping("/add")
@@ -51,7 +47,7 @@ public class BranchController implements AbstractController<Branch, Integer> {
             return commonThings(model, branch, true);
         }
         redirectAttributes.addFlashAttribute("branchDetail", branchService.persist(branch));
-       // branchService.persist(branch);
+        // branchService.persist(branch);
         return "redirect:/branch";
     }
 
@@ -72,3 +68,4 @@ public class BranchController implements AbstractController<Branch, Integer> {
         return "branch/branch-detail";
     }
 }
+
