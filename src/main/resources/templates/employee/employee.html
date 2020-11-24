@@ -7,13 +7,13 @@
 <body>
 <nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
 
-<div class="container-fluid bg-secondary form-Border">
+<div class="container bg-secondary " id="header">
     <div class="row text-center formManagement border-info">
 
         <div class="col">
             <h4 class="text-info text-center">
                 <strong>
-                    Employee Management
+                    <span>Employee Management</span>
                 </strong>
             </h4>
         </div>
@@ -41,10 +41,10 @@
 
    <!-- <div class="col-md-1"></div>-->
 
-    <div class="col-md-8  text-center">
+    <div class="col-md-8 text-center table-area">
         <div class="col">
             <div class="col" id="employeeListPresent" th:if="${not #lists.isEmpty(employees)}">
-                <table class="table table-hover table-striped" id="myTable">
+                <table class="table table-hover table-borderless" id="myTable">
                     <thead>
                     <tr>
                         <th> Index</th>

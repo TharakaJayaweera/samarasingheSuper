@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.userManagement.entity;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,40 +1,51 @@
 package lk.samarasingherSuper.asset.goodReceivedNote.entity;
 
-
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrder;
 import lk.samarasingherSuper.asset.goodReceivedNote.entity.Enum.GoodReceivedNoteState;
-import lk.samarasingherSuper.asset.ledger.entity.Ledger;
+import lk.samarasingherSuper.asset.purchaseOrder.entity.PurchaseOrder;
 import lk.samarasingherSuper.util.audit.AuditEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter( "GoodReceivedNote" )
-@ToString
+@JsonFilter("GoodReceivedNote")
 public class GoodReceivedNote extends AuditEntity {
 
+
+/*    @Column(unique = true)
+    private String code;*/
+
     private String remarks;
+/*
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate mDate;
 
-    @Column( precision = 10, scale = 2 )
-    private BigDecimal totalAmount;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate eDate;*/
 
-    @Enumerated( EnumType.STRING )
-    private GoodReceivedNoteState goodReceivedNoteState;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 
-    @OneToMany( mappedBy = "goodReceivedNote", cascade = CascadeType.PERSIST)
-    private List< Ledger > ledgers;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal totalAmount;
+
+    @Enumerated(EnumType.STRING)
+    private GoodReceivedNoteState goodReceivedNoteState;
+
+
 
 
 }

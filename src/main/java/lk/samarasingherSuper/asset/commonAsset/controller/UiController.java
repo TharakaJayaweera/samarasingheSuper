@@ -1,9 +1,8 @@
 package lk.samarasingherSuper.asset.commonAsset.controller;
 
-
-
 import lk.samarasingherSuper.asset.userManagement.service.UserService;
 import lk.samarasingherSuper.util.service.DateTimeAgeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +13,11 @@ public class UiController {
     private final UserService userService;
     private final DateTimeAgeService dateTimeAgeService;
 
+    @Autowired
     public UiController(UserService userService, DateTimeAgeService dateTimeAgeService) {
         this.userService = userService;
         this.dateTimeAgeService = dateTimeAgeService;
     }
-
 
     @GetMapping(value = {"/", "/index"})
     public String index() {

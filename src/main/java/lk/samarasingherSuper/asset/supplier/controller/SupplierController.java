@@ -1,7 +1,5 @@
 package lk.samarasingherSuper.asset.supplier.controller;
 
-
-
 import lk.samarasingherSuper.asset.supplier.entity.Supplier;
 import lk.samarasingherSuper.asset.supplier.service.SupplierService;
 import lk.samarasingherSuper.util.interfaces.AbstractController;
@@ -17,7 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/supplier")
-public  class SupplierController implements AbstractController< Supplier, Integer> {
+public  class SupplierController implements AbstractController<Supplier, Integer> {
     private final SupplierService supplierService;
     private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
@@ -37,6 +35,11 @@ public  class SupplierController implements AbstractController< Supplier, Intege
     public String findAll(Model model) {
         model.addAttribute("suppliers", supplierService.findAll());
         return "supplier/supplier";
+    }
+
+    @Override
+    public String findById(Integer id, Model model) {
+        return null;
     }
 
     @GetMapping("/add")
@@ -62,7 +65,7 @@ public  class SupplierController implements AbstractController< Supplier, Intege
 
             if (DBSupplier == null) {
                 //need to generate new one
-                supplier.setCode("JNS"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
+                supplier.setCode("SS"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
                 System.out.println("last supplier not null");
                 //if there is supplier in db need to get that supplier's code and increase its value

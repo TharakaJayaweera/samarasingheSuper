@@ -1,21 +1,16 @@
-package lk.samarasingherSuper.asset.PurchaseOrder.dao;
+package lk.samarasingherSuper.asset.purchaseOrder.dao;
 
 
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.Enum.PurchaseOrderStatus;
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrder;
-import lk.samarasingherSuper.asset.supplier.entity.Supplier;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+        import lk.samarasingherSuper.asset.purchaseOrder.entity.Enum.PurchaseOrderStatus;
+        import lk.samarasingherSuper.asset.purchaseOrder.entity.PurchaseOrder;
+        import org.springframework.data.jpa.repository.JpaRepository;
+        import org.springframework.stereotype.Repository;
 
-import java.util.List;
+        import java.util.List;
 
 @Repository
-public interface PurchaseOrderDao extends JpaRepository< PurchaseOrder, Integer> {
-
+public interface PurchaseOrderDao extends JpaRepository<PurchaseOrder, Integer> {
     List<PurchaseOrder> findByPurchaseOrderStatus(PurchaseOrderStatus purchaseOrderStatus);
-
-    List<PurchaseOrder> findByPurchaseOrderStatusAndSupplier(PurchaseOrderStatus purchaseOrderStatus, Supplier supplier);
-
 
     PurchaseOrder findFirstByOrderByIdDesc();
 }
