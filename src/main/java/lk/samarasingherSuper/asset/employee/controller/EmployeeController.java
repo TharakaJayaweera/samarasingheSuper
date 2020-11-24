@@ -1,5 +1,7 @@
 package lk.samarasingherSuper.asset.employee.controller;
 
+
+
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.CivilStatus;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.Gender;
@@ -133,7 +135,7 @@ public class EmployeeController {
                     userService.persist(user);
                 }
             }
-            //save employee images file
+            //save employee img file
             for (MultipartFile file : employee.getFiles()) {
                 if (file.getOriginalFilename() != null) {
                     EmployeeFiles employeeFiles = employeeFilesService.findByName(file.getOriginalFilename());

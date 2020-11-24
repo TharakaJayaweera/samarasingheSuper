@@ -1,7 +1,9 @@
 package lk.samarasingherSuper.asset.supplier.service;
 
+
 import lk.samarasingherSuper.asset.supplier.dao.SupplierDao;
 import lk.samarasingherSuper.asset.supplier.entity.Supplier;
+import lk.samarasingherSuper.asset.supplierItem.entity.Enum.ItemSupplierStatus;
 import lk.samarasingherSuper.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -12,8 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@CacheConfig( cacheNames = "supplier" )
-public class SupplierService implements AbstractService<Supplier, Integer> {
+@CacheConfig(cacheNames = "supplier")
+public class SupplierService implements AbstractService< Supplier, Integer> {
     private final SupplierDao supplierDao;
 
     @Autowired
@@ -30,6 +32,9 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     }
 
     public Supplier persist(Supplier supplier) {
+        if (supplier.getId() == null) {
+            supplier.setItemSupplierStatus(ItemSupplierStatus.CURRENTLY_BUYING);
+        }
         return supplierDao.save(supplier);
     }
 
@@ -47,7 +52,11 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
         return supplierDao.findAll(supplierExample);
     }
 
-    public Supplier lastSupplier(){
+    public Supplier lastSupplier() {
         return supplierDao.findFirstByOrderByIdDesc();
+    }
+
+    public Supplier findByIdAndItemSupplierStatus(Integer supplierId, ItemSupplierStatus itemSupplierStatus) {
+    return supplierDao.findByIdAndItemSupplierStatus(supplierId,itemSupplierStatus);
     }
 }

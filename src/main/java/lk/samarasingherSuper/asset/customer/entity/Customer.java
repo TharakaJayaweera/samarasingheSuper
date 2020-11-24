@@ -1,9 +1,14 @@
 package lk.samarasingherSuper.asset.customer.entity;
 
+
+
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.Title;
 import lk.samarasingherSuper.util.audit.AuditEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
