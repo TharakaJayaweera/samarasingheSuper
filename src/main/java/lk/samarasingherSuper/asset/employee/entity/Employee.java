@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.employee.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingherSuper.asset.branch.entity.Branch;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
@@ -10,6 +9,7 @@ import lk.samarasingherSuper.asset.commonAsset.model.Enum.Title;
 import lk.samarasingherSuper.asset.commonAsset.model.FileInfo;
 import lk.samarasingherSuper.asset.employee.entity.Enum.Designation;
 import lk.samarasingherSuper.asset.employee.entity.Enum.EmployeeStatus;
+import lk.samarasingherSuper.asset.message.entity.EmailMessage;
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +23,6 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Getter
@@ -51,8 +50,6 @@ public class Employee extends AuditEntity {
 
     @Size(max = 10, message = "Mobile number length should be contained 10 and 9")
     private String mobileOne;
-
-    private String mobileTwo;
 
     private String land;
 
@@ -92,6 +89,9 @@ public class Employee extends AuditEntity {
     @ManyToOne
     private Branch branch;
 
+    @ManyToMany(mappedBy = "employees")
+    private List<EmailMessage> emailMessages;
+
     @Transient
     private List<MultipartFile> files = new ArrayList<>();
 
@@ -99,6 +99,6 @@ public class Employee extends AuditEntity {
     private List<String> removeImages = new ArrayList<>();
 
     @Transient
-    private List< FileInfo > fileInfos = new ArrayList<>();
+    private List<FileInfo> fileInfos = new ArrayList<>();
 
 }

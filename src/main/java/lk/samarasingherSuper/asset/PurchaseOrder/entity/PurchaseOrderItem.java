@@ -1,5 +1,4 @@
-package lk.samarasingherSuper.asset.PurchaseOrder.entity;
-
+package lk.samarasingherSuper.asset.purchaseOrder.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
@@ -20,22 +19,24 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter( "PurchaseOrderItem" )
+@JsonFilter("PurchaseOrderItem")
 public class PurchaseOrderItem extends AuditEntity {
-
-    @Column( nullable = false )
+    @Column(nullable = false)
     private String quantity;
 
-    @Column( nullable = false, precision = 10, scale = 2 )
-    private BigDecimal buyingPrice;
+    private String receivedQuantity;
 
-    @Column( nullable = false, precision = 10, scale = 2 )
-    private BigDecimal lineTotal;
+    @Column(unique = true, nullable = false)
+    private String code;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal linetotal;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 
     @ManyToOne
     private Item item;
+
 
 }

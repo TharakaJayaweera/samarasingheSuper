@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.userManagement.service;
 
-
 import lk.samarasingherSuper.asset.userManagement.dao.UserSessionLogDao;
 import lk.samarasingherSuper.asset.userManagement.entity.Enum.UserSessionLogStatus;
 import lk.samarasingherSuper.asset.userManagement.entity.User;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @Service
 @CacheConfig( cacheNames = {"userSessionLog"} )
-public class UserSessionLogService implements AbstractService< UserSessionLog, Integer > {
+public class UserSessionLogService implements AbstractService<UserSessionLog, Integer > {
     private final UserSessionLogDao userSessionLogDao;
 
     @Autowired
@@ -24,7 +23,7 @@ public class UserSessionLogService implements AbstractService< UserSessionLog, I
 
     @Override
     @Cacheable
-    public List<UserSessionLog> findAll() {
+    public List< UserSessionLog > findAll() {
         return userSessionLogDao.findAll();
     }
 
@@ -49,11 +48,11 @@ public class UserSessionLogService implements AbstractService< UserSessionLog, I
     }
 
     public void delete(UserSessionLog userSessionLog){
-        userSessionLogDao.delete(userSessionLog);
+         userSessionLogDao.delete(userSessionLog);
     }
 
     @Override
-    public List<UserSessionLog> search(UserSessionLog userSessionLog) {
+    public List< UserSessionLog > search(UserSessionLog userSessionLog) {
         return null;
     }
 
@@ -62,4 +61,3 @@ public class UserSessionLogService implements AbstractService< UserSessionLog, I
         return userSessionLogDao.findByUserAndUserSessionLogStatus(user, userSessionLogStatus);
     }
 }
-

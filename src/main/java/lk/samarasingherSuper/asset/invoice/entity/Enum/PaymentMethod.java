@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.invoice.entity.Enum;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PaymentMethod {
     CASH("Cash"),
-    CREDIT("Credit card");
+    CREDIT("Credit card"),
+    CHEQUE("Cheque");
     private final String paymentMethod;
 }

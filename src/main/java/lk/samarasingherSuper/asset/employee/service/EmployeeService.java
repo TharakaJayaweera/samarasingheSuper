@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.employee.service;
 
-
 import lk.samarasingherSuper.asset.employee.dao.EmployeeDao;
 import lk.samarasingherSuper.asset.employee.entity.Employee;
 import lk.samarasingherSuper.util.interfaces.AbstractService;
@@ -9,14 +8,14 @@ import org.springframework.cache.annotation.*;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-import java.util.*;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 // spring transactional annotation need to tell spring to this method work through the project
 @CacheConfig(cacheNames = "employee")
-public class EmployeeService implements AbstractService< Employee, Integer> {
+public class EmployeeService implements AbstractService<Employee, Integer> {
 
     private final EmployeeDao employeeDao;
 

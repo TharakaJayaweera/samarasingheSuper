@@ -1,7 +1,5 @@
 package lk.samarasingherSuper.asset.employee.controller;
 
-
-
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.CivilStatus;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.Gender;
@@ -121,7 +119,7 @@ public class EmployeeController {
         }
         try {
             employee.setMobileOne(commonService.commonMobileNumberLengthValidator(employee.getMobileOne()));
-            employee.setMobileTwo(commonService.commonMobileNumberLengthValidator(employee.getMobileTwo()));
+            employee.setLand(commonService.commonMobileNumberLengthValidator(employee.getLand()));
             employee.setLand(commonService.commonMobileNumberLengthValidator(employee.getLand()));
             //after save employee files and save employee
             employeeService.persist(employee);
@@ -135,7 +133,7 @@ public class EmployeeController {
                     userService.persist(user);
                 }
             }
-            //save employee img file
+            //save employee images file
             for (MultipartFile file : employee.getFiles()) {
                 if (file.getOriginalFilename() != null) {
                     EmployeeFiles employeeFiles = employeeFilesService.findByName(file.getOriginalFilename());

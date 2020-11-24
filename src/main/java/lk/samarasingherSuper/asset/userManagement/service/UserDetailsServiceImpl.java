@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.userManagement.service;
 
-
 import lk.samarasingherSuper.asset.userManagement.CustomerUserDetails;
 import lk.samarasingherSuper.asset.userManagement.dao.UserDao;
 import lk.samarasingherSuper.asset.userManagement.entity.User;
@@ -25,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userDao.findByUsername(username.toLowerCase());
-       CustomerUserDetails userDetails;
+        CustomerUserDetails userDetails;
         if ( user != null ) {
             userDetails = new CustomerUserDetails();
             userDetails.setUser(user);

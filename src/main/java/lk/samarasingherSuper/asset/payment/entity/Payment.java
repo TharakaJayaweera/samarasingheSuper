@@ -1,10 +1,9 @@
 package lk.samarasingherSuper.asset.payment.entity;
 
-
-
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrder;
-import lk.samarasingherSuper.asset.invoice.entity.Enum.PaymentMethod;
+
+import lk.samarasingherSuper.asset.payment.entity.Enum.PaymentMethod;
+import lk.samarasingherSuper.asset.purchaseOrder.entity.PurchaseOrder;
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +20,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @JsonFilter("Payment")
 public class Payment extends AuditEntity {
-
     private String bankName;
 
     private String remarks;
@@ -35,6 +33,6 @@ public class Payment extends AuditEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private PurchaseOrder purchaseOrder;
 }

@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.commonAsset.model.Enum;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,6 +9,5 @@ public enum Gender {
     MALE("Male"),
     FEMALE("Female");
 
- private final String gender;
-
+    private final String gender;
 }

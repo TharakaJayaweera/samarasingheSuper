@@ -1,6 +1,5 @@
 package lk.samarasingherSuper.asset.userManagement.service;
 
-
 import lk.samarasingherSuper.asset.employee.entity.Employee;
 import lk.samarasingherSuper.asset.userManagement.dao.UserDao;
 import lk.samarasingherSuper.asset.userManagement.entity.User;
@@ -17,7 +16,7 @@ import java.util.List;
 
 @Service
 @CacheConfig( cacheNames = {"user"} ) // tells Spring where to store cache for this class
-public class UserService implements AbstractService< User, Integer> {
+public class UserService implements AbstractService<User, Integer > {
     private final UserDao userDao;
     private final PasswordEncoder passwordEncoder;
 
@@ -28,7 +27,7 @@ public class UserService implements AbstractService< User, Integer> {
     }
 
     @Cacheable
-    public List<User> findAll() {
+    public List< User > findAll() {
         return userDao.findAll();
     }
 
@@ -59,7 +58,7 @@ public class UserService implements AbstractService< User, Integer> {
     }
 
     @Cacheable
-    public List<User> search(User user) {
+    public List< User > search(User user) {
         ExampleMatcher matcher =
                 ExampleMatcher.matching().withIgnoreCase().withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         Example< User > userExample = Example.of(user, matcher);
