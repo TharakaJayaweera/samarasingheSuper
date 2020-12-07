@@ -3,7 +3,6 @@ package lk.samarasingherSuper.asset.supplier.controller;
 import lk.samarasingherSuper.asset.supplier.entity.Supplier;
 import lk.samarasingherSuper.asset.supplier.service.SupplierService;
 import lk.samarasingherSuper.util.interfaces.AbstractController;
-import lk.samarasingherSuper.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

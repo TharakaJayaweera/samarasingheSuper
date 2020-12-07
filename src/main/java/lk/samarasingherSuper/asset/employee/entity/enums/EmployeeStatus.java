@@ -1,4 +1,4 @@
-package lk.samarasingherSuper.asset.employee.entity.Enum;
+package lk.samarasingherSuper.asset.employee.entity.enums;
 
 public enum EmployeeStatus {
     WORKING("Working"),

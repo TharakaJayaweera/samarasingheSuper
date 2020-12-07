@@ -1,5 +1,6 @@
 package lk.samarasingherSuper.asset.employee.entity;
 
+
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,12 +1,11 @@
 package lk.samarasingherSuper;
 
-import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.CivilStatus;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.Gender;
 import lk.samarasingherSuper.asset.commonAsset.model.Enum.Title;
 import lk.samarasingherSuper.asset.employee.entity.Employee;
-import lk.samarasingherSuper.asset.employee.entity.Enum.Designation;
-import lk.samarasingherSuper.asset.employee.entity.Enum.EmployeeStatus;
+import lk.samarasingherSuper.asset.employee.entity.enums.Designation;
+import lk.samarasingherSuper.asset.employee.entity.enums.EmployeeStatus;
 import lk.samarasingherSuper.asset.employee.service.EmployeeService;
 import lk.samarasingherSuper.asset.userManagement.entity.Role;
 import lk.samarasingherSuper.asset.userManagement.entity.User;
@@ -46,15 +45,14 @@ public class ApplicationCreateRestController {
 
 //Employee
         Employee employee = new Employee();
-        employee.setPayRoleNumber("11111111");
+        employee.setCode("11111111");
         employee.setName("Admin User");
         employee.setCallingName("Admin");
         employee.setName("908670000V");
         employee.setMobileOne("0750000000");
-        employee.setTitle(Title.DR);
+        employee.setTitle(Title.MR);
         employee.setGender(Gender.MALE);
-        employee.setBloodGroup(BloodGroup.AP);
-        employee.setDesignation(Designation.MANAGER);
+        employee.setDesignation(Designation.LA);
         employee.setCivilStatus(CivilStatus.UNMARRIED);
         employee.setEmployeeStatus(EmployeeStatus.WORKING);
         employee.setDateOfBirth(LocalDate.now().minusYears(18));

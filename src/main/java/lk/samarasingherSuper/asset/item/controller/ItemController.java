@@ -7,7 +7,6 @@ import lk.samarasingherSuper.asset.item.entity.Enum.MainCategory;
 import lk.samarasingherSuper.asset.item.entity.Item;
 import lk.samarasingherSuper.asset.item.service.ItemService;
 import lk.samarasingherSuper.util.interfaces.AbstractController;
-import lk.samarasingherSuper.util.service.MakeAutoGenerateNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
