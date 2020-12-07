@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,9 +31,12 @@ public class InvoiceController implements AbstractController< Invoice, Integer >
     return "invoice/invoice";
   }
 
-
-  public String findById(Integer id, Model model) {
-    return null;
+  @GetMapping( "/{id}" )
+  public String findById(@PathVariable("id") Integer id, Model model) {
+    Invoice invoice =  invoiceService.findById(id);
+    model.addAttribute("invoiceDetail",invoice);
+    model.addAttribute("customerDetail",invoice.getCustomer());
+    return "invoice/invoice-detail";
   }
 
 
