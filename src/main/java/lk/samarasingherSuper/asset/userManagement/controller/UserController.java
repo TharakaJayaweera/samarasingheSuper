@@ -1,8 +1,8 @@
 package lk.samarasingherSuper.asset.userManagement.controller;
 
 import lk.samarasingherSuper.asset.employee.entity.Employee;
-import lk.samarasingherSuper.asset.employee.entity.Enum.Designation;
-import lk.samarasingherSuper.asset.employee.entity.Enum.EmployeeStatus;
+import lk.samarasingherSuper.asset.employee.entity.enums.Designation;
+import lk.samarasingherSuper.asset.employee.entity.enums.EmployeeStatus;
 import lk.samarasingherSuper.asset.employee.service.EmployeeService;
 import lk.samarasingherSuper.asset.userManagement.entity.User;
 import lk.samarasingherSuper.asset.userManagement.service.RoleService;

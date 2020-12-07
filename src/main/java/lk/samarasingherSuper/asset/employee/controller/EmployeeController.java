@@ -1,9 +1,18 @@
 package lk.samarasingherSuper.asset.employee.controller;
 
 
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.BloodGroup;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.CivilStatus;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.Gender;
+import lk.samarasingherSuper.asset.commonAsset.model.Enum.Title;
 import lk.samarasingherSuper.asset.commonAsset.service.CommonService;
+import lk.samarasingherSuper.asset.employee.entity.Employee;
+import lk.samarasingherSuper.asset.employee.entity.EmployeeFiles;
+import lk.samarasingherSuper.asset.employee.entity.enums.Designation;
+import lk.samarasingherSuper.asset.employee.entity.enums.EmployeeStatus;
 import lk.samarasingherSuper.asset.employee.service.EmployeeFilesService;
 import lk.samarasingherSuper.asset.employee.service.EmployeeService;
+import lk.samarasingherSuper.asset.userManagement.entity.User;
 import lk.samarasingherSuper.asset.userManagement.service.UserService;
 import lk.samarasingherSuper.util.service.DateTimeAgeService;
 import lk.samarasingherSuper.util.service.MakeAutoGenerateNumberService;
