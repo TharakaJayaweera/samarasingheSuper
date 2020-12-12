@@ -1,11 +1,11 @@
-package j_n_super_pvt_ltd.asset.PurchaseOrder.entity;
+package lk.samarasingherSuper.asset.PurchaseOrder.entity;
 
-import j_n_super_pvt_ltd.asset.PurchaseOrder.entity.Enum.PurchaseOrderPriority;
-import j_n_super_pvt_ltd.asset.PurchaseOrder.entity.Enum.PurchaseOrderStatus;
-import j_n_super_pvt_ltd.asset.payment.entity.Payment;
-import j_n_super_pvt_ltd.asset.supplier.entity.Supplier;
-import j_n_super_pvt_ltd.util.audit.AuditEntity;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingherSuper.asset.PurchaseOrder.entity.Enum.PurchaseOrderPriority;
+import lk.samarasingherSuper.asset.PurchaseOrder.entity.Enum.PurchaseOrderStatus;
+import lk.samarasingherSuper.asset.payment.entity.Payment;
+import lk.samarasingherSuper.asset.supplier.entity.Supplier;
+import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +45,7 @@ public class PurchaseOrder extends AuditEntity {
     private List< PurchaseOrderItem > purchaseOrderItems;
 
     @OneToMany(mappedBy = "purchaseOrder")
-    private List<Payment> payments;
+    private List< Payment > payments;
 
     @Transient
     private BigDecimal paidAmount;
