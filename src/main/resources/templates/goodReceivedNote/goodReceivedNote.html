@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<head th:replace="~{fragments/header1 :: headerFragment}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Kmart Super</title>
+    <title>J N Super </title>
 </head>
 <body>
-<nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
+<nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 <div class="container-fluid ">
     <div class="row text-center formManagement border-info">
         <div class="col">
+
 
         </div>
         <div class="col ">
@@ -49,10 +51,10 @@
                     <a  data-th-href="${'/purchaseOrder/view' + purchaseOrder.id}"
                         class="btn btn-primary btn-sm"><i class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>
                     <a  data-th-href="${'/goodReceivedNote/' + purchaseOrder.id}" class="btn btn-success btn-sm"><i
-                          class="fa fa-edit" style="font-size: 15px"></i>&nbsp; Confirm </a>
+                            class="fa fa-edit" style="font-size: 15px"></i>&nbsp; Confirm </a>
                     <a  data-th-href="${'/purchaseOrder/delete/' + purchaseOrder.id}" class="btn btn-danger btn-sm">
                         <!--data-th-if="${#authorization.expurchaseOrderession('hasRole(''ROLE_ADMIN'')')}"--><i
-                          class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
+                            class="fa fa-trash" style="font-size: 15px"></i> Delete</a>
                 </th>
             </tr>
             </tbody>
@@ -78,7 +80,8 @@
     </script>
 </div>
 
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+
+<footer data-th-replace="~{fragments/footer :: footerFragment}"></footer>
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
 </body>
 </html>
