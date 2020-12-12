@@ -1,11 +1,9 @@
-package lk.samarasingherSuper.asset.purchaseOrder.service;
+package lk.samarasingherSuper.asset.PurchaseOrder.service;
 
 
-import lk.samarasingherSuper.asset.item.entity.Item;
-import lk.samarasingherSuper.asset.purchaseOrder.dao.PurchaseOrderItemDao;
-import lk.samarasingherSuper.asset.purchaseOrder.entity.PurchaseOrder;
-import lk.samarasingherSuper.asset.purchaseOrder.entity.PurchaseOrderItem;
-import lk.samarasingherSuper.asset.supplier.entity.SupplierItem;
+import lk.samarasingherSuper.asset.PurchaseOrder.dao.PurchaseOrderItemDao;
+import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrder;
+import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrderItem;
 import lk.samarasingherSuper.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -17,12 +15,12 @@ import java.util.List;
 
 @Service
 @CacheConfig(cacheNames = "purchaseOrderItem")
-public class PurchaseOrderItemService implements AbstractService<PurchaseOrderItem, Integer> {
+public class PurchaseOrderItemService implements AbstractService< PurchaseOrderItem, Integer> {
     private final PurchaseOrderItemDao purchaseOrderItemDao;
 
     @Autowired
-    public PurchaseOrderItemService(PurchaseOrderItemDao purchaseOrderDao) {
-        this.purchaseOrderItemDao = purchaseOrderDao;
+    public PurchaseOrderItemService(PurchaseOrderItemDao purchaseOrderItemDao) {
+        this.purchaseOrderItemDao = purchaseOrderItemDao;
     }
 
     public List<PurchaseOrderItem> findAll() {
@@ -53,11 +51,12 @@ public class PurchaseOrderItemService implements AbstractService<PurchaseOrderIt
 
     public PurchaseOrderItem findByPurchaseOrderAndItem(PurchaseOrder purchaseOrder, Item item) {
         return purchaseOrderItemDao.findByPurchaseOrderAndItem(purchaseOrder, item);
-
     }
 
     public List<PurchaseOrderItem> findByPurchaseOrder(PurchaseOrder purchaseOrder) {
         return purchaseOrderItemDao.findByPurchaseOrder(purchaseOrder);
     }
+
+
 
 }
