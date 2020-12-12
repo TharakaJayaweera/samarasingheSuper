@@ -1,6 +1,9 @@
-package lk.samarasingherSuper.asset.invoice.entity;
+package lk.samarasingherSuper.asset.discountRatio.entity;
+
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingherSuper.asset.discountRatio.entity.Enum.DiscountRatioStatus;
+import lk.samarasingherSuper.asset.invoice.entity.Invoice;
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,21 +16,25 @@ import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonFilter("DiscountRatio")
+@JsonFilter( "DiscountRatio" )
 public class DiscountRatio extends AuditEntity {
 
-    @Column(nullable = false, length = 45)
+    @Column( nullable = false, length = 45 )
     private String name;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @Column( nullable = false, precision = 10, scale = 2 )
     private BigDecimal amount;
 
-    @OneToMany(mappedBy = "discountRatio")
-    private List<Invoice> invoices;
+    private DiscountRatioStatus discountRatioStatus;
+
+    @OneToMany( mappedBy = "discountRatio" )
+    private List< Invoice > invoices;
 
 }
+
