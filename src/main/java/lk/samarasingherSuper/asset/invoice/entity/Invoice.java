@@ -1,10 +1,13 @@
 package lk.samarasingherSuper.asset.invoice.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.samarasingherSuper.asset.customer.entity.Customer;
+import lk.samarasingherSuper.asset.discountRatio.entity.DiscountRatio;
 import lk.samarasingherSuper.asset.invoice.entity.Enum.InvoicePrintOrNot;
-import lk.samarasingherSuper.asset.payment.entity.Enum.PaymentMethod;
+import lk.samarasingherSuper.asset.invoice.entity.Enum.InvoiceValidOrNot;
+import lk.samarasingherSuper.asset.invoice.entity.Enum.PaymentMethod;
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,9 +36,6 @@ public class Invoice extends AuditEntity {
     @Column(nullable = false, unique = true)
     private String code;
 
-    @Enumerated(EnumType.STRING)
-    private PaymentMethod paymentMethod;
-
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
@@ -54,6 +54,12 @@ public class Invoice extends AuditEntity {
     @Enumerated(EnumType.STRING)
     private InvoicePrintOrNot invoicePrintOrNot;
 
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod paymentMethod;
+
+    @Enumerated(EnumType.STRING)
+    private InvoiceValidOrNot invoiceValidOrNot;
+
     @ManyToOne
     private Customer customer;
 
@@ -61,7 +67,7 @@ public class Invoice extends AuditEntity {
     private DiscountRatio discountRatio;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "invoice")
-    private List<InvoiceItemQuantity> invoiceItemQuantities;
+    private List< InvoiceItem > invoiceItemQuantities;
 
 
 }
