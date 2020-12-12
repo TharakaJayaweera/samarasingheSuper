@@ -1,8 +1,8 @@
-package lk.samarasingherSuper.asset.item.category.service;
+package lk.samarasingherSuper.asset.category.service;
 
 
-import lk.samarasingherSuper.asset.item.category.dao.CategoryDao;
-import lk.samarasingherSuper.asset.item.category.entity.Category;
+import lk.samarasingherSuper.asset.category.dao.CategoryDao;
+import lk.samarasingherSuper.asset.category.entity.Category;
 import lk.samarasingherSuper.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;

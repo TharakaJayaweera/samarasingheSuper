@@ -1,6 +1,6 @@
-package lk.samarasingherSuper.asset.item.category.dao;
+package lk.samarasingherSuper.asset.category.dao;
 
-import lk.samarasingherSuper.asset.item.category.entity.Category;
+import lk.samarasingherSuper.asset.category.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

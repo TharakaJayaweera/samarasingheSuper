@@ -1,4 +1,4 @@
-package lk.samarasingherSuper.asset.item.category.entity;
+package lk.samarasingherSuper.asset.category.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingherSuper.asset.item.entity.Enum.MainCategory;

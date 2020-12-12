@@ -1,10 +1,10 @@
-package lk.samarasingherSuper.asset.item.category.controller;
+package lk.samarasingherSuper.asset.category.controller;
 
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import lk.samarasingherSuper.asset.item.category.entity.Category;
-import lk.samarasingherSuper.asset.item.category.service.CategoryService;
+import lk.samarasingherSuper.asset.category.entity.Category;
+import lk.samarasingherSuper.asset.category.service.CategoryService;
 import lk.samarasingherSuper.asset.item.entity.Enum.MainCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;

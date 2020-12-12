@@ -1,7 +1,7 @@
-package lk.samarasingherSuper.asset.item.category.controller;
+package lk.samarasingherSuper.asset.category.controller;
 
-import lk.samarasingherSuper.asset.item.category.entity.Category;
-import lk.samarasingherSuper.asset.item.category.service.CategoryService;
+import lk.samarasingherSuper.asset.category.entity.Category;
+import lk.samarasingherSuper.asset.category.service.CategoryService;
 import lk.samarasingherSuper.asset.item.entity.Enum.MainCategory;
 import lk.samarasingherSuper.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
