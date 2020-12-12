@@ -1,5 +1,6 @@
 package lk.samarasingherSuper.asset.goodReceivedNote.service;
 
+import lk.samarasingherSuper.asset.PurchaseOrder.entity.PurchaseOrder;
 import lk.samarasingherSuper.asset.goodReceivedNote.dao.GoodReceivedNoteDao;
 import lk.samarasingherSuper.asset.goodReceivedNote.entity.GoodReceivedNote;
 import lk.samarasingherSuper.util.interfaces.AbstractService;
@@ -45,10 +46,15 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
     @Override
     public List<GoodReceivedNote> search(GoodReceivedNote goodReceivedNote) {
         ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+            .matching()
+            .withIgnoreCase()
+            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         Example<GoodReceivedNote> goodReceivedNoteExample = Example.of(goodReceivedNote, matcher);
         return goodReceivedNoteDao.findAll(goodReceivedNoteExample);
+    }
+
+
+    public GoodReceivedNote findByPurchaseOrder(PurchaseOrder purchaseOrder) {
+        return goodReceivedNoteDao.findByPurchaseOrder(purchaseOrder);
     }
 }
