@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.purchase_order.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

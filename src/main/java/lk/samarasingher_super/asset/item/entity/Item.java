@@ -3,11 +3,11 @@ package lk.samarasingher_super.asset.item.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrderItem;
 import lk.samarasingher_super.asset.category.entity.Category;
 import lk.samarasingher_super.asset.item.entity.Enum.ItemStatus;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
-import lk.samarasingher_super.asset.supplier.entity.SupplierItem;
+import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrderItem;
+import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

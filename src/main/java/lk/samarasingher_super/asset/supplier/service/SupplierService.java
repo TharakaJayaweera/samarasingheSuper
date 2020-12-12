@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.supplier.service;
 
 import lk.samarasingher_super.asset.supplier.dao.SupplierDao;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
+import lk.samarasingher_super.asset.supplierItem.entity.Enum.ItemSupplierStatus;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@CacheConfig( cacheNames = "supplier" )
+@CacheConfig(cacheNames = "supplier")
 public class SupplierService implements AbstractService<Supplier, Integer> {
     private final SupplierDao supplierDao;
 
@@ -30,6 +31,9 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     }
 
     public Supplier persist(Supplier supplier) {
+        if (supplier.getId() == null) {
+            supplier.setItemSupplierStatus(ItemSupplierStatus.CURRENTLY_BUYING);
+        }
         return supplierDao.save(supplier);
     }
 
@@ -40,14 +44,18 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
 
     public List<Supplier> search(Supplier supplier) {
         ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+            .matching()
+            .withIgnoreCase()
+            .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
         Example<Supplier> supplierExample = Example.of(supplier, matcher);
         return supplierDao.findAll(supplierExample);
     }
 
-    public Supplier lastSupplier(){
+    public Supplier lastSupplier() {
         return supplierDao.findFirstByOrderByIdDesc();
+    }
+
+    public Supplier findByIdAndItemSupplierStatus(Integer supplierId, ItemSupplierStatus itemSupplierStatus) {
+        return supplierDao.findByIdAndItemSupplierStatus(supplierId,itemSupplierStatus);
     }
 }

@@ -1,13 +1,12 @@
-package lk.samarasingher_super.asset.supplier.entity.Enum;
+package lk.samarasingher_super.asset.supplierItem.entity.Enum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum  ItemSupplierStatus {
-
-    CURRENTLTLY_BUYING("Currently_Buying"),
+public enum ItemSupplierStatus {
+    CURRENTLY_BUYING("Currently Buying"),
     STOPPED("Stopped");
 
     private final String itemSupplierStatus;
