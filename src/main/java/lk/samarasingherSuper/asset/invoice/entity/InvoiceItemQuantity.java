@@ -1,7 +1,6 @@
 package lk.samarasingherSuper.asset.invoice.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingherSuper.asset.item.entity.ItemBatch;
 import lk.samarasingherSuper.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
