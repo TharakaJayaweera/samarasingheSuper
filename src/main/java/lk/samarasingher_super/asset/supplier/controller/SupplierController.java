@@ -1,5 +1,6 @@
 package lk.samarasingher_super.asset.supplier.controller;
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
 import lk.samarasingher_super.util.interfaces.AbstractController;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/supplier")
@@ -33,7 +35,9 @@ public  class SupplierController implements AbstractController<Supplier, Integer
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("suppliers", supplierService.findAll());
+        model.addAttribute("suppliers", supplierService.findAll().stream()
+            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .collect(Collectors.toList()));
         return "supplier/supplier";
     }
 

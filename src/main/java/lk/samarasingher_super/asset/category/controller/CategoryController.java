@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.category.controller;
 
 import lk.samarasingher_super.asset.category.entity.Category;
 import lk.samarasingher_super.asset.category.service.CategoryService;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/category")
@@ -33,7 +36,9 @@ public  class CategoryController implements AbstractController<Category, Integer
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("categorys", categoryService.findAll());
+        model.addAttribute("categorys", categoryService.findAll().stream()
+            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .collect(Collectors.toList()));
         return "category/category";
     }
 

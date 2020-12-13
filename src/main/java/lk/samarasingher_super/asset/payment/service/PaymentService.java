@@ -36,7 +36,7 @@ public class PaymentService implements AbstractService< Payment, Integer > {
 
     public boolean delete(Integer id) {
         Payment payment =  paymentDao.getOne(id);
-        payment.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        payment.setActiveOrInactive(ActiveOrInactive.STOP);
         paymentDao.save(payment);
         return false;
     }

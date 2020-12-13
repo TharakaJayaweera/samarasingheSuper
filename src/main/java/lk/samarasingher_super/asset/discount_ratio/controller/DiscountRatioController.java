@@ -1,8 +1,8 @@
 package lk.samarasingher_super.asset.discount_ratio.controller;
 
 
-import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.asset.discount_ratio.service.DiscountRatioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping( "/discountRatio" )
@@ -23,7 +24,9 @@ public class DiscountRatioController {
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("discountRatios", discountRatioService.findAll());
+        model.addAttribute("discountRatios", discountRatioService.findAll().stream()
+            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .collect(Collectors.toList()));
         return "discountRatio/discountRatio";
     }
 

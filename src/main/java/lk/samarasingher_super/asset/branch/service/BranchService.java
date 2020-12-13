@@ -38,7 +38,7 @@ public class BranchService implements AbstractService<Branch, Integer> {
 
     public boolean delete(Integer id) {
        Branch branch =  branchDao.getOne(id);
-        branch.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        branch.setActiveOrInactive(ActiveOrInactive.STOP);
         branchDao.save(branch);
         return false;
     }

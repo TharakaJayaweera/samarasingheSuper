@@ -2,10 +2,7 @@ package lk.samarasingher_super.asset.employee.controller;
 
 
 import lk.samarasingher_super.asset.branch.service.BranchService;
-import lk.samarasingher_super.asset.common_asset.model.enums.BloodGroup;
-import lk.samarasingher_super.asset.common_asset.model.enums.CivilStatus;
-import lk.samarasingher_super.asset.common_asset.model.enums.Gender;
-import lk.samarasingher_super.asset.common_asset.model.enums.Title;
+import lk.samarasingher_super.asset.common_asset.model.enums.*;
 import lk.samarasingher_super.asset.common_asset.service.CommonService;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.entity.EmployeeFiles;
@@ -31,6 +28,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping( "/employee" )
@@ -84,7 +82,11 @@ public class EmployeeController {
   @RequestMapping
   public String employeePage(Model model) {
     List< Employee > employees = new ArrayList<>();
-    for ( Employee employee : employeeService.findAll() ) {
+    for ( Employee employee : employeeService.findAll()
+        .stream()
+        .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+        .collect(Collectors.toList())
+    ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }

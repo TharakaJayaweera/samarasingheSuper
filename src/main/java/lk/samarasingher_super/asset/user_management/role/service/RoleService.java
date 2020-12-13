@@ -46,7 +46,7 @@ public class RoleService implements AbstractService<Role, Integer > {
     @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
         Role role =roleDao.getOne(id);
-        role.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        role.setActiveOrInactive(ActiveOrInactive.STOP);
         roleDao.save(role);
         return true;
     }

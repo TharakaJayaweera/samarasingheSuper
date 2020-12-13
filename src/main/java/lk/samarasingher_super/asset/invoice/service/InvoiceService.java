@@ -36,7 +36,7 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
     public boolean delete(Integer id) {
         Invoice invoice =  invoiceDao.getOne(id);
-        invoice.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        invoice.setActiveOrInactive(ActiveOrInactive.STOP);
         invoiceDao.save(invoice);
         return false;
     }

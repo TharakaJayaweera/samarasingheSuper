@@ -34,7 +34,7 @@ private final DiscountRatioDao discountRatioDao;
 
     public boolean delete(Integer id) {
         DiscountRatio discountRatio =  discountRatioDao.getOne(id);
-        discountRatio.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        discountRatio.setActiveOrInactive(ActiveOrInactive.STOP);
         discountRatioDao.save(discountRatio);
         return false;
     }
