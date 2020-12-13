@@ -9,7 +9,7 @@ import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.purchase_order.commonModel.PurchaseOrderItemLedger;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
-import lk.samarasingher_super.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
 import lk.samarasingher_super.asset.supplierItem.service.SupplierItemService;
 import lk.samarasingher_super.util.audit.AuditEntity;

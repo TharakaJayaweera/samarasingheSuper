@@ -4,7 +4,7 @@ package lk.samarasingher_super.asset.supplierItem.service;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplierItem.dao.SupplierItemDao;
-import lk.samarasingher_super.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;

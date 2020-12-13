@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.supplier.dao;
 
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
-import lk.samarasingher_super.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
