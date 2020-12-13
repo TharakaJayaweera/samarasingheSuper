@@ -1,9 +1,10 @@
 package lk.samarasingher_super.asset.supplier.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
-import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
+import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +42,9 @@ public class Supplier extends AuditEntity {
 
     @Column( columnDefinition = "VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_bin NULL", length = 255 )
     private String address;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
 
     @Enumerated( EnumType.STRING )
     private ItemSupplierStatus itemSupplierStatus;
