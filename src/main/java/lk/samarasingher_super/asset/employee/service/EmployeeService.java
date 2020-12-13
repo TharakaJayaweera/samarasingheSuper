@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.employee.service;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.employee.dao.EmployeeDao;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -39,15 +40,23 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
             put = {@CachePut( value = "employee", key = "#employee.id" )} )
     @Transactional
     public Employee persist(Employee employee) {
+        if(employee.getId()==null){
+            employee.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return employeeDao.save(employee);
     }
 
-    @CacheEvict( allEntries = true )
+    public boolean delete(Integer id) {
+        Employee employee =  employeeDao.getOne(id);
+        employee.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        employeeDao.save(employee);
+        return false;
+    }
+   /* @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
         employeeDao.deleteById(id);
         return false;
     }
-
+*/
     @Cacheable
     public List< Employee > search(Employee employee) {
         ExampleMatcher matcher = ExampleMatcher
