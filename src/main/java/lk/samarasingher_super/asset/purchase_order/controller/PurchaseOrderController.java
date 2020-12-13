@@ -3,10 +3,10 @@ package lk.samarasingher_super.asset.purchase_order.controller;
 
 import lk.samarasingher_super.asset.common_asset.service.CommonService;
 import lk.samarasingher_super.asset.ledger.dao.LedgerDao;
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderPriority;
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderStatus;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderPriority;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
-import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrderItem;
+import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderItemService;
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderService;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;

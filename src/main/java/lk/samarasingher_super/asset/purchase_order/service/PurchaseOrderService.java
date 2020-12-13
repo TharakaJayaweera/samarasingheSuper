@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.purchase_order.service;
 
 
 import lk.samarasingher_super.asset.purchase_order.dao.PurchaseOrderDao;
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderStatus;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.util.interfaces.AbstractService;
