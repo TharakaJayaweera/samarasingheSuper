@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.good_received_note.controller;
 
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderStatus;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderService;
 import lk.samarasingher_super.asset.good_received_note.entity.enums.GoodReceivedNoteState;

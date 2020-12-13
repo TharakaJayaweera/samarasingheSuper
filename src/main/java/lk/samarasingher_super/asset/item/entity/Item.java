@@ -7,7 +7,7 @@ import lk.samarasingher_super.asset.category.entity.Category;
 import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
-import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrderItem;
+import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
