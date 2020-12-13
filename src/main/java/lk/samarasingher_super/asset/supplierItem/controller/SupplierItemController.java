@@ -6,7 +6,7 @@ import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.item.service.ItemService;
 import lk.samarasingher_super.asset.ledger.dao.LedgerDao;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
-import lk.samarasingher_super.asset.purchase_order.commonModel.PurchaseOrderItemLedger;
+import lk.samarasingher_super.asset.purchase_order.common_model.PurchaseOrderItemLedger;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
 import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;

@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.purchase_order.dao;
+package lk.samarasingher_super.asset.purchase_order_item.dao;
 
 
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;

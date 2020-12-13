@@ -7,7 +7,7 @@ import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderPri
 import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
-import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderItemService;
+import lk.samarasingher_super.asset.purchase_order_item.service.PurchaseOrderItemService;
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderService;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;

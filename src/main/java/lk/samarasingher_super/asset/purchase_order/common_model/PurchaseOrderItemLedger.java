@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.purchase_order.commonModel;
+package lk.samarasingher_super.asset.purchase_order.common_model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
