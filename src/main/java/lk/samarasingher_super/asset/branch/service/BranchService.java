@@ -31,7 +31,7 @@ public class BranchService implements AbstractService<Branch, Integer> {
     }
 
     public Branch persist(Branch branch) {
-        if(branch.getId()!=null){
+        if(branch.getId()==null){
             branch.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return branchDao.save(branch);
     }
