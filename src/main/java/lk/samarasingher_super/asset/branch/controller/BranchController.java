@@ -3,7 +3,7 @@ package lk.samarasingher_super.asset.branch.controller;
 
 import lk.samarasingher_super.asset.branch.entity.Branch;
 import lk.samarasingher_super.asset.branch.service.BranchService;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class BranchController implements AbstractController<Branch, Integer> {
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("branchs", branchService.findAll().stream()
-            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
             .collect(Collectors.toList()));
         return "branch/branch";
     }

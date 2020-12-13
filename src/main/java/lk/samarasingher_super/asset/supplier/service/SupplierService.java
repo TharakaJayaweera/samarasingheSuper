@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.supplier.service;
 
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.supplier.dao.SupplierDao;
 import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -34,14 +34,14 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     public Supplier persist(Supplier supplier) {
         if (supplier.getId() == null) {
             supplier.setItemSupplierStatus(ItemSupplierStatus.CURRENTLY_BUYING);
-        supplier.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        supplier.setLiveOrDead(LiveOrDead.ACTIVE);
         }
         return supplierDao.save(supplier);
     }
 
     public boolean delete(Integer id) {
         Supplier supplier =  supplierDao.getOne(id);
-        supplier.setActiveOrInactive(ActiveOrInactive.STOP);
+        supplier.setLiveOrDead(LiveOrDead.STOP);
         supplierDao.save(supplier);
         return false;
     }

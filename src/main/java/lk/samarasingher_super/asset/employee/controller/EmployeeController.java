@@ -84,7 +84,7 @@ public class EmployeeController {
     List< Employee > employees = new ArrayList<>();
     for ( Employee employee : employeeService.findAll()
         .stream()
-        .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+        .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
         .collect(Collectors.toList())
     ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));

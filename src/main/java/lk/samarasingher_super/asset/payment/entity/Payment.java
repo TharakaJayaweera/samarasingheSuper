@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.payment.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.util.audit.AuditEntity;
@@ -33,7 +33,7 @@ public class Payment extends AuditEntity {
     private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;

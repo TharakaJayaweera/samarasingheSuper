@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.purchase_order.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.payment.entity.Payment;
 import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderPriority;
 import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
@@ -41,7 +41,7 @@ public class PurchaseOrder extends AuditEntity {
     private PurchaseOrderStatus purchaseOrderStatus;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @ManyToOne
     private Supplier supplier;

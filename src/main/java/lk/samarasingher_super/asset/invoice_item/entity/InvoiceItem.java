@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.invoice_item.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.audit.AuditEntity;
@@ -29,7 +29,7 @@ public class InvoiceItem extends AuditEntity {
     private BigDecimal sellPrice;
 
     @Enumerated( EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @ManyToOne
     private Item item;
