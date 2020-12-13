@@ -3,9 +3,9 @@ package lk.samarasingher_super.asset.invoice.controller;
 
 import lk.samarasingher_super.asset.customer.service.CustomerService;
 import lk.samarasingher_super.asset.discount_ratio.service.DiscountRatioService;
-import lk.samarasingher_super.asset.invoice.entity.Enum.InvoicePrintOrNot;
-import lk.samarasingher_super.asset.invoice.entity.Enum.InvoiceValidOrNot;
-import lk.samarasingher_super.asset.invoice.entity.Enum.PaymentMethod;
+import lk.samarasingher_super.asset.invoice.entity.enums.InvoicePrintOrNot;
+import lk.samarasingher_super.asset.invoice.entity.enums.InvoiceValidOrNot;
+import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.asset.invoice.service.InvoiceService;
 import lk.samarasingher_super.asset.item.service.ItemService;
