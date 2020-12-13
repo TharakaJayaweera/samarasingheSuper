@@ -132,7 +132,6 @@ public class EmployeeController {
   @PostMapping( value = {"/save", "/update"} )
   public String addEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model
                            ) {
-    System.out.println("came employee" + employee.toString());
     if ( result.hasErrors() ) {
       model.addAttribute("addStatus", true);
       model.addAttribute("employee", employee);
