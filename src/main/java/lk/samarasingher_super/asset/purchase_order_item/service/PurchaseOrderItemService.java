@@ -1,9 +1,11 @@
 package lk.samarasingher_super.asset.purchase_order_item.service;
 
 
+import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.entity.Item;
-import lk.samarasingher_super.asset.purchase_order_item.dao.PurchaseOrderItemDao;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
+import lk.samarasingher_super.asset.purchase_order_item.dao.PurchaseOrderItemDao;
 import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +35,15 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
     }
 
     public PurchaseOrderItem persist(PurchaseOrderItem purchaseOrderItem) {
+        if(purchaseOrderItem.getId()==null){
+            purchaseOrderItem.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return purchaseOrderItemDao.save(purchaseOrderItem);
     }
 
     public boolean delete(Integer id) {
-        purchaseOrderItemDao.deleteById(id);
+        PurchaseOrderItem purchaseOrderItem =  purchaseOrderItemDao.getOne(id);
+        purchaseOrderItem.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        purchaseOrderItemDao.save(purchaseOrderItem);
         return false;
     }
 
