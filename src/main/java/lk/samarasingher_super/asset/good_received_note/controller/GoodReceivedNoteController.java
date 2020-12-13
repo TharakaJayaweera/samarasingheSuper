@@ -3,7 +3,7 @@ package lk.samarasingher_super.asset.good_received_note.controller;
 import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderStatus;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderService;
-import lk.samarasingher_super.asset.good_received_note.entity.Enum.GoodReceivedNoteState;
+import lk.samarasingher_super.asset.good_received_note.entity.enums.GoodReceivedNoteState;
 import lk.samarasingher_super.asset.good_received_note.entity.GoodReceivedNote;
 import lk.samarasingher_super.asset.good_received_note.service.GoodReceivedNoteService;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
