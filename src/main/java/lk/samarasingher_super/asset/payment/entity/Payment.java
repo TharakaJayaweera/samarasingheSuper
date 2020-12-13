@@ -3,7 +3,7 @@ package lk.samarasingher_super.asset.payment.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
-import lk.samarasingher_super.asset.invoice.entity.Enum.PaymentMethod;
+import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

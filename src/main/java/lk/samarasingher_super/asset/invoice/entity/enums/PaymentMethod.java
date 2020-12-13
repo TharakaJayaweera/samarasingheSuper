@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.invoice.entity.Enum;
+package lk.samarasingher_super.asset.invoice.entity.enums;
 
 
 import lombok.AllArgsConstructor;
