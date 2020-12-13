@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.ledger.service;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.ledger.dao.LedgerDao;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
@@ -36,12 +37,15 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
 
     public Ledger persist(Ledger ledger) {
+        if(ledger.getId()==null){
+            ledger.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return ledgerDao.save(ledger);
     }
 
-
     public boolean delete(Integer id) {
-        //not applicable
+        Ledger ledger =  ledgerDao.getOne(id);
+        ledger.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        ledgerDao.save(ledger);
         return false;
     }
 

@@ -4,6 +4,7 @@ package lk.samarasingher_super.asset.ledger.entity;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.good_received_note.entity.GoodReceivedNote;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.audit.AuditEntity;
@@ -13,9 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -39,6 +38,9 @@ public class Ledger extends AuditEntity {
 
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate expiredDate;
+
+    @Enumerated( EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
 
     @ManyToOne
     @JsonManagedReference
