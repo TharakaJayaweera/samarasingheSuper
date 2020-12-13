@@ -14,18 +14,27 @@ $(document).ready(function () {
 
 
     /*//--------------- data table short using - data table plugin ------- start //*/
-    $("#myTable").DataTable({
-        "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
-        "ordering": false,
-        stateSave: true,
-    });
+    if ($("#myTable").val() !== null || $("#myTable").val() === undefined) {
+        $("#myTable").DataTable({
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+            "ordering": false,
+            stateSave: true,
+        });
+    }
     /*//--------------- data table short using - data table plugin ------- start //*/
+
+    /*When edit employee if there is a nic number need to select relevant gender*/
+    if ($("#nic").val() !== null || $("#nic").val() === undefined){
+        $("input:radio[name=gender]").filter(`[value=${calculateGender($("#nic").val())}]`).prop('checked',true);
+    }
 
     /* Patient and employee Nic Validation - start*/
     $("#nic").bind('keyup', function () {
         let nic = $(this).val();
         $("#dateOfBirth").val(calculateDateOfBirth(nic));
-        $("#gender").val(calculateGender(nic));
+//access our front-end gender*/
+        $("input:radio[name=gender]").filter(`[value=${calculateGender(nic)}]`).prop('checked',true);
+
     });
     /* Patient and employee Nic Validation - end*/
     //input type date can not be selected future date
@@ -34,6 +43,7 @@ $(document).ready(function () {
     });
 
 });
+
 
 
 // regex
