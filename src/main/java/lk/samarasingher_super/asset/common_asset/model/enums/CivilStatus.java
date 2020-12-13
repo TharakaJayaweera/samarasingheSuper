@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.common_asset.model.Enum;
+package lk.samarasingher_super.asset.common_asset.model.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

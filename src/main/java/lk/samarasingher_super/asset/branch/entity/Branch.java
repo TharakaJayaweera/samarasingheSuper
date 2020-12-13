@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.branch.entity;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,9 @@ public class Branch extends AuditEntity {
 
     @Column( unique = true )
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
 
    @OneToMany( mappedBy = "branch" )
     private List<Employee> employees;

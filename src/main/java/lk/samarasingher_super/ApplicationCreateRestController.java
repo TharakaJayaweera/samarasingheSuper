@@ -1,8 +1,8 @@
 package lk.samarasingher_super;
 
-import lk.samarasingher_super.asset.common_asset.model.Enum.CivilStatus;
-import lk.samarasingher_super.asset.common_asset.model.Enum.Gender;
-import lk.samarasingher_super.asset.common_asset.model.Enum.Title;
+import lk.samarasingher_super.asset.common_asset.model.enums.CivilStatus;
+import lk.samarasingher_super.asset.common_asset.model.enums.Gender;
+import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.entity.enums.Designation;
 import lk.samarasingher_super.asset.employee.entity.enums.EmployeeStatus;

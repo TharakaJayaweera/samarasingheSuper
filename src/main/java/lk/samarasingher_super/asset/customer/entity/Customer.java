@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.customer.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.Enum.Title;
+import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.*;
 
