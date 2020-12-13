@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.user_management.role.entity;
 
 import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
-import lk.samarasingher_super.asset.user.entity.User;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
-package lk.samarasingher_super.asset.user_management.dao;
+package lk.samarasingher_super.asset.user_management.user.dao;
 
 import lk.samarasingher_super.asset.employee.entity.Employee;
-import lk.samarasingher_super.asset.user_management.entity.User;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,12 +1,12 @@
-package lk.samarasingher_super.asset.user_management.controller;
+package lk.samarasingher_super.asset.user_management.user.controller;
 
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.entity.enums.Designation;
 import lk.samarasingher_super.asset.employee.entity.enums.EmployeeStatus;
 import lk.samarasingher_super.asset.employee.service.EmployeeService;
-import lk.samarasingher_super.asset.user_management.entity.User;
-import lk.samarasingher_super.asset.user_management.service.RoleService;
-import lk.samarasingher_super.asset.user_management.service.UserService;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
+import lk.samarasingher_super.asset.user_management.role.service.RoleService;
+import lk.samarasingher_super.asset.user_management.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

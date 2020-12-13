@@ -1,8 +1,9 @@
-package lk.samarasingher_super.asset.user_management.service;
+package lk.samarasingher_super.asset.user_management.user.service;
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.employee.entity.Employee;
-import lk.samarasingher_super.asset.user_management.dao.UserDao;
-import lk.samarasingher_super.asset.user_management.entity.User;
+import lk.samarasingher_super.asset.user_management.user.dao.UserDao;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
@@ -47,13 +48,18 @@ public class UserService implements AbstractService<User, Integer > {
         } else {
             user.setPassword(userDao.getOne(user.getId()).getPassword());
         }
+        if(user.getId()==null){
+            user.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        }
         return userDao.save(user);
     }
 
     @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
         //according to this project can not be deleted user
-        userDao.deleteById(id);
+        User user = userDao.getOne(id);
+        user.setActiveOrInactive(ActiveOrInactive.STOP);
+        userDao.save(user);
         return false;
     }
 
