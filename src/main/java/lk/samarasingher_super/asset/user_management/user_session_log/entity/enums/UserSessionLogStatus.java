@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.user_management.entity.Enum;
+package lk.samarasingher_super.asset.user_management.user_session_log.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

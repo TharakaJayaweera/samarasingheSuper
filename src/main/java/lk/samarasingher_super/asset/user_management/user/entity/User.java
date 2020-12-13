@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.user_management.role.entity.Role;
-import lk.samarasingher_super.asset.user_session_log.entity.UserSessionLog;
+import lk.samarasingher_super.asset.user_management.user_session_log.entity.UserSessionLog;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
