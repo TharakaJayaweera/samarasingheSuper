@@ -1,9 +1,13 @@
 package lk.samarasingher_super.asset.customer.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.util.audit.AuditEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,4 +45,8 @@ public class Customer extends AuditEntity {
 
     @Column(unique = true)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
+
 }
