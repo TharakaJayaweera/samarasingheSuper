@@ -4,7 +4,8 @@ package lk.samarasingher_super.asset.item.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingher_super.asset.category.entity.Category;
-import lk.samarasingher_super.asset.item.entity.Enum.ItemStatus;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrderItem;
 import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
@@ -43,11 +44,14 @@ public class Item extends AuditEntity {
     @Enumerated( EnumType.STRING )
     private ItemStatus itemStatus;
 
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
+
     @ManyToOne
     private Category category;
 
     @OneToMany( mappedBy = "item" )
-    private List< SupplierItem > supplierItems;
+    private List< SupplierItem > supplierItem;
 
     @OneToMany( mappedBy = "item" )
     @JsonBackReference

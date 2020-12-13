@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.item.entity.Enum;
+package lk.samarasingher_super.asset.item.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
