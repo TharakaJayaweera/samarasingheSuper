@@ -59,7 +59,7 @@ public class SupplierItemService implements AbstractService< SupplierItem, Integ
 
     public boolean delete(Integer id) {
         SupplierItem supplierItem =  supplierItemDao.getOne(id);
-        supplierItem.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        supplierItem.setActiveOrInactive(ActiveOrInactive.STOP);
         supplierItemDao.save(supplierItem);
         return false;
     }

@@ -44,7 +44,7 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
     public boolean delete(Integer id) {
         Ledger ledger =  ledgerDao.getOne(id);
-        ledger.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        ledger.setActiveOrInactive(ActiveOrInactive.STOP);
         ledgerDao.save(ledger);
         return false;
     }

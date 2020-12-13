@@ -41,7 +41,7 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
 
     public boolean delete(Integer id) {
         GoodReceivedNote goodRecevingNote =  goodReceivedNoteDao.getOne(id);
-        goodRecevingNote.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        goodRecevingNote.setActiveOrInactive(ActiveOrInactive.STOP);
         goodReceivedNoteDao.save(goodRecevingNote);
         return false;
     }

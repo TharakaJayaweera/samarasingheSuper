@@ -41,7 +41,7 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
 
     public boolean delete(Integer id) {
         PurchaseOrder purchaseOrder =  purchaseOrderDao.getOne(id);
-        purchaseOrder.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        purchaseOrder.setActiveOrInactive(ActiveOrInactive.STOP);
         purchaseOrderDao.save(purchaseOrder);
         return false;
     }

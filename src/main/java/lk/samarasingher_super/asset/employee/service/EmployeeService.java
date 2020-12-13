@@ -47,7 +47,7 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
     public boolean delete(Integer id) {
         Employee employee =  employeeDao.getOne(id);
-        employee.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        employee.setActiveOrInactive(ActiveOrInactive.STOP);
         employeeDao.save(employee);
         return false;
     }

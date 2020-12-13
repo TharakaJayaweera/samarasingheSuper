@@ -38,7 +38,7 @@ public class ItemService implements AbstractService<Item, Integer> {
 
     public boolean delete(Integer id) {
         Item item =  itemDao.getOne(id);
-        item.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        item.setActiveOrInactive(ActiveOrInactive.STOP);
         itemDao.save(item);
         return false;
     }

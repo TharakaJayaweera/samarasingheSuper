@@ -41,7 +41,7 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
 
     public boolean delete(Integer id) {
         Supplier supplier =  supplierDao.getOne(id);
-        supplier.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        supplier.setActiveOrInactive(ActiveOrInactive.STOP);
         supplierDao.save(supplier);
         return false;
     }
