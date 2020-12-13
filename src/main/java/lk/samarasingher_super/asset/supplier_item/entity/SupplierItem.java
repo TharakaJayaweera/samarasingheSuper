@@ -1,9 +1,10 @@
-package lk.samarasingher_super.asset.supplierItem.entity;
+package lk.samarasingher_super.asset.supplier_item.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
-import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
+import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,9 @@ public class SupplierItem extends AuditEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemSupplierStatus itemSupplierStatus;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
 
     @ManyToOne
     private Item item;

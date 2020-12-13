@@ -11,8 +11,8 @@ import lk.samarasingher_super.asset.purchase_order_item.service.PurchaseOrderIte
 import lk.samarasingher_super.asset.purchase_order.service.PurchaseOrderService;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
-import lk.samarasingher_super.asset.supplierItem.controller.SupplierItemController;
-import lk.samarasingher_super.asset.supplierItem.service.SupplierItemService;
+import lk.samarasingher_super.asset.supplier_item.controller.SupplierItemController;
+import lk.samarasingher_super.asset.supplier_item.service.SupplierItemService;
 import lk.samarasingher_super.util.service.EmailService;
 import lk.samarasingher_super.util.service.MakeAutoGenerateNumberService;
 import lk.samarasingher_super.util.service.OperatorService;

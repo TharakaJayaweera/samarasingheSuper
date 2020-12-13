@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.supplierItem.controller;
+package lk.samarasingher_super.asset.supplier_item.controller;
 
 
 import lk.samarasingher_super.asset.common_asset.service.CommonService;
@@ -9,9 +9,9 @@ import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.purchase_order.common_model.PurchaseOrderItemLedger;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
-import lk.samarasingher_super.asset.supplierItem.entity.enums.ItemSupplierStatus;
-import lk.samarasingher_super.asset.supplierItem.entity.SupplierItem;
-import lk.samarasingher_super.asset.supplierItem.service.SupplierItemService;
+import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
+import lk.samarasingher_super.asset.supplier_item.entity.SupplierItem;
+import lk.samarasingher_super.asset.supplier_item.service.SupplierItemService;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
