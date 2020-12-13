@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.customer.controller;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.asset.customer.entity.Customer;
 import lk.samarasingher_super.asset.customer.service.CustomerService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/customer")
@@ -43,7 +46,9 @@ public  class CustomerController implements AbstractController<Customer, Integer
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("customers", customerService.findAll());
+        model.addAttribute("customers", customerService.findAll().stream()
+            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .collect(Collectors.toList()));
         return "customer/customer";
     }
 

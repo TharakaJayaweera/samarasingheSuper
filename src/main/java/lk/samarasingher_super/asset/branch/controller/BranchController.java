@@ -3,6 +3,7 @@ package lk.samarasingher_super.asset.branch.controller;
 
 import lk.samarasingher_super.asset.branch.entity.Branch;
 import lk.samarasingher_super.asset.branch.service.BranchService;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/branch")
@@ -31,7 +33,9 @@ public class BranchController implements AbstractController<Branch, Integer> {
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("branchs", branchService.findAll());
+        model.addAttribute("branchs", branchService.findAll().stream()
+            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .collect(Collectors.toList()));
         return "branch/branch";
     }
 
