@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.user_management;
 
-import lk.samarasingher_super.asset.user_management.entity.User;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

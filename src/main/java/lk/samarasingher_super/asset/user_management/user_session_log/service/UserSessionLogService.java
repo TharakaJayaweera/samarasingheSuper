@@ -1,9 +1,9 @@
-package lk.samarasingher_super.asset.user_management.service;
+package lk.samarasingher_super.asset.user_management.user_session_log.service;
 
-import lk.samarasingher_super.asset.user_management.dao.UserSessionLogDao;
-import lk.samarasingher_super.asset.user_management.entity.Enum.UserSessionLogStatus;
-import lk.samarasingher_super.asset.user_management.entity.User;
-import lk.samarasingher_super.asset.user_management.entity.UserSessionLog;
+import lk.samarasingher_super.asset.user_management.user_session_log.dao.UserSessionLogDao;
+import lk.samarasingher_super.asset.user_management.user_session_log.entity.enums.UserSessionLogStatus;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
+import lk.samarasingher_super.asset.user_management.user_session_log.entity.UserSessionLog;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;

@@ -1,6 +1,7 @@
-package lk.samarasingher_super.asset.user_management.entity;
+package lk.samarasingher_super.asset.user_management.user_session_log.entity;
 
-import lk.samarasingher_super.asset.user_management.entity.Enum.UserSessionLogStatus;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
+import lk.samarasingher_super.asset.user_management.user_session_log.entity.enums.UserSessionLogStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
