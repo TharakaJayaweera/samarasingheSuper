@@ -1,8 +1,9 @@
 package lk.samarasingher_super.asset.supplier.service;
 
-import lk.samarasingher_super.asset.supplier.dao.SupplierDao;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
-import lk.samarasingher_super.asset.supplierItem.entity.Enum.ItemSupplierStatus;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.supplier.dao.SupplierDao;
+import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -33,12 +34,15 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     public Supplier persist(Supplier supplier) {
         if (supplier.getId() == null) {
             supplier.setItemSupplierStatus(ItemSupplierStatus.CURRENTLY_BUYING);
+        supplier.setActiveOrInactive(ActiveOrInactive.ACTIVE);
         }
         return supplierDao.save(supplier);
     }
 
     public boolean delete(Integer id) {
-        supplierDao.deleteById(id);
+        Supplier supplier =  supplierDao.getOne(id);
+        supplier.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        supplierDao.save(supplier);
         return false;
     }
 

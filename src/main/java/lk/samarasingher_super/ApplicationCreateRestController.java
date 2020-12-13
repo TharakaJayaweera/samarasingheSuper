@@ -1,16 +1,16 @@
 package lk.samarasingher_super;
 
-import lk.samarasingher_super.asset.common_asset.model.Enum.CivilStatus;
-import lk.samarasingher_super.asset.common_asset.model.Enum.Gender;
-import lk.samarasingher_super.asset.common_asset.model.Enum.Title;
+import lk.samarasingher_super.asset.common_asset.model.enums.CivilStatus;
+import lk.samarasingher_super.asset.common_asset.model.enums.Gender;
+import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.entity.enums.Designation;
 import lk.samarasingher_super.asset.employee.entity.enums.EmployeeStatus;
 import lk.samarasingher_super.asset.employee.service.EmployeeService;
-import lk.samarasingher_super.asset.user_management.entity.Role;
-import lk.samarasingher_super.asset.user_management.entity.User;
-import lk.samarasingher_super.asset.user_management.service.RoleService;
-import lk.samarasingher_super.asset.user_management.service.UserService;
+import lk.samarasingher_super.asset.user_management.role.entity.Role;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
+import lk.samarasingher_super.asset.user_management.role.service.RoleService;
+import lk.samarasingher_super.asset.user_management.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

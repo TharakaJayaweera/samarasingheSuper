@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.customer.service;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.customer.dao.CustomerDao;
 import lk.samarasingher_super.asset.customer.entity.Customer;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -31,11 +32,16 @@ public class CustomerService implements AbstractService<Customer, Integer> {
     }
 
     public Customer persist(Customer customer) {
+        if ( customer.getId() == null ) {
+            customer.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        }
         return customerDao.save(customer);
     }
 
     public boolean delete(Integer id) {
-        customerDao.deleteById(id);
+        Customer customer = customerDao.getOne(id);
+        customer.setActiveOrInactive(ActiveOrInactive.STOP);
+        customerDao.save(customer);
         return false;
     }
 

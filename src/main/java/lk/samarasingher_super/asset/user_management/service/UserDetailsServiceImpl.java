@@ -1,8 +1,8 @@
 package lk.samarasingher_super.asset.user_management.service;
 
 import lk.samarasingher_super.asset.user_management.CustomerUserDetails;
-import lk.samarasingher_super.asset.user_management.dao.UserDao;
-import lk.samarasingher_super.asset.user_management.entity.User;
+import lk.samarasingher_super.asset.user_management.user.dao.UserDao;
+import lk.samarasingher_super.asset.user_management.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,9 +1,10 @@
 package lk.samarasingher_super.asset.payment.service;
 
 
-import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.payment.dao.PaymentDao;
 import lk.samarasingher_super.asset.payment.entity.Payment;
+import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -28,13 +29,17 @@ public class PaymentService implements AbstractService< Payment, Integer > {
     }
 
     public Payment persist(Payment payment) {
+        if(payment.getId()==null){
+            payment.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return paymentDao.save(payment);
     }
 
     public boolean delete(Integer id) {
+        Payment payment =  paymentDao.getOne(id);
+        payment.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        paymentDao.save(payment);
         return false;
     }
-
     public List< Payment > search(Payment payment) {
         ExampleMatcher matcher = ExampleMatcher
                 .matching()

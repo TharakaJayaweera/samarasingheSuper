@@ -1,9 +1,11 @@
 package lk.samarasingher_super.asset.purchase_order.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderPriority;
-import lk.samarasingher_super.asset.purchase_order.entity.Enum.PurchaseOrderStatus;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.payment.entity.Payment;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderPriority;
+import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
+import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -37,6 +39,9 @@ public class PurchaseOrder extends AuditEntity {
 
     @Enumerated(EnumType.STRING)
     private PurchaseOrderStatus purchaseOrderStatus;
+
+    @Enumerated(EnumType.STRING)
+    private ActiveOrInactive activeOrInactive;
 
     @ManyToOne
     private Supplier supplier;

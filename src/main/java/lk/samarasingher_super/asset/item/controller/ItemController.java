@@ -2,8 +2,8 @@ package lk.samarasingher_super.asset.item.controller;
 
 
 import lk.samarasingher_super.asset.category.controller.CategoryRestController;
-import lk.samarasingher_super.asset.item.entity.Enum.ItemStatus;
-import lk.samarasingher_super.asset.item.entity.Enum.MainCategory;
+import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
+import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.item.service.ItemService;
 import lk.samarasingher_super.util.interfaces.AbstractController;

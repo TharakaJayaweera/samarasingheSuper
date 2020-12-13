@@ -1,5 +1,6 @@
 package lk.samarasingher_super.asset.item.service;
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.item.dao.ItemDao;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -8,7 +9,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
-import java.util.*;
+
+import java.util.List;
 
 @Service
 @CacheConfig( cacheNames = "item" )
@@ -29,11 +31,15 @@ public class ItemService implements AbstractService<Item, Integer> {
     }
 
     public Item persist(Item item) {
+        if(item.getId()==null){
+            item.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return itemDao.save(item);
     }
 
     public boolean delete(Integer id) {
-        itemDao.deleteById(id);
+        Item item =  itemDao.getOne(id);
+        item.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        itemDao.save(item);
         return false;
     }
 

@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.branch.service;
 
 import lk.samarasingher_super.asset.branch.dao.BranchDao;
 import lk.samarasingher_super.asset.branch.entity.Branch;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -30,11 +31,15 @@ public class BranchService implements AbstractService<Branch, Integer> {
     }
 
     public Branch persist(Branch branch) {
+        if(branch.getId()==null){
+            branch.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
         return branchDao.save(branch);
     }
 
     public boolean delete(Integer id) {
-        branchDao.deleteById(id);
+       Branch branch =  branchDao.getOne(id);
+        branch.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        branchDao.save(branch);
         return false;
     }
 

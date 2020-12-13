@@ -1,9 +1,9 @@
 package lk.samarasingher_super.asset.discount_ratio.service;
 
 
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.discount_ratio.dao.DiscountRatioDao;
 import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
-import lk.samarasingher_super.asset.discount_ratio.entity.Enum.DiscountRatioStatus;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +27,15 @@ private final DiscountRatioDao discountRatioDao;
 
     public DiscountRatio persist(DiscountRatio discountRatio) {
         if ( discountRatio.getId() == null ){
-            discountRatio.setDiscountRatioStatus(DiscountRatioStatus.ACTIVE);
+            discountRatio.setActiveOrInactive(ActiveOrInactive.ACTIVE);
         }
         return discountRatioDao.save(discountRatio);
     }
 
     public boolean delete(Integer id) {
+        DiscountRatio discountRatio =  discountRatioDao.getOne(id);
+        discountRatio.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        discountRatioDao.save(discountRatio);
         return false;
     }
 

@@ -1,8 +1,9 @@
 package lk.samarasingher_super.asset.good_received_note.service;
 
-import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
+import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
 import lk.samarasingher_super.asset.good_received_note.dao.GoodReceivedNoteDao;
 import lk.samarasingher_super.asset.good_received_note.entity.GoodReceivedNote;
+import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -22,28 +23,29 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
         this.goodReceivedNoteDao = goodReceivedNoteDao;
     }
 
-    @Override
+
     public List<GoodReceivedNote> findAll() {
         return goodReceivedNoteDao.findAll();
     }
 
-    @Override
+
     public GoodReceivedNote findById(Integer id) {
         return goodReceivedNoteDao.getOne(id);
     }
 
-    @Override
-    public GoodReceivedNote persist(GoodReceivedNote goodReceivedNote) {
-        return goodReceivedNoteDao.save(goodReceivedNote);
+    public GoodReceivedNote persist(GoodReceivedNote goodRecevingNote) {
+        if(goodRecevingNote.getId()==null){
+            goodRecevingNote.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
+        return goodReceivedNoteDao.save(goodRecevingNote);
     }
 
-    @Override
     public boolean delete(Integer id) {
-        goodReceivedNoteDao.deleteById(id);
-        return true;
+        GoodReceivedNote goodRecevingNote =  goodReceivedNoteDao.getOne(id);
+        goodRecevingNote.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+        goodReceivedNoteDao.save(goodRecevingNote);
+        return false;
     }
 
-    @Override
     public List<GoodReceivedNote> search(GoodReceivedNote goodReceivedNote) {
         ExampleMatcher matcher = ExampleMatcher
             .matching()

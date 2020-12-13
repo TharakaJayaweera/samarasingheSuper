@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.category.controller;
 
 import lk.samarasingher_super.asset.category.entity.Category;
 import lk.samarasingher_super.asset.category.service.CategoryService;
-import lk.samarasingher_super.asset.item.entity.Enum.MainCategory;
+import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
