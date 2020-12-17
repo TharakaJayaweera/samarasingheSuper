@@ -3,13 +3,13 @@ package lk.samarasingher_super.asset.invoice.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.customer.entity.Customer;
 import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.asset.invoice.entity.enums.InvoicePrintOrNot;
 import lk.samarasingher_super.asset.invoice.entity.enums.InvoiceValidOrNot;
 import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
-import lk.samarasingher_super.asset.invoice_item.entity.InvoiceItem;
+import lk.samarasingher_super.asset.invoice_item.entity.InvoiceLedger;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -63,7 +63,7 @@ public class Invoice extends AuditEntity {
     private InvoiceValidOrNot invoiceValidOrNot;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @ManyToOne
     private Customer customer;
@@ -72,7 +72,7 @@ public class Invoice extends AuditEntity {
     private DiscountRatio discountRatio;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "invoice")
-    private List< InvoiceItem > invoiceItemQuantities;
+    private List< InvoiceLedger > invoiceLedgers;
 
 
 }

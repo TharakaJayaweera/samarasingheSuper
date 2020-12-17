@@ -2,11 +2,10 @@ package lk.samarasingher_super.asset.purchase_order_item.service;
 
 
 import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order_item.dao.PurchaseOrderItemDao;
-import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -36,13 +35,13 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
 
     public PurchaseOrderItem persist(PurchaseOrderItem purchaseOrderItem) {
         if(purchaseOrderItem.getId()==null){
-            purchaseOrderItem.setActiveOrInactive(ActiveOrInactive.ACTIVE);}
+            purchaseOrderItem.setLiveOrDead(LiveOrDead.ACTIVE);}
         return purchaseOrderItemDao.save(purchaseOrderItem);
     }
 
     public boolean delete(Integer id) {
         PurchaseOrderItem purchaseOrderItem =  purchaseOrderItemDao.getOne(id);
-        purchaseOrderItem.setActiveOrInactive(ActiveOrInactive.STOP);
+        purchaseOrderItem.setLiveOrDead(LiveOrDead.STOP);
         purchaseOrderItemDao.save(purchaseOrderItem);
         return false;
     }

@@ -5,9 +5,9 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum ActiveOrInactive {
+public enum LiveOrDead {
     ACTIVE("Active"),
     STOP("Stop");
 
-    private final String activeOrInactive;
+    private final String liveOrDead;
 }

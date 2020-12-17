@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.discount_ratio.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class DiscountRatio extends AuditEntity {
     @Column( nullable = false, precision = 10, scale = 2 )
     private BigDecimal amount;
 
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @OneToMany( mappedBy = "discountRatio" )
     private List< Invoice > invoices;

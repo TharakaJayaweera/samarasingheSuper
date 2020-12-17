@@ -225,6 +225,7 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <script >
     $(document).ready(function () {
+        $("input[name='paymentMethod']:checked").val('CASH');
         showHideContent();
     });
     $("input[name='paymentMethod']").bind('change', function () {
