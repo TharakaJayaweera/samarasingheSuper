@@ -8,20 +8,63 @@
 <body >
 <link data-th-href="@{/css/combo-box-search.css}" media="all" rel="stylesheet" type="text/css" />
 
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
 <!--/* Nav bar is included */-->
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}" ></nav >
-<div class="container bg-light" >
+<div class="container-fluid mt-3" >
   <div class="container-fluid" >
     <form action="/invoice" method="post" data-th-object="${invoice}" >
       <!--ledgers will list-->
       <div class="form-group" >
         <!--Ledgers item-->
-        <div class="form-row text-left" >
-          <div class="col-md-2" >
+        <div class="form-row " >
+          <div class="col-2 text-right" >
             <label class="control-label" for="item" >Items :</label >
           </div >
-          <div class="col-md-10" >
-            <select id="item" class="form-control" tabindex="9" style="width:300px;">
+          <div class="col-10 text-left" >
+            <select id="item" class="form-control" tabindex="9" >
               <option value="" >Please select</option >
               <option data-th-each="ledger : ${ledgers}"
                       data-th-text="${'Item Name: '+ledger.item.name+'  Sell Price : '+ledger.item.sellPrice+'  Available quantity : '+ledger.quantity+'  Expired Date : '+ledger.expiredDate}"
@@ -37,12 +80,12 @@
         <div class="form-row" >
           <div class="container" >
             <div class="col" >
-              <table class="table table-hover table-striped" id="myTable" >
+              <table class="table table-hover table-striped text-white" id="myTable" >
                 <thead >
                 <tr >
                   <th >Index</th >
                   <th >Item Name</th >
-                  <th >Price</th >
+                  <th >Unit Price</th >
                   <th >Quantity</th >
                   <th >Line Total</th >
                 </tr >
@@ -59,8 +102,8 @@
                 </tbody >
                 <tfoot >
                 <tr >
-                  <th colspan="4" class="text-right" > Total</th >
-                  <th ><input type="text" class="form-control" placeholder="Total Price" ></th >
+                  <th colspan="4" class="text-right" ><label for="total">Total</label ></th >
+                  <th ><input id="total" type="text" class="form-control" placeholder="Total Price" ></th >
                 </tr >
                 </tfoot >
               </table >
@@ -96,15 +139,15 @@
           <div class="col-md-6 " >
             <div class="form-row text-right" >
               <div class="col-md-4" >
-                <label class="control-label" for="nic" >Discount Amount :</label >
+                <label class="control-label" for="discountAmount" >Discount Amount :</label >
               </div >
               <div class="col-md-8" >
-                <input id="nic" data-th-field="*{discountAmount}" class="form-control" tabindex="6"
+                <input id="discountAmount" data-th-field="*{discountAmount}" class="form-control" tabindex="6"
                        type="text"
                        required readonly />
                 <span class="error" id="nicError" data-th-errors="*{discountAmount}"
                       data-th-if="${#fields.hasErrors('discountAmount')}" >Error
-                                                               NIC Number</span >
+                                                               Discount Amount</span >
               </div >
             </div >
           </div >
@@ -120,7 +163,7 @@
               <div class="col-md-8 text-left" >
                 <div class="custom-control custom-checkbox custom-control-inline "
                      data-th-each="paymentMethod,index : ${paymentMethods}" >
-                  <input class="custom-control-input gender" required
+                  <input class="custom-control-input" required
                          data-th-name="${'paymentMethod'}"
                          data-th-value="${paymentMethod}"
                          data-th-id="${index.index}+${paymentMethod}" type="radio"
@@ -225,7 +268,7 @@
             <label class="control-label" for="customer " >Customer :</label >
           </div >
           <div class="col-md-10" >
-            <select id="customer " data-th-field="*{customer}" style="width:300px;" class="form-control" tabindex="9"
+            <select id="customer " data-th-field="*{customer}" class="form-control" tabindex="9"
                     required >
               <option value="" >Please select</option >
               <option data-th-each="customer : ${customers}"
@@ -250,7 +293,7 @@
               <div class="col-md-8 text-left" >
                 <div class="custom-control custom-checkbox custom-control-inline "
                      data-th-each="invoicePrintOrNot,index : ${invoicePrintOrNots}" >
-                  <input class="custom-control-input gender" required
+                  <input class="custom-control-input" required
                          data-th-name="${'invoicePrintOrNot'}"
                          data-th-value="${invoicePrintOrNot}"
                          data-th-id="${index.index}+${invoicePrintOrNot}" type="radio"
@@ -267,9 +310,9 @@
           <div class="col-md-6" >
             <div class="form-row text-right" >
               <div class="col-md-4" >
-                <label >Remarks :</label ></div >
+                <label for="remarks">Remarks :</label ></div >
               <div class="col-md-8" >
-                <textarea class="form-control" data-th-field="*{remarks}" rows="2" ></textarea >
+                <textarea id="remarks" class="form-control" data-th-field="*{remarks}" rows="2" ></textarea >
               </div >
             </div >
           </div >
@@ -300,6 +343,19 @@
   </div >
 </div >
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
 <!--/* footer is */-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--/* script is included */-->
@@ -308,17 +364,22 @@
 
 <script >
     $(document).ready(function () {
-         $("#item").select2({
-            data: $(this).val()
-        });
+        $("#btnshow").hide();
 
         let customers = ["Australia", "Bangladesh", "Denmark", "Hong Kong", "Indonesia", "Netherlands", "New Zealand", "South Africa"];
-        $("#customer").select2({
+        $("#item").select2({
             data: customers
+        }).change(() => {
+                modalPopUp();
+            });
+
+        $("#customer").select2({
+            data: $(this).val()
         });
-        $("input[value='CASH']").prop('checked',true);
+        $("input[value='CASH']").prop('checked', true);
         showHideContent();
-        $("input[value='NOT_PRINTED']").prop('checked',true);
+        $("input[value='NOT_PRINTED']").prop('checked', true);
+
     });
 
     $("input[name='paymentMethod']").bind('change', function () {
@@ -330,44 +391,67 @@
         if (paymentMethodValue === 'CASH') {
             $("#bankNameBlock").hide();
             $("#cashPaymentBlock").show();
-            $("#amountTendered, #balance").prop('required',true);
+            $("#amountTendered, #balance").prop('required', true);
         } else {
             $("#cashPaymentBlock").hide();
             $("#bankNameBlock").show();
-            $("#bankName, #cardNumber").prop('required',true);
+            $("#bankName, #cardNumber").prop('required', true);
         }
     }
 
     //enter amount check
-    $("#amount").bind('keyup', function () {
-        let amountString = $(this).val();
-        balanceCalculate(amountString);
-    });
+    // $("#amount").bind('keyup', function () {
+    //     let amountString = $(this).val();
+    //     balanceCalculate(amountString);
+    // });
+    //
+    // function balanceCalculate(amountString) {
+    //     let poValue = parseInt($("#allAmount").val());
+    //     let poAmountString = $("#poAmount").val();
+    //     let poAmount = parseInt(poAmountString);
+    //     let amount = parseInt(amountString);
+    //
+    //     $("#balance").val(parseFloat(balance(poValue, amount)).toFixed(2));
+    //
+    //     if ((poAmount !== amount && poAmountString.length === amountString.length) && (amount > poAmount &&
+    //         poAmountString.length === amountString.length) || balance(poValue, amount) < 0) {
+    //         swal({
+    //             title: "Could you accept this amount as a payment.. !",
+    //             icon: "warning",
+    //             text: "Please check what your are entered. \n",
+    //         });
+    //         $("#balance").val(parseFloat(0).toFixed(2));
+    //         $("#amount").val(parseFloat(poAmount).toFixed(2));
+    //     }
+    //
+    // }
+    //
+    // function balance(poValue, amount) {
+    //     return poValue - amount;
+    // }
 
-    function balanceCalculate(amountString) {
-        let poValue = parseInt($("#allAmount").val());
-        let poAmountString = $("#poAmount").val();
-        let poAmount = parseInt(poAmountString);
-        let amount = parseInt(amountString);
 
-        $("#balance").val(parseFloat(balance(poValue, amount)).toFixed(2));
+    // Get the modal
+    let modal = document.getElementById("myModal");
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
 
-        if ((poAmount !== amount && poAmountString.length === amountString.length) && (amount > poAmount &&
-            poAmountString.length === amountString.length) || balance(poValue, amount) < 0) {
-            swal({
-                title: "Could you accept this amount as a payment.. !",
-                icon: "warning",
-                text: "Please check what your are entered. \n",
-            });
-            $("#balance").val(parseFloat(0).toFixed(2));
-            $("#amount").val(parseFloat(poAmount).toFixed(2));
-        }
-
+    function modalPopUp(){
+        console.log($("#item").val())
+        modal.style.display = "block";
     }
-
-    function balance(poValue, amount) {
-        return poValue - amount;
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
     }
+    // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+
+
 </script >
 </body >
 </html >
