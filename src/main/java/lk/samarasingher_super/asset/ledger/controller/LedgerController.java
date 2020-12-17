@@ -1,9 +1,13 @@
 package lk.samarasingher_super.asset.ledger.controller;
 
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.ledger.service.LedgerService;
 import lk.samarasingher_super.util.service.DateTimeAgeService;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +58,7 @@ public class LedgerController {
 
     @GetMapping( "/{id}" )
     @ResponseBody
-   /* public MappingJacksonValue findId(@PathVariable Integer id) {
+    public MappingJacksonValue findId(@PathVariable Integer id) {
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(ledgerService.findById(id));
         SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter
                 .filterOutAllExcept("id", "quantity", "item", "sellPrice");
@@ -62,7 +66,7 @@ public class LedgerController {
                 .addFilter("Ledger", simpleBeanPropertyFilter);
         mappingJacksonValue.setFilters(filters);
         return mappingJacksonValue;
-    }*/
+    }
     public Ledger find(@PathVariable Integer id){
         return ledgerService.findById(id);
     }
