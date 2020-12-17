@@ -106,12 +106,12 @@ public class InvoiceController {
     if ( invoice.getId() == null ) {
       if ( invoiceService.findByLastInvoice() == null ) {
         //need to generate new one
-        invoice.setCode("JNPI" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+        invoice.setCode("SSMI" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
       } else {
         System.out.println("last customer not null");
         //if there is customer in db need to get that customer's code and increase its value
         String previousCode = invoiceService.findByLastInvoice().getCode().substring(4);
-        invoice.setCode("JNPI" + makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
+        invoice.setCode("SSMI" + makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
       }
     }
     invoice.setInvoiceValidOrNot(InvoiceValidOrNot.VALID);
