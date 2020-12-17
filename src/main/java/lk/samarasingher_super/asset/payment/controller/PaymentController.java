@@ -68,6 +68,7 @@ public class PaymentController {
 
             model.addAttribute("purchaseOrders", purchaseOrders);
         }
+        model.addAttribute("addState", true);
         return "payment/payment";
     }
 
