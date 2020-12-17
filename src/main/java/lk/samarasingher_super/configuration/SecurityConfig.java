@@ -23,9 +23,20 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
-      "/login", "/select/**", "/", "/index"};
+          "/login", "/select/**", "/", "/index"};
+  private final String[] ADMIN = {"/login", "/select/**" ,"/add/**" , "/delete/{id}/**" ,"/edit/{id}/**" ,"/{id}/**" ,
+          "/getCategory/{mainCategory}" ,"/file/{filename}/**", "/remove/{id}/**" ,"/search/**", "/workingPlace/**", "/getEmployee/**" ,
+          "/supplier/{id}/**" ,"/reorderPoint/**","view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
+  private final String[] MANAGER = {"/login", "/select/**" ,"/add/**" , "/delete/{id}/**" ,"/edit/{id}/**" ,"/{id}/**" ,
+          "/getCategory/{mainCategory}" ,"/file/{filename}/**", "/remove/{id}/**" ,"/search/**", "/workingPlace/**", "/getEmployee/**" ,
+          "/reorderPoint/**", "/supplier/{id}/**" ,"view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
+  private final String[] PROCUMENT_MANAGER = {"/login", "/select/**" ,"/add/**" , "/{id}/**" ,"/getCategory/{mainCategory}" ,"/remove/{id}/**" ,
+          "/search/**","/reorderPoint/**", "/supplier/{id}/**" ,"view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
+  private final String[] HR_MANAGER = {"/login", "/select/**" ,"/add/**" ,"/file/{filename}/**", "/search/**", "/workingPlace/**",
+          "/getEmployee/**", "view/{id}/**"};
+  private final String[] CASHIER = {"/login", "/select/**" ,"/add/**" , "/getCategory/{mainCategory}" ,"/search/**"};
 
-  private final String[] CASHIER = {"/"};
+
 
   @Bean
   public UserDetailsServiceImpl userDetailsService() {
