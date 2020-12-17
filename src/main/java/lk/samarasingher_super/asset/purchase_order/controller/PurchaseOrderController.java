@@ -32,30 +32,17 @@ import java.util.stream.Collectors;
 @RequestMapping( "/purchaseOrder" )
 public class PurchaseOrderController {
     private final PurchaseOrderService purchaseOrderService;
-    private final PurchaseOrderItemService purchaseOrderItemService;
     private final SupplierService supplierService;
     private final CommonService commonService;
     private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
-    private final EmailService emailService;
-    private final OperatorService operatorService;
-    private final SupplierItemService supplierItemService;
-    private final LedgerDao ledgerDao;
 
-    public PurchaseOrderController(PurchaseOrderService supplierItemService,
-                                   PurchaseOrderService purchaseOrderService,
-                                   PurchaseOrderItemService purchaseOrderItemService, SupplierService supplierService
-            , CommonService commonService, MakeAutoGenerateNumberService makeAutoGenerateNumberService,
-                                   EmailService emailService, OperatorService operatorService,
-                                   SupplierItemService supplierItemService1, LedgerDao ledgerDao) {
+    public PurchaseOrderController(PurchaseOrderService purchaseOrderService,
+                                   SupplierService supplierService
+        , CommonService commonService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
         this.purchaseOrderService = purchaseOrderService;
-        this.purchaseOrderItemService = purchaseOrderItemService;
         this.supplierService = supplierService;
         this.commonService = commonService;
         this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
-        this.emailService = emailService;
-        this.operatorService = operatorService;
-        this.supplierItemService = supplierItemService1;
-        this.ledgerDao = ledgerDao;
     }
 
     @GetMapping

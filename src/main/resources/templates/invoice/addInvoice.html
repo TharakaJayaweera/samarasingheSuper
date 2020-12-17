@@ -356,12 +356,12 @@
 
 </div>
 
+<input type="hidden" data-th-value="${ledgerItemURL}" id="ledgerItemURL">
 <!--/* footer is */-->
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
 <!--/* script is included */-->
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <script data-th-src="@{/js/combo-box-search.js}" ></script >
-
 <script >
     $(document).ready(function () {
         $("#btnshow").hide();
@@ -371,6 +371,7 @@
             data: customers
         }).change(() => {
                 modalPopUp();
+
             });
 
         $("#customer").select2({
@@ -437,20 +438,34 @@
     let span = document.getElementsByClassName("close")[0];
 
     function modalPopUp(){
-        console.log($("#item").val())
+        optionElementRemove("#item");
         modal.style.display = "block";
+     //let  finalUrl =   $('#ledgerItemURL').val()+$("#item").val();
+     let  finalUrl =   $('#ledgerItemURL').val()+1;
+        $.ajax({
+            type: 'GET',
+            url: finalUrl,
+            success: function (resp) {
+                alert("dsadas")
+                console.log( resp.toString());
+                optionElementRemove("#item");
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
 
+    //option tag remove
+    let optionElementRemove = (id) =>{
+        let selectedValue = $(id).val();
+        let selectedItemId = `${id} option[value='${selectedValue}']`;
+        $(selectedItemId).remove();
+    }
 
 </script >
 </body >
