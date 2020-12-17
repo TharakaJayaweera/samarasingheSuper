@@ -117,11 +117,11 @@ public class PaymentController {
         if ( payment.getId() == null ) {
             if ( paymentService.lastPayment() == null ) {
                 //need to generate new one
-                payment.setCode("JNPM" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
+                payment.setCode("SSMP" + makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
                 //if there is customer in db need to get that customer's code and increase its value
                 String previousCode = paymentService.lastPayment().getCode().substring(4);
-                payment.setCode("JNPM" + makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
+                payment.setCode("SSMP" + makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
             }
         }
 

@@ -68,9 +68,9 @@ public  class CustomerController implements AbstractController<Customer, Integer
             return commonThings(model, customer, true);
         }
 //phone number length validator
-        /*if (customer.getMobile() != null) {
+        if (customer.getMobile() != null) {
             customer.setMobile(makeAutoGenerateNumberService.phoneNumberLengthValidator(customer.getMobile()));
-        }*/
+        }
 
 //if customer has id that customer is not a new customer
         if (customer.getId() == null) {
@@ -78,12 +78,12 @@ public  class CustomerController implements AbstractController<Customer, Integer
             if (customerService.lastCustomer() == null) {
                 System.out.println("last customer null");
                 //need to generate new one
-                customer.setCode("KMC"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
+                customer.setCode("SSMC"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
                 System.out.println("last customer not null");
                 //if there is customer in db need to get that customer's code and increase its value
-                String previousCode = customerService.lastCustomer().getCode().substring(3);
-                customer.setCode("KMC"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
+                String previousCode = customerService.lastCustomer().getCode().substring(4);
+                customer.setCode("SSMC"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
             }
             //send welcome message and email
             if (customer.getEmail() != null) {
