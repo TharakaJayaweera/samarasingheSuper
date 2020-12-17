@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.user_management.user.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.user_management.user.dao.UserDao;
 import lk.samarasingher_super.asset.user_management.user.entity.User;
@@ -49,7 +49,7 @@ public class UserService implements AbstractService<User, Integer > {
             user.setPassword(userDao.getOne(user.getId()).getPassword());
         }
         if(user.getId()==null){
-            user.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+            user.setLiveOrDead(LiveOrDead.ACTIVE);
         }
         return userDao.save(user);
     }
@@ -58,7 +58,7 @@ public class UserService implements AbstractService<User, Integer > {
     public boolean delete(Integer id) {
         //according to this project can not be deleted user
         User user = userDao.getOne(id);
-        user.setActiveOrInactive(ActiveOrInactive.STOP);
+        user.setLiveOrDead(LiveOrDead.STOP);
         userDao.save(user);
         return false;
     }

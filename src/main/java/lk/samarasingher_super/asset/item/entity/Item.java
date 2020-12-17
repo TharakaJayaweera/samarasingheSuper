@@ -4,7 +4,7 @@ package lk.samarasingher_super.asset.item.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingher_super.asset.category.entity.Category;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
@@ -45,7 +45,7 @@ public class Item extends AuditEntity {
     private ItemStatus itemStatus;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @ManyToOne
     private Category category;

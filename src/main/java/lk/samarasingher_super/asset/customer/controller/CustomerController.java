@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.customer.controller;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.asset.customer.entity.Customer;
 import lk.samarasingher_super.asset.customer.service.CustomerService;
@@ -47,7 +47,7 @@ public  class CustomerController implements AbstractController<Customer, Integer
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("customers", customerService.findAll().stream()
-            .filter(x-> ActiveOrInactive.ACTIVE.equals(x.getActiveOrInactive()))
+            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
             .collect(Collectors.toList()));
         return "customer/customer";
     }

@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.user_management.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.user_management.role.entity.Role;
 import lk.samarasingher_super.asset.user_management.user_session_log.entity.UserSessionLog;
@@ -42,7 +42,7 @@ public class User extends AuditEntity {
     private boolean enabled;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List< UserSessionLog > userSessionLogs;

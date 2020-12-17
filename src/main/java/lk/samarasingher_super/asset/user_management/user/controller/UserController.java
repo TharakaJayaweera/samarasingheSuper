@@ -1,5 +1,6 @@
 package lk.samarasingher_super.asset.user_management.user.controller;
 
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.entity.enums.Designation;
 import lk.samarasingher_super.asset.employee.entity.enums.EmployeeStatus;
@@ -35,7 +36,9 @@ public class UserController {
 
     @GetMapping
     public String userPage(Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAll().stream()
+            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .collect(Collectors.toList()));
         return "user/user";
     }
 

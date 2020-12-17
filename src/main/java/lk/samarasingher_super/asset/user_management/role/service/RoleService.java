@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.user_management.role.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.user_management.role.dao.RoleDao;
 import lk.samarasingher_super.asset.user_management.role.entity.Role;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -38,7 +38,7 @@ public class RoleService implements AbstractService<Role, Integer > {
     public Role persist(Role role) {
         role.setRoleName(role.getRoleName().toUpperCase());
         if ( role.getId()==null ){
-            role.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+            role.setLiveOrDead(LiveOrDead.ACTIVE);
         }
         return roleDao.save(role);
     }
@@ -46,7 +46,7 @@ public class RoleService implements AbstractService<Role, Integer > {
     @CacheEvict( allEntries = true )
     public boolean delete(Integer id) {
         Role role =roleDao.getOne(id);
-        role.setActiveOrInactive(ActiveOrInactive.STOP);
+        role.setLiveOrDead(LiveOrDead.STOP);
         roleDao.save(role);
         return true;
     }

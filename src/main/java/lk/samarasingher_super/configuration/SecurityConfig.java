@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
       "/login", "/select/**", "/", "/index"};
 
+  private final String[] CASHIER = {"/"};
+
   @Bean
   public UserDetailsServiceImpl userDetailsService() {
     return new UserDetailsServiceImpl();
@@ -105,7 +107,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                         .usernameParameter("username")
                                         .passwordParameter("password")
                                         .successHandler(customAuthenticationSuccessHandler())
-                                        .failureUrl("/login")
+                                        .failureUrl("/login?error")
                           )
                 //Logout controlling
                 .logout(
@@ -123,8 +125,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                         .sessionFixation().migrateSession()
                                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                                         .invalidSessionUrl("/login")
-                                        .maximumSessions(1)
-                                        .expiredUrl("/l")
+                                        .maximumSessions(6)
+                                        .expiredUrl("/logout")
                                         .sessionRegistry(sessionRegistry()))
                 //Cross site disable
                 .csrf(AbstractHttpConfigurer::disable)

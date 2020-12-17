@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.category.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class Category {
     private MainCategory mainCategory;
 
     @Enumerated(EnumType.STRING)
-    private ActiveOrInactive activeOrInactive;
+    private LiveOrDead liveOrDead;
 
     @Size( min = 3, message = "Your name cannot be accepted" )
     private String name;

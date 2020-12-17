@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.item.controller;
 
 
 import lk.samarasingher_super.asset.category.controller.CategoryRestController;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.asset.item.entity.Item;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/item")
@@ -45,7 +48,9 @@ public class ItemController implements AbstractController<Item, Integer> {
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("items", itemService.findAll());
+        model.addAttribute("items", itemService.findAll().stream()
+            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .collect(Collectors.toList()));
         return "item/item";
     }
 
@@ -64,19 +69,19 @@ public class ItemController implements AbstractController<Item, Integer> {
         if (bindingResult.hasErrors()) {
             return commonThings(model, item, true);
         }
-        /*if (item.getId() == null) {
+        if (item.getId() == null) {
             //if there is not item in db
             if (itemService.lastItem() == null) {
                 System.out.println("last item null");
                 //need to generate new one
-                item.setCode("KMC"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
+                item.setCode("SSIN"+makeAutoGenerateNumberService.numberAutoGen(null).toString());
             } else {
                 System.out.println("last item not null");
                 //if there is item in db need to get that item's code and increase its value
-                String previousCode = itemService.lastItem().getCode().substring(3);
-                item.setCode("KMC"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
+                String previousCode = itemService.lastItem().getCode().substring(4);
+                item.setCode("SSIN"+makeAutoGenerateNumberService.numberAutoGen(previousCode).toString());
             }
-        }*/
+        }
 
         itemService.persist(item);
         return "redirect:/item";

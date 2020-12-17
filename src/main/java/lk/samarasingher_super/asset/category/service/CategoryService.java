@@ -3,7 +3,7 @@ package lk.samarasingher_super.asset.category.service;
 
 import lk.samarasingher_super.asset.category.dao.CategoryDao;
 import lk.samarasingher_super.asset.category.entity.Category;
-import lk.samarasingher_super.asset.common_asset.model.enums.ActiveOrInactive;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -33,14 +33,14 @@ public class CategoryService implements AbstractService< Category, Integer > {
 
   public Category persist(Category category) {
     if ( category.getId() == null ) {
-      category.setActiveOrInactive(ActiveOrInactive.ACTIVE);
+      category.setLiveOrDead(LiveOrDead.ACTIVE);
     }
     return categoryDao.save(category);
   }
 
   public boolean delete(Integer id) {
     Category category = categoryDao.getOne(id);
-    category.setActiveOrInactive(ActiveOrInactive.STOP);
+    category.setLiveOrDead(LiveOrDead.STOP);
     categoryDao.save(category);
     return false;
   }

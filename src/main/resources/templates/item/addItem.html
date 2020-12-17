@@ -8,7 +8,7 @@
 <nav th:replace="~{fragments/navBar :: navBarFragment}"></nav>
 
 <!--heading Area-->
-<div class="container-fluid bg-dark form-Border">
+<div class="container-fluid ">
     <div class="row text-center formManagement border-info">
         <!--View list Button-->
         <div class="col">
@@ -46,6 +46,7 @@
                         </div>
                         <div class="col-md-4">
                             <input id="id" th:field="*{id}" class="form-control" type="text" readonly/>
+                            <input type="text" data-th-field="*{liveOrDead}" hidden>
                         </div>
                     </div>
                     <!--Main Category -->
@@ -206,8 +207,7 @@
 </div>
 
 
-<!--footer include-->
-<footer th:replace="~{fragments/footer :: footerFragment}"></footer>
+<div  th:replace="~{fragments/footer :: footerFragment}"></footer>
 <!--script include-->
 <script th:replace="~{fragments/script :: scriptFragment}"></script>
 <script>

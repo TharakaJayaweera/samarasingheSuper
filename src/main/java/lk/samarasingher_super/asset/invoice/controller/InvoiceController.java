@@ -9,13 +9,16 @@ import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.asset.invoice.service.InvoiceService;
 import lk.samarasingher_super.asset.item.service.ItemService;
+import lk.samarasingher_super.asset.ledger.controller.LedgerController;
 import lk.samarasingher_super.asset.ledger.service.LedgerService;
+import lk.samarasingher_super.asset.supplier_item.controller.SupplierItemController;
 import lk.samarasingher_super.util.service.DateTimeAgeService;
 import lk.samarasingher_super.util.service.MakeAutoGenerateNumberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -68,6 +71,14 @@ public class InvoiceController {
     model.addAttribute("paymentMethods", PaymentMethod.values());
     model.addAttribute("customers", customerService.findAll());
     model.addAttribute("discountRatios", discountRatioService.findAll());
+    model.addAttribute("ledgerItemURL", MvcUriComponentsBuilder
+        .fromMethodName(LedgerController.class, "findId", "")
+        .build()
+        .toString());
+//   System.out.println(MvcUriComponentsBuilder
+//                           .fromMethodName(LedgerController.class, "findId", "")
+//                           .build()
+//                           .toString());
     //send not expired and not zero quantity
     model.addAttribute("ledgers", ledgerService.findAll()
         .stream()
