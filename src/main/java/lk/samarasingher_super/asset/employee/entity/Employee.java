@@ -1,7 +1,6 @@
 package lk.samarasingher_super.asset.employee.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.branch.entity.Branch;
 import lk.samarasingher_super.asset.common_asset.model.FileInfo;
 import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.common_asset.model.enums.CivilStatus;
@@ -81,8 +80,6 @@ public class Employee extends AuditEntity {
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfAssignment;
 
-    @ManyToOne
-    private Branch branch;
 
     @Transient
     private MultipartFile file;

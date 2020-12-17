@@ -1,7 +1,6 @@
 package lk.samarasingher_super.asset.employee.controller;
 
 
-import lk.samarasingher_super.asset.branch.service.BranchService;
 import lk.samarasingher_super.asset.common_asset.model.enums.*;
 import lk.samarasingher_super.asset.common_asset.service.CommonService;
 import lk.samarasingher_super.asset.employee.entity.Employee;
@@ -38,7 +37,6 @@ public class EmployeeController {
   private final DateTimeAgeService dateTimeAgeService;
   private final CommonService commonService;
   private final UserService userService;
-  private final BranchService branchService;
 
   private final MakeAutoGenerateNumberService makeAutoGenerateNumberService;
 
@@ -46,13 +44,12 @@ public class EmployeeController {
   public EmployeeController(EmployeeService employeeService, EmployeeFilesService employeeFilesService,
                             DateTimeAgeService dateTimeAgeService,
                             CommonService commonService, UserService userService,
-                            BranchService branchService, MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
+                            MakeAutoGenerateNumberService makeAutoGenerateNumberService) {
     this.employeeService = employeeService;
     this.employeeFilesService = employeeFilesService;
     this.dateTimeAgeService = dateTimeAgeService;
     this.commonService = commonService;
     this.userService = userService;
-    this.branchService = branchService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
 //----> Employee details management - start <----//
@@ -65,7 +62,6 @@ public class EmployeeController {
     model.addAttribute("employeeStatus", EmployeeStatus.values());
     model.addAttribute("designation", Designation.values());
     model.addAttribute("bloodGroup", BloodGroup.values());
-    model.addAttribute("branches", branchService.findAll());
     return "employee/addEmployee";
   }
 
@@ -84,7 +80,7 @@ public class EmployeeController {
     List< Employee > employees = new ArrayList<>();
     for ( Employee employee : employeeService.findAll()
         .stream()
-        .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+        .filter(x -> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
         .collect(Collectors.toList())
     ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
