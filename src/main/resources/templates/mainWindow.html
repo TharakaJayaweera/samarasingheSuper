@@ -3,11 +3,7 @@
 <head th:replace="~{fragments/header :: headerFragment}" >
   <meta charset="UTF-8" >
   <title >Thymeleaf Springboot </title >
-  <script >
-      $(document).ready(function () {
-          $("h2").addClass("animated bounce");
-      });
-  </script >
+
 </head >
 <body >
 <nav th:replace="~{fragments/navBar :: navBarFragment}" ></nav >
@@ -95,7 +91,7 @@
                 <div class="carousel-item active" >
                   <img class="d-block w-100" src="../img/12.jpeg" alt="First slide" >
                   <div class="carousel-caption d-none d-md-block" >
-                    <h2 id="animated-example" class="animated animate__bounce" >Wel Come</h2 >
+                    <h2 id="animated-example" class="animated animate__bounce" >Welcome</h2 >
                   </div >
                 </div >
                 <div class="carousel-item" >
@@ -153,6 +149,10 @@
 <div th:replace="~{fragments/footer :: footerFragment}" ></div >
 <!--script include-->
 <div th:replace="~{fragments/script :: scriptFragment}" ></div >
-
+<script >
+    $(document).ready(function () {
+        $("h2").addClass("animated bounce");
+    });
+</script >
 </body >
 </html >
