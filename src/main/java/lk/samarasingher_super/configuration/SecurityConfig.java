@@ -72,13 +72,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-//    http.csrf().disable();
-//    http.authorizeRequests().antMatchers("/").permitAll();
+    http.csrf().disable();
+    http.authorizeRequests().antMatchers("/").permitAll();
 
     // For developing easy to give permission all lin
 
 
-        http.authorizeRequests(
+    /*    http.authorizeRequests(
                         authorizeRequests ->
                                 authorizeRequests
                                         //Anytime users can access without login
@@ -123,13 +123,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                         .sessionFixation().migrateSession()
                                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                                         .invalidSessionUrl("/login")
-                                        .maximumSessions(1)
-                                        .expiredUrl("/l")
+                                        .maximumSessions(6)
+                                        .expiredUrl("/logout")
                                         .sessionRegistry(sessionRegistry()))
                 //Cross site disable
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling();
 
-  }
+*/  }
 }
 
