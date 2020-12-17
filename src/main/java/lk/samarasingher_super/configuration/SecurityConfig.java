@@ -72,13 +72,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable();
-    http.authorizeRequests().antMatchers("/").permitAll();
+//    http.csrf().disable();
+//    http.authorizeRequests().antMatchers("/").permitAll();
 
     // For developing easy to give permission all lin
 
 
-    /*    http.authorizeRequests(
+        http.authorizeRequests(
                         authorizeRequests ->
                                 authorizeRequests
                                         //Anytime users can access without login
@@ -105,7 +105,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                         .usernameParameter("username")
                                         .passwordParameter("password")
                                         .successHandler(customAuthenticationSuccessHandler())
-                                        .failureUrl("/login")
+                                        .failureUrl("/login?error")
                           )
                 //Logout controlling
                 .logout(
@@ -130,6 +130,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling();
 
-*/  }
+  }
 }
 
