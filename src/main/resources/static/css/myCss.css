@@ -9,10 +9,29 @@
 
 /* Main window- start*/
 body {
-    background-color:rgba(15,33,75,0.91);
+    background-image: url(../img/back1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+
 }
+.main-section{
+
+    position: relative;
+    top: -50px;
+    left: 65%;
+    transform: translate(-65%,10%);
+    padding: 20px;
+    background: rgba(53, 6, 207, 0.4);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    border-radius:10px;
+
+}
+.card{
+    color: white;
+    border-radius: 10px;
+}
+
 
 /* Main window- end*/
 
@@ -35,6 +54,7 @@ body {
     margin-left:90px;
     position: relative;
     background:rgba(0,0,0,0.4);
+
     text-align: center;
     padding:40px;
     -webkit-border-radius:70px 0 70px 0;
@@ -410,23 +430,51 @@ button .btn {
 /*remove lab test from selected table - end*/
 
 /*form  - start*/
+#header{
+    border-radius: 100px;
+}
+#header span{
+    color: #00FFFF;
+    font-size: large;
+}
+#form{
+
+    position: relative;
+    top: -50px;
+    left: 65%;
+    transform: translate(-65%,10%);
+    padding: 20px;
+    background: rgba(53, 6, 207, 0.4);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    border-radius:10px;
+
+
+}
 label {
-   font-size: 18px !important;
+   font-size: 16px !important;
     font-max-size: 22px;
     font-min-size: 12px;
-    font-weight: bold;
+    font-weight: normal;
     color: white;
+    alignment: left;
+    width:auto;
+   text-align: left;
+
 }
 
-input {
-    font-size: 18px !important;
+
+div input {
+    font-size: 14px !important;
+    height: border-box;
+
 }
 
 .display_detail {
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-max-size: 20px;
     font-min-size: 12px;
-    font-weight: bold;
+    font-weight:normal;
     color: black;
     text-align: left;
 }
@@ -452,6 +500,22 @@ input {
     -o-animation: AnimationName 31s ease infinite;
     animation: AnimationName 31s ease infinite;
 }
+.table-area{
+
+    border-radius: 15px;
+    background-color: rgba(8,156,137,0.67);
+
+}
+.table-area table tbody{
+    color: white;
+    font-weight: lighter;
+}
+.table-area table thead{
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+
 
 @-webkit-keyframes AnimationName {
     0% {
@@ -675,3 +739,8 @@ a.wrimagecard:hover, .wrimagecard-topimage:hover {
     border-bottom: none;}
 
 /** Cards style end**/
+.card{
+    margin: 10px;
+
+
+}
