@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
       "/login", "/select/**", "/", "/index"};
 
+  private final String[] CASHIER = {"/"};
+
   @Bean
   public UserDetailsServiceImpl userDetailsService() {
     return new UserDetailsServiceImpl();
