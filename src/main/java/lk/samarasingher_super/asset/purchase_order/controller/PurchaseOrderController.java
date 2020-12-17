@@ -162,7 +162,7 @@ public class PurchaseOrderController {
         return "redirect:/purchaseOrder/all";
     }
 
-    //todo -> need to  manage item price displaying option and amount calculation
+
     @GetMapping( "/supplier/{id}" )
     public String addPriceToSupplierItem(@PathVariable int id, Model model) {
         Supplier supplier = supplierService.findById(id);
