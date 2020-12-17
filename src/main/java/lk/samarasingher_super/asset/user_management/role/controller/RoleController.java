@@ -28,7 +28,9 @@ public class RoleController {
      * */
     @RequestMapping
     public String rolePage(Model model) {
-        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("roles", roleService.findAll().stream()
+            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .collect(Collectors.toList()));
         return "role/role";
     }
 
