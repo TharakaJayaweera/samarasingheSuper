@@ -1,5 +1,6 @@
 package lk.samarasingher_super.asset.user_management.role.controller;
 
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.user_management.role.entity.Role;
 import lk.samarasingher_super.asset.user_management.role.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping( "/role" )
