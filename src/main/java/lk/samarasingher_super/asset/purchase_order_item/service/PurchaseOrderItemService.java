@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.purchase_order_item.service;
 
 
 import lk.samarasingher_super.asset.purchase_order_item.entity.PurchaseOrderItem;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order_item.dao.PurchaseOrderItemDao;
@@ -35,13 +35,13 @@ public class PurchaseOrderItemService implements AbstractService< PurchaseOrderI
 
     public PurchaseOrderItem persist(PurchaseOrderItem purchaseOrderItem) {
         if(purchaseOrderItem.getId()==null){
-            purchaseOrderItem.setLiveOrDead(LiveOrDead.ACTIVE);}
+            purchaseOrderItem.setLiveDead(Live_Dead.ACTIVE);}
         return purchaseOrderItemDao.save(purchaseOrderItem);
     }
 
     public boolean delete(Integer id) {
         PurchaseOrderItem purchaseOrderItem =  purchaseOrderItemDao.getOne(id);
-        purchaseOrderItem.setLiveOrDead(LiveOrDead.STOP);
+        purchaseOrderItem.setLiveDead(Live_Dead.STOP);
         purchaseOrderItemDao.save(purchaseOrderItem);
         return false;
     }

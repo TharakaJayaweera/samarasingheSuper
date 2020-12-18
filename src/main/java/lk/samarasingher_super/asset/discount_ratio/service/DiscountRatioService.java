@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.discount_ratio.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.discount_ratio.dao.DiscountRatioDao;
 import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -27,14 +27,14 @@ private final DiscountRatioDao discountRatioDao;
 
     public DiscountRatio persist(DiscountRatio discountRatio) {
         if ( discountRatio.getId() == null ){
-            discountRatio.setLiveOrDead(LiveOrDead.ACTIVE);
+            discountRatio.setLiveDead(Live_Dead.ACTIVE);
         }
         return discountRatioDao.save(discountRatio);
     }
 
     public boolean delete(Integer id) {
         DiscountRatio discountRatio =  discountRatioDao.getOne(id);
-        discountRatio.setLiveOrDead(LiveOrDead.STOP);
+        discountRatio.setLiveDead(Live_Dead.STOP);
         discountRatioDao.save(discountRatio);
         return false;
     }

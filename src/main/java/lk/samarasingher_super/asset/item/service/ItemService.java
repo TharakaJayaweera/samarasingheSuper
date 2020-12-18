@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.item.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.item.dao.ItemDao;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -32,13 +32,13 @@ public class ItemService implements AbstractService<Item, Integer> {
 
     public Item persist(Item item) {
         if(item.getId()==null){
-            item.setLiveOrDead(LiveOrDead.ACTIVE);}
+            item.setLiveDead(Live_Dead.ACTIVE);}
         return itemDao.save(item);
     }
 
     public boolean delete(Integer id) {
         Item item =  itemDao.getOne(id);
-        item.setLiveOrDead(LiveOrDead.STOP);
+        item.setLiveDead(Live_Dead.STOP);
         itemDao.save(item);
         return false;
     }

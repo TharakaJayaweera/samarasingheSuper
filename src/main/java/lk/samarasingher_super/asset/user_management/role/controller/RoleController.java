@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.user_management.role.controller;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.user_management.role.entity.Role;
 import lk.samarasingher_super.asset.user_management.role.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class RoleController {
      * */
     @RequestMapping
     public String rolePage(Model model) {
-        model.addAttribute("roles", roleService.findAll().stream().filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+        model.addAttribute("roles", roleService.findAll().stream().filter(x-> Live_Dead.ACTIVE.equals(x.getLiveDead()))
             .collect(Collectors.toList()));
         return "role/role";
     }

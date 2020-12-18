@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.payment.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.payment.dao.PaymentDao;
 import lk.samarasingher_super.asset.payment.entity.Payment;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
@@ -30,13 +30,13 @@ public class PaymentService implements AbstractService< Payment, Integer > {
 
     public Payment persist(Payment payment) {
         if(payment.getId()==null){
-            payment.setLiveOrDead(LiveOrDead.ACTIVE);}
+            payment.setLiveDead(Live_Dead.ACTIVE);}
         return paymentDao.save(payment);
     }
 
     public boolean delete(Integer id) {
         Payment payment =  paymentDao.getOne(id);
-        payment.setLiveOrDead(LiveOrDead.STOP);
+        payment.setLiveDead(Live_Dead.STOP);
         paymentDao.save(payment);
         return false;
     }

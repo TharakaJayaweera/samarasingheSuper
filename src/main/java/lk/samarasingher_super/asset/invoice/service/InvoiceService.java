@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.invoice.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.invoice.dao.InvoiceDao;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -30,13 +30,13 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
     public Invoice persist(Invoice invoice) {
         if(invoice.getId()==null){
-            invoice.setLiveOrDead(LiveOrDead.ACTIVE);}
+            invoice.setLiveDead(Live_Dead.ACTIVE);}
         return invoiceDao.save(invoice);
     }
 
     public boolean delete(Integer id) {
         Invoice invoice =  invoiceDao.getOne(id);
-        invoice.setLiveOrDead(LiveOrDead.STOP);
+        invoice.setLiveDead(Live_Dead.STOP);
         invoiceDao.save(invoice);
         return false;
     }

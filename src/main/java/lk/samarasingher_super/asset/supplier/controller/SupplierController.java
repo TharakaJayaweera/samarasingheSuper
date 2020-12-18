@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.supplier.controller;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import lk.samarasingher_super.asset.supplier.service.SupplierService;
 import lk.samarasingher_super.util.interfaces.AbstractController;
@@ -36,7 +36,7 @@ public  class SupplierController implements AbstractController<Supplier, Integer
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("suppliers", supplierService.findAll().stream()
-            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .filter(x-> Live_Dead.ACTIVE.equals(x.getLiveDead()))
             .collect(Collectors.toList()));
         return "supplier/supplier";
     }
