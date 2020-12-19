@@ -14,7 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
@@ -56,7 +59,7 @@ public class LedgerController {
     model.addAttribute("title",
                        "All items on given date range start at " + twoDate.getStartDate() + " end at " + twoDate.getEndDate());
     model.addAttribute("ledgers",
-                       ledgerService.findByExpiredDateBetween(twoDate.getStartDate(),twoDate.getEndDate()));
+                       ledgerService.findByExpiredDateBetween(twoDate.getStartDate(), twoDate.getEndDate()));
     System.out.println("star date " + dateTimeAgeService.dateTimeToLocalDateStartInDay(twoDate.getStartDate()) + " " +
                            "end " + dateTimeAgeService.dateTimeToLocalDateEndInDay(twoDate.getEndDate()));
     model.addAttribute("twoDate", new TwoDate());
@@ -66,17 +69,17 @@ public class LedgerController {
   @GetMapping( "/{id}" )
   @ResponseBody
   public MappingJacksonValue findId(@PathVariable Integer id) {
-    System.out.println(id + " idd dddd");
     MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(ledgerService.findById(id));
-    SimpleBeanPropertyFilter simpleBeanPropertyFilter = SimpleBeanPropertyFilter
-        .filterOutAllExcept("id", "quantity", "item", "sellPrice");
+    SimpleBeanPropertyFilter simpleBeanPropertyFilterOne = SimpleBeanPropertyFilter
+        .filterOutAllExcept("id", "quantity", "sellPrice", "item","expiredDate");
+
+    SimpleBeanPropertyFilter simpleBeanPropertyFilterTwo = SimpleBeanPropertyFilter
+        .filterOutAllExcept("id", "name");
+
     FilterProvider filters = new SimpleFilterProvider()
-        .addFilter("Ledger", simpleBeanPropertyFilter);
+        .addFilter("Ledger", simpleBeanPropertyFilterOne)
+        .addFilter("Item", simpleBeanPropertyFilterTwo);
     mappingJacksonValue.setFilters(filters);
     return mappingJacksonValue;
-  }
-
-  public Ledger find(@PathVariable Integer id) {
-    return ledgerService.findById(id);
   }
 }

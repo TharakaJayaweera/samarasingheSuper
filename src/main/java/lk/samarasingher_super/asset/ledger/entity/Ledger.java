@@ -44,8 +44,7 @@ public class Ledger extends AuditEntity {
     @Enumerated( EnumType.STRING)
     private LiveDead liveDead;
 
-    @ManyToOne
-    @JsonManagedReference
+    @ManyToOne(fetch=FetchType.EAGER)
     private Item item;
 
     @ManyToOne
