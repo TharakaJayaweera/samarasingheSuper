@@ -68,8 +68,12 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
     }
 
     public List<Ledger> findByCreatedAtIsBetween(LocalDateTime startDate, LocalDateTime endDate) {
-        return ledgerDao.findByCreatedAtIsBetween(startDate, endDate);
+        return ledgerDao.findByCreatedAtBetween(startDate, endDate);
     }
+
+  public List<Ledger> findByExpiredDateBetween(LocalDate from, LocalDate to) {
+        return ledgerDao.findByExpiredDateBetween(from,to);
+  }
 
    /* public Ledger findByItem(Item item) {
         return ledgerDao.findByItem(item);
