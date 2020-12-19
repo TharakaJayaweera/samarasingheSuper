@@ -219,7 +219,6 @@
 <div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 <script >
     $(document).ready(function () {
-        $("input[name='paymentMethod']:checked").val('CASH');
         showHideContent();
     });
 
@@ -231,7 +230,9 @@
         let paymentMethodValue = $("input[name='paymentMethod']:checked").val();
         if (paymentMethodValue === 'CASH') {
             $("#bankNameBlock").hide();
+            $("#cashPaymentBlock").show();
         } else {
+            $("#cashPaymentBlock").hide();
             $("#bankNameBlock").show();
         }
     }
