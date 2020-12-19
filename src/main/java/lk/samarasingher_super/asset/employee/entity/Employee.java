@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.employee.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import lk.samarasingher_super.asset.common_asset.model.FileInfo;
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.common_asset.model.enums.CivilStatus;
 import lk.samarasingher_super.asset.common_asset.model.enums.Gender;
 import lk.samarasingher_super.asset.common_asset.model.enums.Title;
@@ -72,7 +72,7 @@ public class Employee extends AuditEntity {
     private EmployeeStatus employeeStatus;
 
     @Enumerated(EnumType.STRING)
-    private Live_Dead liveDead;
+    private LiveDead liveDead;
 
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private LocalDate dateOfBirth;

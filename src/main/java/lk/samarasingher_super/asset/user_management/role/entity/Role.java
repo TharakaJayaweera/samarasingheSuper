@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.user_management.role.entity;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.user_management.user.entity.User;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class Role extends AuditEntity {
     private String roleName;
 
     @Enumerated(EnumType.STRING)
-    private Live_Dead liveDead;
+    private LiveDead liveDead;
 
     @ManyToMany(mappedBy = "roles")
     private List< User > users;

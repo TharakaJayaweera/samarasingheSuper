@@ -4,7 +4,7 @@ package lk.samarasingher_super.asset.ledger.entity;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.good_received_note.entity.GoodReceivedNote;
 import lk.samarasingher_super.asset.invoice_item.entity.InvoiceLedger;
 import lk.samarasingher_super.asset.item.entity.Item;
@@ -42,7 +42,7 @@ public class Ledger extends AuditEntity {
     private LocalDate expiredDate;
 
     @Enumerated( EnumType.STRING)
-    private Live_Dead liveDead;
+    private LiveDead liveDead;
 
     @ManyToOne
     @JsonManagedReference

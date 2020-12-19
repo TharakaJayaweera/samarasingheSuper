@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.good_received_note.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.good_received_note.entity.enums.GoodReceivedNoteState;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
@@ -31,7 +31,7 @@ public class GoodReceivedNote extends AuditEntity {
     private GoodReceivedNoteState goodReceivedNoteState;
 
     @Enumerated(EnumType.STRING)
-    private Live_Dead liveDead;
+    private LiveDead liveDead;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;

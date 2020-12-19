@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.employee.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.employee.dao.EmployeeDao;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -41,13 +41,13 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
     @Transactional
     public Employee persist(Employee employee) {
         if(employee.getId()==null){
-            employee.setLiveDead(Live_Dead.ACTIVE);}
+            employee.setLiveDead(LiveDead.ACTIVE);}
         return employeeDao.save(employee);
     }
 
     public boolean delete(Integer id) {
         Employee employee =  employeeDao.getOne(id);
-        employee.setLiveDead(Live_Dead.STOP);
+        employee.setLiveDead(LiveDead.STOP);
         employeeDao.save(employee);
         return false;
     }

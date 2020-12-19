@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.discount_ratio.controller;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.asset.discount_ratio.service.DiscountRatioService;
 import org.springframework.stereotype.Controller;
@@ -25,7 +25,7 @@ public class DiscountRatioController {
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("discountRatios", discountRatioService.findAll().stream()
-            .filter(x-> Live_Dead.ACTIVE.equals(x.getLiveDead()))
+            .filter(x-> LiveDead.ACTIVE.equals(x.getLiveDead()))
             .collect(Collectors.toList()));
         return "discountRatio/discountRatio";
     }
@@ -33,7 +33,7 @@ public class DiscountRatioController {
     @GetMapping( "/edit/{id}" )
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("addStatus", false);
-        model.addAttribute("discountRatioStatuses", Live_Dead.values());
+        model.addAttribute("discountRatioStatuses", LiveDead.values());
         model.addAttribute("discountRatio", discountRatioService.findById(id));
         return "discountRatio/addDiscountRatio";
     }
@@ -43,7 +43,7 @@ public class DiscountRatioController {
                           RedirectAttributes redirectAttributes, Model model) {
         if ( bindingResult.hasErrors() ) {
             model.addAttribute("addStatus", false);
-            model.addAttribute("discountRatioStatuses", Live_Dead.values());
+            model.addAttribute("discountRatioStatuses", LiveDead.values());
             model.addAttribute("discountRatio", discountRatio);
             return "discountRatio/addDiscountRatio";
         }
@@ -60,7 +60,7 @@ public class DiscountRatioController {
     @GetMapping( "/add" )
     public String form(Model model) {
         model.addAttribute("addStatus", true);
-        model.addAttribute("discountRatioStatuses", Live_Dead.values());
+        model.addAttribute("discountRatioStatuses", LiveDead.values());
         model.addAttribute("discountRatio", new DiscountRatio());
         return "discountRatio/addDiscountRatio";
     }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum Live_Dead {
+public enum LiveDead {
     ACTIVE("Active"),
     STOP("Stop");
 

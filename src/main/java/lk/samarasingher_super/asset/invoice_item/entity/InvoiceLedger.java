@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.invoice_item.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.Live_Dead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
 import lk.samarasingher_super.util.audit.AuditEntity;
@@ -29,7 +29,7 @@ public class InvoiceLedger extends AuditEntity {
     private BigDecimal sellPrice;
 
     @Enumerated( EnumType.STRING)
-    private Live_Dead liveDead;
+    private LiveDead liveDead;
 
     @ManyToOne
     private Ledger ledger;
