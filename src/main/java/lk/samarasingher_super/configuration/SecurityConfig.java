@@ -23,20 +23,20 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
-          "/login", "/select/**", "/", "/index"};
-  private final String[] ADMIN = {"/login", "/select/**" ,"/add/**" , "/delete/{id}/**" ,"/edit/{id}/**" ,"/{id}/**" ,
-          "/getCategory/{mainCategory}" ,"/file/{filename}/**", "/remove/{id}/**" ,"/search/**", "/workingPlace/**", "/getEmployee/**" ,
-          "/supplier/{id}/**" ,"/reorderPoint/**","view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
-  private final String[] MANAGER = {"/login", "/select/**" ,"/add/**" , "/delete/{id}/**" ,"/edit/{id}/**" ,"/{id}/**" ,
-          "/getCategory/{mainCategory}" ,"/file/{filename}/**", "/remove/{id}/**" ,"/search/**", "/workingPlace/**", "/getEmployee/**" ,
-          "/reorderPoint/**", "/supplier/{id}/**" ,"view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
-  private final String[] PROCUMENT_MANAGER = {"/login", "/select/**" ,"/add/**" , "/{id}/**" ,"/getCategory/{mainCategory}" ,"/remove/{id}/**" ,
-          "/search/**","/reorderPoint/**", "/supplier/{id}/**" ,"view/{id}/**","/supplier/{id}/**","/supplierItem/**"};
-  private final String[] HR_MANAGER = {"/login", "/select/**" ,"/add/**" ,"/file/{filename}/**", "/search/**", "/workingPlace/**",
-          "/getEmployee/**", "view/{id}/**"};
-  private final String[] CASHIER = {"/login", "/select/**" ,"/add/**" , "/getCategory/{mainCategory}" ,"/search/**"};
-
-
+      "/login", "/select/**", "/", "/index"};
+  private final String[] ADMIN = {"/login", "/category/**", "/customer/**", "/employee/**", "/goodReceivedNote/**",
+      "/invoice/**",
+      "/item/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**", "/user/**"};
+  private final String[] MANAGER = {"/login", "/category/**", "/customer/**", "/discountRatio/**", "/employee/**",
+      "/goodReceivedNote/**", "/invoice/**",
+      " /item/**", "/ledger/**", "/payment/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**",
+      "/user/**"};
+  private final String[] PROCUMENT_MANAGER = {"/category/**", "/goodReceivedNote/**", "/invoice/**", " /item/**",
+      "ledger/**", "/purchaseOrder/**",
+      "/supplier/**", "/supplierItem/**"};
+  private final String[] ACCOUNT_MANAGER = {"/payment/**"};
+  private final String[] HR_MANAGER = {"/employee/**"};
+  private final String[] CASHIER = {"/category/getCategory/**", "/invoice/add", "/brand/**", "/itemColor/**"};
 
   @Bean
   public UserDetailsServiceImpl userDetailsService() {
@@ -85,11 +85,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-//    http.csrf().disable();
-//    http.authorizeRequests().antMatchers("/").permitAll();
+    http.csrf().disable();
+    http.authorizeRequests().antMatchers("/").permitAll();
 
     // For developing easy to give permission all lin
 
+/*
 
         http.authorizeRequests(
                         authorizeRequests ->
@@ -142,6 +143,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Cross site disable
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling();
+*/
 
   }
 }

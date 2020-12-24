@@ -28,6 +28,9 @@ public class InvoiceLedger extends AuditEntity {
     @Column( nullable = false, precision = 10, scale = 2 )
     private BigDecimal sellPrice;
 
+    @Column( nullable = false, precision = 10, scale = 2 )
+    private BigDecimal lineTotal;
+
     @Enumerated( EnumType.STRING)
     private LiveDead liveDead;
 

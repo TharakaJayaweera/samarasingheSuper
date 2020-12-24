@@ -75,14 +75,11 @@ public class InvoiceController {
         .fromMethodName(LedgerController.class, "findId", "")
         .build()
         .toString());
-//   System.out.println(MvcUriComponentsBuilder
-//                           .fromMethodName(LedgerController.class, "findId", "")
-//                           .build()
-//                           .toString());
+    System.out.println("Sixe" + ledgerService.findAll().size());
     //send not expired and not zero quantity
     model.addAttribute("ledgers", ledgerService.findAll()
         .stream()
-        .filter(x -> 0 < Integer.parseInt(x.getQuantity()) && x.getExpiredDate().isBefore(LocalDate.now()))
+        .filter(x -> 0 < Integer.parseInt(x.getQuantity()) && x.getExpiredDate().isAfter(LocalDate.now()))
         .collect(Collectors.toList()));
     return "invoice/addInvoice";
   }
