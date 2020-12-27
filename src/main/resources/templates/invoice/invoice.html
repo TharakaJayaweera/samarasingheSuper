@@ -75,8 +75,8 @@
         <tbody >
         <tr data-th-each="invoice, rowCount : ${invoices}" >
           <th data-th-text="${rowCount.count}" ></th >
-          <th data-th-text="${invoice.number}" ></th >
-          <th data-th-text="${invoice.amount}" ></th >
+          <th data-th-text="${invoice.code}" ></th >
+          <th data-th-text="${invoice.totalAmount}" ></th >
           <th data-th-text="${invoice.createdBy}" ></th >
           <th data-th-text="${{invoice.createdAt}}" ></th >
           <th ><a class="btn btn-success" data-th-href="${'/invoice/'+ invoice.id}" ><i

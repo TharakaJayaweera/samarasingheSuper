@@ -136,7 +136,7 @@ public class PurchaseOrderController {
 
     @GetMapping( "view/{id}" )
     public String viewPurchaseOrderDetail(@PathVariable Integer id, Model model) {
-        model.addAttribute("purchaseOrder-details", purchaseOrderService.findById(id));
+        model.addAttribute("purchaseOrderDetail", purchaseOrderService.findById(id));
         return "purchaseOrder/purchaseOrder-detail";
     }
 
