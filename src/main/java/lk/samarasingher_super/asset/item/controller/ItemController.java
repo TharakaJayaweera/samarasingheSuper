@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.item.controller;
 
 
 import lk.samarasingher_super.asset.category.controller.CategoryRestController;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.asset.item.entity.Item;
@@ -49,7 +49,7 @@ public class ItemController implements AbstractController<Item, Integer> {
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("items", itemService.findAll().stream()
-            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .filter(x-> LiveDead.ACTIVE.equals(x.getLiveDead()))
             .collect(Collectors.toList()));
         return "item/item";
     }

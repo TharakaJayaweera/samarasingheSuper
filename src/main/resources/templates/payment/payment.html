@@ -35,7 +35,7 @@
                     <th> Supplier Name</th>
                     <th>Purchase Order Number</th>
                     <th>Need to be Paid</th>
-                    <th > Modify</th>
+                    <th data-th-if="${addState}"> Modify</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,7 +44,7 @@
                     <th data-th-text="${purchaseOrder.supplier.name}"></th>
                     <th data-th-text="${purchaseOrder.code}"></th>
                     <th data-th-text="${purchaseOrder.price}"></th>
-                    <th >
+                    <th data-th-if="${addState}">
                         <a id="edit" data-th-href="${'/payment/' + purchaseOrder.id}"
                            class="btn btn-primary btn-sm mr-2 p-2">Pay
                         </a>

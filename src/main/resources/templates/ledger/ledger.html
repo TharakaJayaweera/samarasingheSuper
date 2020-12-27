@@ -44,12 +44,12 @@
     </div >
     <form action="/ledger/expiredDate" method="post" >
       <div class="col-3" >
-        <label class="custom-control-label" > Since :
+        <label class="control-label" > Since :
           <input type="date" class="form-control" name="startDate" id="startDate" required >
         </label >
       </div >
       <div class="col-3" >
-        <label class="custom-control-label" > To :
+        <label class="control-label" > To :
           <input type="date" class="form-control" name="endDate" id="endDate" required >
         </label >
       </div >
@@ -61,8 +61,8 @@
 </div >
 <div class="container-fluid bg-info formBorder text-center" >
   <!--Table view-->
-  <div class="col" >
-    <div class="col" id="itemListPresent" th:if="${not #lists.isEmpty(ledgers)}" >
+  <div class="col" th:if="${not #lists.isEmpty(ledgers)}" >
+    <div class="col" id="itemListPresent" >
       <table class="table table-hover table-striped" id="myTable" >
         <thead >
         <tr >
@@ -86,7 +86,7 @@
           <th th:text="${ledger.manufactureDate}" ></th >
           <th th:text="${ledger.expiredDate}" ></th >
           <th >
-            <a th:href="${'/supplierItem/supplier/' + ledger.goodReceivedNote.purchaseOrder.supplier.id}"
+            <a th:href="${'/purchaseOrder/supplier/' + ledger.goodReceivedNote.purchaseOrder.supplier.id}"
                class="btn btn-primary btn-sm" ><i
                   class="fa fa-folder-open" style="font-size: 15px" ></i >Purchase Order</a >
           </th >
@@ -107,20 +107,12 @@
         </h3 >
       </div >
     </div >
-    <script >
-        /*active boostrap alert - start*/
-        $(".alert").alert();
-        /*active boostrap alert - end*/
-    </script >
   </div >
 </div >
-
-<div  th:replace="~{fragments/footer :: footerFragment}" ></footer >
-<!--script include-->
-<div th:replace="~{fragments/script :: scriptFragment}" ></div >
+<div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
+<div data-th-replace="~{fragments/script :: scriptFragment}" ></div >
 
 <script >
-
     $("#startDate, #endDate").bind('keyup',
         function () {
             let manufactureDate = $(`#startDate`).val();
@@ -138,8 +130,7 @@
             }
         });
 
-
+    $(".alert").alert();
 </script >
-
 </body >
 </html >

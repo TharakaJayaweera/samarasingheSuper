@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.good_received_note.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.good_received_note.dao.GoodReceivedNoteDao;
 import lk.samarasingher_super.asset.good_received_note.entity.GoodReceivedNote;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
@@ -35,13 +35,13 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
 
     public GoodReceivedNote persist(GoodReceivedNote goodRecevingNote) {
         if(goodRecevingNote.getId()==null){
-            goodRecevingNote.setLiveOrDead(LiveOrDead.ACTIVE);}
+            goodRecevingNote.setLiveDead(LiveDead.ACTIVE);}
         return goodReceivedNoteDao.save(goodRecevingNote);
     }
 
     public boolean delete(Integer id) {
         GoodReceivedNote goodRecevingNote =  goodReceivedNoteDao.getOne(id);
-        goodRecevingNote.setLiveOrDead(LiveOrDead.STOP);
+        goodRecevingNote.setLiveDead(LiveDead.STOP);
         goodReceivedNoteDao.save(goodRecevingNote);
         return false;
     }

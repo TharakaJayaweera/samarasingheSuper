@@ -75,8 +75,6 @@ public class CommonService {
     public String purchaseOrder(Supplier supplier, Model model, String htmlFileLocation) {
         List<Supplier> suppliers = commonSupplierSearch(supplier);
 
-        System.out.println(" i am here" + suppliers.size());
-
         model.addAttribute("searchAreaShow", false);
         if (suppliers.size() == 1) {
             model.addAttribute("supplierDetail", suppliers.get(0));
