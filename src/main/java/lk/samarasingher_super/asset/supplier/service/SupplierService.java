@@ -24,7 +24,9 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     }
 
     public List<Supplier> findAll() {
-        return supplierDao.findAll();
+        return supplierDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Supplier findById(Integer id) {

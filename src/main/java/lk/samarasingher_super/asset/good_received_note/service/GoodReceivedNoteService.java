@@ -25,7 +25,9 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
 
 
     public List<GoodReceivedNote> findAll() {
-        return goodReceivedNoteDao.findAll();
+        return goodReceivedNoteDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
 

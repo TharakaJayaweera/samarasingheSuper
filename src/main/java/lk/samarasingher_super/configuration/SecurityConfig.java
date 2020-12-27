@@ -25,15 +25,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
       "/login", "/select/**", "/", "/index"};
   private final String[] ADMIN = { "/category/**", "/customer/**", "/employee/**", "/goodReceivedNote/**",
-      "/invoice/**",      "/item/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**", "/user/**"};
-  private final String[] MANAGER = { "/category/**", "/customer/**", "/discountRatio/**", "/employee/**",
+      "/invoice/**","/item/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**", "/user/**"};
+ /* private final String[] MANAGER = { "/category/**", "/customer/**", "/discountRatio/**", "/employee/**",
       "/goodReceivedNote/**", "/invoice/**",      " /item/**", "/ledger/**", "/payment/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**",
       "/user/**"};
   private final String[] PROCUREMENT_MANAGER = {"/category/**", "/goodReceivedNote/**", "/invoice/**", " /item/**",
       "ledger/**", "/purchaseOrder/**",      "/supplier/**", "/supplierItem/**"};
   private final String[] ACCOUNT_MANAGER = {"/payment/**"};
   private final String[] HR_MANAGER = {"/employee/**"};
-  private final String[] CASHIER = {"/category/getCategory/**", "/invoice/add", "/brand/**", "/itemColor/**"};
+  private final String[] CASHIER = {"/category/getCategory/**", "/invoice/add", "/brand/**", "/itemColor/**"};*/
 
   @Bean
   public UserDetailsServiceImpl userDetailsService() {
@@ -97,11 +97,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //this is used the normal admin to give access every url mapping
                 .antMatchers(ADMIN).hasAnyRole("ADMIN")
                 //Need to login for access those are
-                .antMatchers(MANAGER).hasAnyRole("MANAGER")
-                .antMatchers(PROCUREMENT_MANAGER).hasAnyRole("PROCUREMENT_MANAGER")
-                .antMatchers(ACCOUNT_MANAGER).hasAnyRole("ACCOUNT_MANAGER")
-                .antMatchers(HR_MANAGER).hasAnyRole("HR_MANAGER")
-                .antMatchers(CASHIER).hasAnyRole("CASHIER")
+//                .antMatchers(MANAGER).hasAnyRole("MANAGER")
+//                .antMatchers(PROCUREMENT_MANAGER).hasAnyRole("PROCUREMENT_MANAGER")
+//                .antMatchers(ACCOUNT_MANAGER).hasAnyRole("ACCOUNT_MANAGER")
+//                .antMatchers(HR_MANAGER).hasAnyRole("HR_MANAGER")
+//                .antMatchers(CASHIER).hasAnyRole("CASHIER")
                 .anyRequest()
                 .authenticated())
         // Login form

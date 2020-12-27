@@ -18,7 +18,9 @@ private final DiscountRatioDao discountRatioDao;
     }
 
     public List< DiscountRatio > findAll() {
-        return discountRatioDao.findAll();
+        return discountRatioDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public DiscountRatio findById(Integer id) {

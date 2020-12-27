@@ -27,7 +27,9 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
 
     public List<Ledger> findAll() {
-        return ledgerDao.findAll();
+        return ledgerDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
 

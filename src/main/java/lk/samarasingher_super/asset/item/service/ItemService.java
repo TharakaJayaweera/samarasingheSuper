@@ -23,7 +23,9 @@ public class ItemService implements AbstractService<Item, Integer> {
     }
 
     public List<Item> findAll() {
-        return itemDao.findAll();
+        return itemDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Item findById(Integer id) {

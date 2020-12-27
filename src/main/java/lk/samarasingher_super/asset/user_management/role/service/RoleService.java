@@ -24,7 +24,9 @@ public class RoleService implements AbstractService<Role, Integer > {
 
     @Cacheable
     public List< Role > findAll() {
-        return roleDao.findAll();
+        return roleDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     @Cacheable

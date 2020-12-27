@@ -26,7 +26,9 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
     }
 
     public List< PurchaseOrder > findAll() {
-        return purchaseOrderDao.findAll();
+        return purchaseOrderDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public PurchaseOrder findById(Integer id) {
