@@ -51,7 +51,7 @@ public class SupplierItemService implements AbstractService< SupplierItem, Integ
                 supplierItem.setId(null);
                 //already saved item was change to not currently buying
                 supplierItemDB.setItemSupplierStatus(ItemSupplierStatus.STOPPED);
-                supplierItemDao.save(supplierItemDB);
+                /*supplierItemDao.save(supplierItemDB);*/
             }
         }
         return supplierItemDao.save(supplierItem);
