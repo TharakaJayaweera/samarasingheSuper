@@ -177,16 +177,59 @@
           </table >
         </div >
       </div >
-      <!--Back Button-->
-      <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
-        <a href="/item" >
-          <button class="btn btn-dark" type="button" tabindex="3" >
-            <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp; &nbsp;Back
-          </button >
-        </a >
-      </div >
     </div >
   </div >
+</div >
+<!--Payment History -->
+<div class="form-group col-md-12 col-sm-12 text-center flex-column" data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}">
+  <div class="form-row" >
+    <label class="control-label text-capitalize font-weight-bold" >Payment History :</label >
+  </div >
+  <div class="container-fluid table-responsive" >
+    <table class="table table-striped " id="myTable" >
+      <thead >
+      <tr >
+        <th >Index</th >
+        <th >Number</th >
+        <th >Bank Name</th >
+        <th >Payment Method</th >
+        <th >Amount</th >
+        <th >Remarks</th >
+      </tr >
+      </thead >
+      <tbody >
+      <tr data-th-each="payment, index : ${purchaseOrderDetail.payments}" >
+        <td data-th-text="${index.count}" ></td >
+        <td data-th-text="${payment.code}" ></td >
+        <td data-th-text="${payment.bankName}" ></td >
+        <td data-th-text="${payment.paymentMethod.paymentMethod}" ></td >
+        <td data-th-text="${{payment.amount}}" ></td >
+        <td data-th-text="${payment.remarks}" ></td >
+      </tr >
+      </tbody >
+    </table >
+  </div >
+</div >
+
+<div class="container-fluid" >
+  <div class="offset-2 col-8 col-sm-8 col-md-8" data-th-if="${ #lists.isEmpty(purchaseOrderDetail.payments)}" >
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+        <span aria-hidden="true" >&times;</span >
+      </button >
+      <h3 class="text-center text-danger" >
+        <strong >There is no payment upto now.</strong >
+      </h3 >
+    </div >
+  </div >
+</div >
+<!--Back Button-->
+<div class="form-group col-md-12 col-sm-12 text-center flex-column " >
+  <a href="/purchaseOrder" >
+    <button class="btn btn-dark" type="button" tabindex="3" >
+      <i class="fas fa-arrow-circle-left" style="font-size: 20px" ></i >&nbsp; &nbsp;Back
+    </button >
+  </a >
 </div >
 
 <div data-th-replace="~{fragments/footer :: footerFragment}" ></div >
