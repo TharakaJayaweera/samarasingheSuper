@@ -179,7 +179,7 @@ public class PaymentController {
     return "payment/allPayment";
   }
 
-  @GetMapping( "/search" )
+  @GetMapping( "/all/search" )
   public String getAllPaymentToPayBetweenTwoDate(@RequestAttribute( "startDate" ) LocalDate startDate,
                                                  @RequestAttribute( "endDate" ) LocalDate endDate, Model model) {
     return commonPayment(model,
