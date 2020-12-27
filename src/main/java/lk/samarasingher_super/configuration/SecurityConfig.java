@@ -24,16 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final String[] ALL_PERMIT_URL = {"/favicon.ico", "/img/**", "/css/**", "/js/**", "/webjars/**",
       "/login", "/select/**", "/", "/index"};
-  private final String[] ADMIN = {"/login", "/category/**", "/customer/**", "/employee/**", "/goodReceivedNote/**",
-      "/invoice/**",
-      "/item/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**", "/user/**"};
-  private final String[] MANAGER = {"/login", "/category/**", "/customer/**", "/discountRatio/**", "/employee/**",
-      "/goodReceivedNote/**", "/invoice/**",
-      " /item/**", "/ledger/**", "/payment/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**",
+  private final String[] ADMIN = { "/category/**", "/customer/**", "/employee/**", "/goodReceivedNote/**",
+      "/invoice/**",      "/item/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**", "/user/**"};
+  private final String[] MANAGER = { "/category/**", "/customer/**", "/discountRatio/**", "/employee/**",
+      "/goodReceivedNote/**", "/invoice/**",      " /item/**", "/ledger/**", "/payment/**", "/purchaseOrder/**", "/role/**", "/supplier/**", "/supplierItem/**",
       "/user/**"};
-  private final String[] PROCUMENT_MANAGER = {"/category/**", "/goodReceivedNote/**", "/invoice/**", " /item/**",
-      "ledger/**", "/purchaseOrder/**",
-      "/supplier/**", "/supplierItem/**"};
+  private final String[] PROCUREMENT_MANAGER = {"/category/**", "/goodReceivedNote/**", "/invoice/**", " /item/**",
+      "ledger/**", "/purchaseOrder/**",      "/supplier/**", "/supplierItem/**"};
   private final String[] ACCOUNT_MANAGER = {"/payment/**"};
   private final String[] HR_MANAGER = {"/employee/**"};
   private final String[] CASHIER = {"/category/getCategory/**", "/invoice/add", "/brand/**", "/itemColor/**"};
@@ -85,9 +82,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-/*    http.csrf().disable();
-    http.authorizeRequests().antMatchers("/").permitAll();*/
-
+  /*  http.csrf().disable();
+    http.authorizeRequests().antMatchers("/").permitAll();
+*/
     // For developing easy to give permission all lin
 
 
@@ -98,13 +95,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //to see actuator details
                 .antMatchers(ALL_PERMIT_URL).permitAll()
                 //this is used the normal admin to give access every url mapping
-                .antMatchers(ADMIN).hasRole("ADMIN")
+                .antMatchers(ADMIN).hasAnyRole("ADMIN")
                 //Need to login for access those are
-                .antMatchers(MANAGER).hasRole("MANAGER")
-                .antMatchers(PROCUMENT_MANAGER).hasRole("PROCUMENT_MANAGER")
-                .antMatchers(ACCOUNT_MANAGER).hasRole("ACCOUNT_MANAGER")
-                .antMatchers(HR_MANAGER).hasRole("HR_MANAGER")
-                .antMatchers(CASHIER).hasRole("CASHIER")
+                .antMatchers(MANAGER).hasAnyRole("MANAGER")
+                .antMatchers(PROCUREMENT_MANAGER).hasAnyRole("PROCUREMENT_MANAGER")
+                .antMatchers(ACCOUNT_MANAGER).hasAnyRole("ACCOUNT_MANAGER")
+                .antMatchers(HR_MANAGER).hasAnyRole("HR_MANAGER")
+                .antMatchers(CASHIER).hasAnyRole("CASHIER")
                 .anyRequest()
                 .authenticated())
         // Login form
