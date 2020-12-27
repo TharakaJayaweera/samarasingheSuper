@@ -26,9 +26,7 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
 
 
     public List<GoodReceivedNote> findAll() {
-        return goodReceivedNoteDao.findAll().stream()
-            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
-            .collect(Collectors.toList());
+        return goodReceivedNoteDao.findAll();
     }
 
 
@@ -37,15 +35,10 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
     }
 
     public GoodReceivedNote persist(GoodReceivedNote goodRecevingNote) {
-        if(goodRecevingNote.getId()==null){
-            goodRecevingNote.setLiveDead(LiveDead.ACTIVE);}
         return goodReceivedNoteDao.save(goodRecevingNote);
     }
 
     public boolean delete(Integer id) {
-        GoodReceivedNote goodRecevingNote =  goodReceivedNoteDao.getOne(id);
-        goodRecevingNote.setLiveDead(LiveDead.STOP);
-        goodReceivedNoteDao.save(goodRecevingNote);
         return false;
     }
 

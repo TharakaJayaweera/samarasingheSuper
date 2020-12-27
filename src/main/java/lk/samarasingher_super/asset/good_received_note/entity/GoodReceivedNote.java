@@ -30,9 +30,6 @@ public class GoodReceivedNote extends AuditEntity {
     @Enumerated( EnumType.STRING )
     private GoodReceivedNoteState goodReceivedNoteState;
 
-    @Enumerated(EnumType.STRING)
-    private LiveDead liveDead;
-
     @ManyToOne
     private PurchaseOrder purchaseOrder;
 

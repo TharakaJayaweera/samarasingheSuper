@@ -459,7 +459,7 @@
                       <input type="number" id="aq${id}" class="form-control" value="${invoiceLedger.quantity}" readonly>
                       </th >
                       <th >
-                      <input type="number" id="sp${id}" class="form-control" value="${invoiceLedger.sellPrice}" readonly>
+                      <input type="number" id="sp${id}" class="form-control" name="invoiceLedgers[${id}].sellPrice" value="${invoiceLedger.sellPrice}" readonly>
                       </th >
                       <th >
                       <input type="number" id="rq${id}" class="form-control" onchange="lineTotalCalculateByLine(this)"  onkeyup="lineTotalCalculateByLine(this)" name="invoiceLedgers[${id}].quantity" value="${invoiceLedger.requestCount}">
@@ -545,7 +545,8 @@
     }
 
     $('#discountRatio').bind('change', function () {
-        if ($("#total").val() <= 0 || $("#total").val() === null) {
+        let total = $("#total").val();
+        if (total <= 0 || total === null) {
             swal({
                 title: "Before select discount have to select item  ",
                 icon: "warning",
@@ -556,12 +557,13 @@
 
     function discountRatio() {
         let discountRatio = parseFloat($("#discountRatio").find('option:selected').text());
-        let discountAmount = parseFloat($("#total").val()) * discountRatio / 100;
-        $("#totalAmount").val($("total").val() - discountAmount);
+        let total = parseFloat($("#total").val());
+        let discountAmount = total * discountRatio / 100;
+        $("#totalAmount").val(total - discountAmount);
         $("#discountAmount").val(discountAmount);
     }
 
-    $("#amountTendered").bind('keyup', function () {
+    $("#amountTendered").bind('focusout', function () {
         let tenderedAmount = $(this).val();
         let totalAmount = $("#totalAmount").val();
         if (tenderedAmount < totalAmount) {
@@ -569,6 +571,7 @@
                 title: "Hey why do you try to pay less money",
                 icon: "warning",
             });
+            $("#amountTendered").val(totalAmount);
         } else {
             $("#balance").val(tenderedAmount - totalAmount);
         }
