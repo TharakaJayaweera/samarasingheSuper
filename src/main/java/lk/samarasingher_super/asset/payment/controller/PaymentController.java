@@ -169,4 +169,21 @@ public class PaymentController {
     return "redirect:/payment";
   }
 
+  @GetMapping( "/allPayment" )
+  public String allPayemnt(Model model) {
+    return commonPayment(model, paymentService.findAll());
+  }
+
+  private String commonPayment(Model model, List< Payment > payment) {
+    model.addAttribute("payments", payment);
+    return "payment/allPayment";
+  }
+
+  @GetMapping( "/search" )
+  public String getAllPaymentToPayBetweenTwoDate(@RequestAttribute( "startDate" ) LocalDate startDate,
+                                                 @RequestAttribute( "endDate" ) LocalDate endDate, Model model) {
+    return commonPayment(model,
+                         paymentService.findByCreatedAtIsBetween(dateTimeAgeService.dateTimeToLocalDateStartInDay(startDate), dateTimeAgeService.dateTimeToLocalDateEndInDay(endDate))
+                        );
+  }
 }
