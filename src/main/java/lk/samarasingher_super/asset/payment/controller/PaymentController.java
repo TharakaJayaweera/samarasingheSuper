@@ -170,7 +170,7 @@ public class PaymentController {
   }
 
   @GetMapping( "/allPayment" )
-  public String allPayemnt(Model model) {
+  public String allPayment(Model model) {
     return commonPayment(model, paymentService.findAll());
   }
 
