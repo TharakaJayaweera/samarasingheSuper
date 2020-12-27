@@ -127,6 +127,7 @@ public class SupplierItemController {
         for ( SupplierItem supplierItem : supplierItems ) {
             if ( supplierItem.getId() == null && supplierItem.getPrice() != null ) {
                 supplierItem.setSupplier(supplier);
+
                 supplierItemService.persist(supplierItem);
             } else if ( supplierItem.getPrice() != null ) {
                 supplierItemService.persist(supplierItem);

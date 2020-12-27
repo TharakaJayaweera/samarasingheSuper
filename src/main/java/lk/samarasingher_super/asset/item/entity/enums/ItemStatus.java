@@ -9,7 +9,8 @@ public enum ItemStatus {
 
     AVAILABLE("Available"),
     NOT_AVAILABLE("Not Available"),
-    ORDERED("Ordered"), JUSTENTERED("Just Entered");
+    ORDERED("Ordered"),
+    JUSTENTERED("Just Entered");
 
     private final String itemStatus;
 }
