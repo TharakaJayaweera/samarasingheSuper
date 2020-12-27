@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.purchase_order.service;
 
 
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.purchase_order.dao.PurchaseOrderDao;
@@ -70,5 +71,9 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
     public List< PurchaseOrder > findByPurchaseOrderStatusAndSupplier(PurchaseOrderStatus purchaseOrderStatus,
                                                                       Supplier supplier) {
         return purchaseOrderDao.findByPurchaseOrderStatusAndSupplier(purchaseOrderStatus, supplier);
+    }
+
+    public List< PurchaseOrder> findByCreatedAtIsBetween(LocalDateTime form, LocalDateTime to) {
+    return purchaseOrderDao.findByCreatedAtIsBetween(form, to);
     }
 }
