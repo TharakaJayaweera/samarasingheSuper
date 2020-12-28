@@ -35,10 +35,12 @@ public class GoodReceivedNoteService implements AbstractService<GoodReceivedNote
     }
 
     public GoodReceivedNote persist(GoodReceivedNote goodRecevingNote) {
+
         return goodReceivedNoteDao.save(goodRecevingNote);
     }
 
     public boolean delete(Integer id) {
+
         return false;
     }
 
