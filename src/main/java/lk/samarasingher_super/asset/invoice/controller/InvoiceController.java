@@ -92,7 +92,9 @@ public class InvoiceController {
 
   @GetMapping( "/{id}" )
   public String viewDetails(@PathVariable Integer id, Model model) {
-    model.addAttribute("invoiceDetail", invoiceService.findById(id));
+    Invoice invoice = invoiceService.findById(id);
+    model.addAttribute("invoiceDetail", invoice);
+    model.addAttribute("customerDetail", invoice.getCustomer());
     return "invoice/invoice-detail";
   }
 
