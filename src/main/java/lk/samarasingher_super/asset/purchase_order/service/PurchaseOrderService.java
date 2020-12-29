@@ -40,7 +40,10 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
     public PurchaseOrder persist(PurchaseOrder purchaseOrder) {
         if(purchaseOrder.getId()==null){
             purchaseOrder.setLiveDead(LiveDead.ACTIVE);}
-        return purchaseOrderDao.save(purchaseOrder);
+        PurchaseOrder purchaseOrderDB = purchaseOrderDao.save(purchaseOrder);
+       // purchaseOrderDB
+
+        return purchaseOrderDB;
     }
 
     public boolean delete(Integer id) {
