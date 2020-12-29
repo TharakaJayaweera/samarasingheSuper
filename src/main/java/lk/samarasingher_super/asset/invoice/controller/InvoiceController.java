@@ -114,6 +114,8 @@ public class InvoiceController {
     }
     invoice.setInvoiceValidOrNot(InvoiceValidOrNot.VALID);
     invoiceService.persist(invoice);
+    //todo - if invoice is required needed to send pdf to backend
+
     return "redirect:/invoice/add";
   }
 
