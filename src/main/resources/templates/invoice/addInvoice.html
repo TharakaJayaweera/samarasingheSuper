@@ -371,7 +371,6 @@
         $("#item").select2({
             data: $(this).val()
         }).change(() => {
-            //todo optionElementRemove("#item");
             let finalUrl = $('#ledgerItemURL').val() + $("#item").val();
             $.ajax({
                 type: 'GET',
