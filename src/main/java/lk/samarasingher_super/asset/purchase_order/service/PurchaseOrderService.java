@@ -4,9 +4,6 @@ package lk.samarasingher_super.asset.purchase_order.service;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
-import lk.samarasingher_super.asset.item.dao.ItemDao;
-import lk.samarasingher_super.asset.item.entity.Item;
-import lk.samarasingher_super.asset.item.entity.enums.ItemStatus;
 import lk.samarasingher_super.asset.purchase_order.dao.PurchaseOrderDao;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.purchase_order.entity.enums.PurchaseOrderStatus;
@@ -24,12 +21,10 @@ import java.util.List;
 @CacheConfig( cacheNames = "purchaseOrder" )
 public class PurchaseOrderService implements AbstractService< PurchaseOrder, Integer > {
     private final PurchaseOrderDao purchaseOrderDao;
-    private final ItemDao itemDao;
 
     @Autowired
-    public PurchaseOrderService(PurchaseOrderDao purchaseOrderDao, ItemDao itemDao) {
+    public PurchaseOrderService(PurchaseOrderDao purchaseOrderDao) {
         this.purchaseOrderDao = purchaseOrderDao;
-        this.itemDao = itemDao;
     }
 
     public List< PurchaseOrder > findAll() {
@@ -45,14 +40,7 @@ public class PurchaseOrderService implements AbstractService< PurchaseOrder, Int
     public PurchaseOrder persist(PurchaseOrder purchaseOrder) {
         if(purchaseOrder.getId()==null){
             purchaseOrder.setLiveDead(LiveDead.ACTIVE);}
-        PurchaseOrder purchaseOrderDB = purchaseOrderDao.save(purchaseOrder);
-       purchaseOrderDB.getPurchaseOrderItems().forEach(x ->{
-           Item item = itemDao.getOne(x.getItem().getId());
-           item.setItemStatus(ItemStatus.ORDERED);
-           itemDao.save(item);
-       });
-
-        return purchaseOrderDB;
+        return purchaseOrderDao.save(purchaseOrder);
     }
 
     public boolean delete(Integer id) {

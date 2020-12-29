@@ -117,26 +117,6 @@ public class CommonService {
         return items;
     }
 
-    //common things to employee and offender - start
-    public void commonUrlBuilder(Model model) {
-        model.addAttribute("addStatus", true);
-        // model.addAttribute("designations", Designation.values());
-/*        model.addAttribute("provinces", Province.values());
-        model.addAttribute("districtUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getDistrict", "")
-                .build()
-                .toString());
-        model.addAttribute("stationUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getStation", "")
-                .build()
-                .toString());*/
-        Object[] arg = {"designation", "id"};
-        model.addAttribute("employeeUrl", MvcUriComponentsBuilder
-            .fromMethodName(EmployeeRestController.class, "getEmployeeByWorkingPlace", arg)
-            .build()
-            .toString());
-    }
-
 
 }
 

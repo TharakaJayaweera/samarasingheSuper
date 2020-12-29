@@ -131,9 +131,9 @@ public class SupplierItemController {
         supplierItemOne.setId(supplierItem.getId());
       }
       if ( !supplierItem.getPrice().equals(BigDecimal.ZERO) ) {
-      supplierItemOne.setSupplier(supplierService.findById(supplierItem.getSupplier().getId()));
-      supplierItemOne.setItem(itemService.findById(supplierItem.getItem().getId()));
-      supplierItemOne.setPrice(supplierItem.getPrice());
+        supplierItemOne.setSupplier(supplierService.findById(supplierItem.getSupplier().getId()));
+        supplierItemOne.setItem(itemService.findById(supplierItem.getItem().getId()));
+        supplierItemOne.setPrice(supplierItem.getPrice());
       }
       supplierItemService.persist(supplierItemOne);
     }
@@ -155,24 +155,14 @@ public class SupplierItemController {
     purchaseOrderItemLedger.setRop(supplierItem.getItem().getRop());
     purchaseOrderItemLedger.setPrice(supplierItem.getPrice());
 
-//normal comparator
-//    Comparator<Ledger> ledgerComparator = new Comparator<Ledger>() {
-//            @Override
-//            public int compare(Ledger ledger, Ledger ledger2) {
-//                return ledger.getId().compareTo(ledger2.getId());
-//            }
-//        };
-//Lambda comparator
-    // Comparator<Ledger> ledgerComparator = (ledger, ledger2) -> ledger.getId().compareTo(ledger2.getId());
-
-    //comparing
+    //comparing to learn comparator
     Comparator< Ledger > ledgerComparator = Comparator.comparing(AuditEntity::getId);
     List< Ledger > ledgers =
         ledgerDao.findByItem(supplierItem.getItem())
             .stream()
-            .filter(x -> x.getItem().getItemStatus().equals(supplierItem.getItem().getItemStatus()))
             .sorted(ledgerComparator)
             .collect(Collectors.toList());
+
     if ( ledgers.size() != 0 ) {
       purchaseOrderItemLedger.setAvailableQuantity(ledgers.get(0).getQuantity());
     } else {
