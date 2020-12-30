@@ -118,7 +118,7 @@ public class ReportController {
 
     // invoice count by cashier
     List< NameCount > invoiceByCashierAndTotalAmount = new ArrayList<>();
-
+//name, count, total
     HashSet< String > createdByAll = new HashSet<>();
     invoices.forEach(x -> createdByAll.add(x.getCreatedBy()));
 
