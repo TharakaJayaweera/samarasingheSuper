@@ -10,7 +10,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentService implements AbstractService< Payment, Integer > {
@@ -55,5 +57,9 @@ public class PaymentService implements AbstractService< Payment, Integer > {
 
     public Payment lastPayment() {
         return paymentDao.findFirstByOrderByIdDesc();
+    }
+
+  public List< Payment> findByCreatedAtIsBetween(LocalDateTime from, LocalDateTime to) {
+  return paymentDao.findByCreatedAtIsBetween(from,to);
     }
 }

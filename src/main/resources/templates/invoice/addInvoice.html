@@ -371,7 +371,6 @@
         $("#item").select2({
             data: $(this).val()
         }).change(() => {
-            //todo optionElementRemove("#item");
             let finalUrl = $('#ledgerItemURL').val() + $("#item").val();
             $.ajax({
                 type: 'GET',
@@ -459,7 +458,7 @@
                       <input type="number" id="aq${id}" class="form-control" value="${invoiceLedger.quantity}" readonly>
                       </th >
                       <th >
-                      <input type="number" id="sp${id}" class="form-control" value="${invoiceLedger.sellPrice}"  name="invoiceLedgers[${id}].sellPrice" readonly>
+                      <input type="number" id="sp${id}" class="form-control" name="invoiceLedgers[${id}].sellPrice" value="${invoiceLedger.sellPrice}" readonly>
                       </th >
                       <th >
                       <input type="number" id="rq${id}" class="form-control" onchange="lineTotalCalculateByLine(this)"  onkeyup="lineTotalCalculateByLine(this)" name="invoiceLedgers[${id}].quantity" value="${invoiceLedger.requestCount}">
@@ -545,7 +544,8 @@
     }
 
     $('#discountRatio').bind('change', function () {
-        if ($("#total").val() <= 0 || $("#total").val() === null) {
+        let total = $("#total").val();
+        if (total <= 0 || total === null) {
             swal({
                 title: "Before select discount have to select item  ",
                 icon: "warning",

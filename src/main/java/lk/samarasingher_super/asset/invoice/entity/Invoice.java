@@ -9,7 +9,7 @@ import lk.samarasingher_super.asset.discount_ratio.entity.DiscountRatio;
 import lk.samarasingher_super.asset.invoice.entity.enums.InvoicePrintOrNot;
 import lk.samarasingher_super.asset.invoice.entity.enums.InvoiceValidOrNot;
 import lk.samarasingher_super.asset.invoice.entity.enums.PaymentMethod;
-import lk.samarasingher_super.asset.invoice_item.entity.InvoiceLedger;
+import lk.samarasingher_super.asset.invoice_ledger.entity.InvoiceLedger;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -52,9 +52,7 @@ public class Invoice extends AuditEntity {
 
     @Column(precision = 10, scale = 2)
     private BigDecimal balance;
-
-    @Enumerated(EnumType.STRING)
-    private InvoicePrintOrNot invoicePrintOrNot;
+     private InvoicePrintOrNot invoicePrintOrNot;
 
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;

@@ -7,6 +7,7 @@ import lk.samarasingher_super.asset.supplier.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -18,4 +19,6 @@ public interface PurchaseOrderDao extends JpaRepository< PurchaseOrder, Integer>
 
 
     PurchaseOrder findFirstByOrderByIdDesc();
+
+  List< PurchaseOrder> findByCreatedAtIsBetween(LocalDateTime form, LocalDateTime to);
 }

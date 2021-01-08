@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.ledger.service;
 
 
+import java.util.stream.Collectors;
 import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.ledger.dao.LedgerDao;
@@ -27,7 +28,9 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
 
     public List<Ledger> findAll() {
-        return ledgerDao.findAll();
+        return ledgerDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
 

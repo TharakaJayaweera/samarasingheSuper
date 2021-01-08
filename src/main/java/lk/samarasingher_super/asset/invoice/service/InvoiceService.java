@@ -1,5 +1,6 @@
 package lk.samarasingher_super.asset.invoice.service;
 
+import java.util.stream.Collectors;
 import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.invoice.dao.InvoiceDao;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
@@ -21,7 +22,9 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
 
     public List< Invoice > findAll() {
-        return invoiceDao.findAll();
+        return invoiceDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Invoice findById(Integer id) {

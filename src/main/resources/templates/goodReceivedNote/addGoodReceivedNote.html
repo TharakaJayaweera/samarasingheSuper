@@ -31,26 +31,26 @@
                 <tbody>
                 <tr data-th-each="purchaseOrderItem, index : ${purchaseOrderDetail.purchaseOrderItems}">
                     <td>
-                        <input type="text" class="form-control text-center" data-th-value="${index.count}" readonly>
+                        <input type="text" class="form-control text-center" data-th-value="${index.count}" readonly required>
                     </td>
                     <td>
                         <input type="text" class="form-control" data-th-value="${purchaseOrderItem.item.name}"
-                               readonly>
+                               readonly required>
                         <!--item id-->
                         <input type="text" class="form-control" data-th-name="${'ledgers[__${index.index}__].item.id'}"
                                data-th-value="${purchaseOrderItem.item.id}"
-                               hidden>
+                               hidden required>
                     </td>
                     <td>
                         <input type="text" class="form-control text-center"
                                data-th-value="${purchaseOrderItem.quantity}"
                                data-th-name="${'ledgers[__${index.index}__].quantity'}"
-                               readonly>
+                               readonly required>
                         <!--sell price-->
                         <input type="text" class="form-control"
                                data-th-name="${'ledgers[__${index.index}__].sellPrice'}"
                                data-th-value="${purchaseOrderItem.item.sellPrice}"
-                               hidden>
+                               hidden required>
                     </td>
                     <td>
                         <input type="date" class="form-control " onchange="dateMatch(this)"

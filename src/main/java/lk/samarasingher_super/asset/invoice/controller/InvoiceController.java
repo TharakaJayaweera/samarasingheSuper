@@ -92,7 +92,9 @@ public class InvoiceController {
 
   @GetMapping( "/{id}" )
   public String viewDetails(@PathVariable Integer id, Model model) {
-    model.addAttribute("invoiceDetail", invoiceService.findById(id));
+    Invoice invoice = invoiceService.findById(id);
+    model.addAttribute("invoiceDetail", invoice);
+    model.addAttribute("customerDetail", invoice.getCustomer());
     return "invoice/invoice-detail";
   }
 
@@ -114,6 +116,8 @@ public class InvoiceController {
     }
     invoice.setInvoiceValidOrNot(InvoiceValidOrNot.VALID);
     invoiceService.persist(invoice);
+    //todo - if invoice is required needed to send pdf to backend
+
     return "redirect:/invoice/add";
   }
 

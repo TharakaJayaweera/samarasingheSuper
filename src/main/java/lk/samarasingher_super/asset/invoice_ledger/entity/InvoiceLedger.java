@@ -1,4 +1,4 @@
-package lk.samarasingher_super.asset.invoice_item.entity;
+package lk.samarasingher_super.asset.invoice_ledger.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFilter;
