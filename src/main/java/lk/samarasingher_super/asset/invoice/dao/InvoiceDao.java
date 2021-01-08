@@ -13,4 +13,5 @@ public interface InvoiceDao extends JpaRepository< Invoice, Integer > {
     List< Invoice > findByCreatedAtIsBetween(LocalDateTime form, LocalDateTime to);
 
     Invoice findFirstByOrderByIdDesc();
+
 }
