@@ -82,7 +82,7 @@
                     <select class="form-control" id="item">
                         <option selected value=""> Please Select</option>
                         <option data-th-each="item : ${items}"
-                                data-th-text="${{item.name}"
+                                data-th-text="${item.name}"
                                 data-th-value="${item.id}"
                         > Please Select
                         </option>
@@ -140,7 +140,7 @@
                     <select class="form-control" data-th-name="${'purchaseOrderPriority'}" id="priority" required>
                         <option selected value=""> Please Select</option>
                         <option data-th-each="purchaseOrderPriority : ${purchaseOrderPriorities}"
-                                data-th-text="${{purchaseOrderPriority.purchaseOrderPriority}"
+                                data-th-text="${purchaseOrderPriority.purchaseOrderPriority}"
                                 data-th-value="${purchaseOrderPriority}"> Please Select
                         </option>
                     </select>

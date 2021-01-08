@@ -19,7 +19,7 @@
     <!--Item Name-->
     <div class="col" >
       <p class="h2 text-white font-weight-bold"
-         data-th-text="${{purchaseOrderDetail.supplier.name +' - '+purchaseOrderDetail.code }" ></p >
+         data-th-text="${purchaseOrderDetail.supplier.name +' - '+purchaseOrderDetail.code }" ></p >
     </div >
     <!--Home Button-->
     <div class="col" >
@@ -45,7 +45,7 @@
                 <label class="control-label" for="id" >Code :</label >
               </div >
               <div class="col-md-8" >
-                <p id="id" data-th-text="${{purchaseOrderDetail.code}" class="display_detail" ></p >
+                <p id="id" data-th-text="${purchaseOrderDetail.code}" class="display_detail" ></p >
               </div >
             </div >
             <!--Supplier Name-->
@@ -54,7 +54,7 @@
                 <label class="control-label" for="departmentIdNumber" >Supplier Name :</label >
               </div >
               <div class="col-md-8" >
-                <p id="departmentIdNumber" data-th-text="${{purchaseOrderDetail.supplier.name}"
+                <p id="departmentIdNumber" data-th-text="${purchaseOrderDetail.supplier.name}"
                    class="display_detail" ></p ></div >
             </div >
             <!--Purchase Order Priority-->
@@ -64,7 +64,7 @@
               </div >
               <div class="col-md-8" >
                 <p id="mainCategory"
-                   data-th-text="${{purchaseOrderDetail.purchaseOrderPriority.PurchaseOrderPriority}"
+                   data-th-text="${purchaseOrderDetail.purchaseOrderPriority.PurchaseOrderPriority}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -75,7 +75,7 @@
               </div >
               <div class="col-md-8" >
                 <p id="subCategory"
-                   data-th-text="${{purchaseOrderDetail.purchaseOrderStatus.purchaseOrderStatus}"
+                   data-th-text="${purchaseOrderDetail.purchaseOrderStatus.purchaseOrderStatus}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -85,7 +85,7 @@
                 <label class="control-label" for="name" >Price :</label >
               </div >
               <div class="col-md-8" >
-                <p id="name" data-th-text="${{purchaseOrderDetail.price}"
+                <p id="name" data-th-text="${purchaseOrderDetail.price}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -108,7 +108,7 @@
                 <label class="control-label" for="createdBy" >Created By :</label >
               </div >
               <div class="col-md-8" >
-                <p id="createdBy" data-th-text="${{purchaseOrderDetail.createdBy}"
+                <p id="createdBy" data-th-text="${purchaseOrderDetail.createdBy}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -119,7 +119,7 @@
               </div >
               <div class="col-md-8" >
                 <p id="createdAt"
-                   data-th-text="${{#temporals.format(purchaseOrderDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
+                   data-th-text="${#temporals.format(purchaseOrderDetail.createdAt, 'dd-MM-yyyy HH:mm')}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -129,7 +129,7 @@
                 <label class="control-label" for="updatedBy" >Updated By :</label >
               </div >
               <div class="col-md-8" >
-                <p id="updatedBy" data-th-text="${{purchaseOrderDetail.updatedBy}"
+                <p id="updatedBy" data-th-text="${purchaseOrderDetail.updatedBy}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -140,7 +140,7 @@
               </div >
               <div class="col-md-8" >
                 <p id="updatedAt"
-                   data-th-text="${{#temporals.format(purchaseOrderDetail.updatedAt, 'dd-MM-yyyy HH:mm')}"
+                   data-th-text="${#temporals.format(purchaseOrderDetail.updatedAt, 'dd-MM-yyyy HH:mm')}"
                    class="display_detail" ></p >
               </div >
             </div >
@@ -166,12 +166,12 @@
             </thead >
             <tbody >
             <tr data-th-each="purchaseOrderItem, index : ${purchaseOrderDetail.purchaseOrderItems}" >
-              <td data-th-text="${{index.count}" ></td >
-              <td data-th-text="${{purchaseOrderItem.item.name}" ></td >
-              <td data-th-text="${{purchaseOrderItem.item.rop}" ></td >
-              <td data-th-text="${{purchaseOrderItem.buyingPrice}" ></td >
-              <td data-th-text="${{purchaseOrderItem.quantity}" ></td >
-              <td data-th-text="${{purchaseOrderItem.lineTotal}" ></td >
+              <td data-th-text="${index.count}" ></td >
+              <td data-th-text="${purchaseOrderItem.item.name}" ></td >
+              <td data-th-text="${purchaseOrderItem.item.rop}" ></td >
+              <td data-th-text="${purchaseOrderItem.buyingPrice}" ></td >
+              <td data-th-text="${purchaseOrderItem.quantity}" ></td >
+              <td data-th-text="${purchaseOrderItem.lineTotal}" ></td >
             </tr >
             </tbody >
           </table >
@@ -199,12 +199,12 @@
       </thead >
       <tbody >
       <tr data-th-each="payment, index : ${purchaseOrderDetail.payments}" >
-        <td data-th-text="${{index.count}" ></td >
-        <td data-th-text="${{payment.code}" ></td >
-        <td data-th-text="${{payment.bankName}" ></td >
-        <td data-th-text="${{payment.paymentMethod.paymentMethod}" ></td >
-        <td data-th-text="${{{payment.amount}}" ></td >
-        <td data-th-text="${{payment.remarks}" ></td >
+        <td data-th-text="${index.count}" ></td >
+        <td data-th-text="${payment.code}" ></td >
+        <td data-th-text="${payment.bankName}" ></td >
+        <td data-th-text="${payment.paymentMethod.paymentMethod}" ></td >
+        <td data-th-text="${{payment.amount}}" ></td >
+        <td data-th-text="${payment.remarks}" ></td >
       </tr >
       </tbody >
     </table >

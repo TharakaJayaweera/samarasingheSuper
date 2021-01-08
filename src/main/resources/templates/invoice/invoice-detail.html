@@ -28,12 +28,12 @@
             </thead >
             <tbody >
             <tr data-th-each="invoiceLedger, index : ${invoiceDetail.invoiceLedgers}">
-              <td data-th-text="${{index.count}"></td>
-              <td data-th-text="${{invoiceLedger.ledger.item.name}"></td>
-              <td data-th-text="${{invoiceLedger.ledger.expiredDate}"></td>
-              <td data-th-text="${{invoiceLedger.quantity}"></td>
-              <td data-th-text="${{invoiceLedger.sellPrice}"></td>
-              <td class="lineTotal"  data-th-text="${{invoiceLedger.lineTotal}"></td>
+              <td data-th-text="${index.count}"></td>
+              <td data-th-text="${invoiceLedger.ledger.item.name}"></td>
+              <td data-th-text="${invoiceLedger.ledger.expiredDate}"></td>
+              <td data-th-text="${invoiceLedger.quantity}"></td>
+              <td data-th-text="${invoiceLedger.sellPrice}"></td>
+              <td class="lineTotal"  data-th-text="${invoiceLedger.lineTotal}"></td>
             </tr>
             </tbody >
             <tfoot >
@@ -60,7 +60,7 @@
             <label data-th-for="${paymentMethod}" >Payment Method:</label >
           </div >
           <div class="col-md-8 text-left" >
-            <p data-th-text="${{invoiceDetail.paymentMethod.paymentMethod}"> </p>
+            <p data-th-text="${invoiceDetail.paymentMethod.paymentMethod}"> </p>
           </div >
         </div >
       </div >
@@ -71,7 +71,7 @@
             <label class="control-label" for="discountRatio" >Discount Ratio :</label >
           </div >
           <div class="col-md-8" >
-            <p id="discountRatio" data-th-text="${{invoiceDetail.discountRatio.name}+${' '}+${invoiceDetail.discountRatio.amount}"> </p>
+            <p id="discountRatio" data-th-text="${invoiceDetail.discountRatio.name}+${' '}+${invoiceDetail.discountRatio.amount}"> </p>
           </div >
         </div >
       </div >
@@ -84,7 +84,7 @@
             <label class="control-label" for="totalAmount" >Total Amount :</label >
           </div >
           <div class="col-md-8" >
-            <p id="totalAmount" data-th-text="${{invoiceDetail.totalAmount}"> </p>
+            <p id="totalAmount" data-th-text="${invoiceDetail.totalAmount}"> </p>
           </div >
         </div >
       </div >
@@ -95,7 +95,7 @@
             <label class="control-label" for="discountAmount" >Discount Amount :</label >
           </div >
           <div class="col-md-8" >
-            <p id="discountAmount" data-th-text="${{invoiceDetail.discountAmount}"> </p>
+            <p id="discountAmount" data-th-text="${invoiceDetail.discountAmount}"> </p>
           </div >
         </div >
       </div >
@@ -109,7 +109,7 @@
             <label class="control-label" for="amountTendered" >Amount Tendered :</label >
           </div >
           <div class="col-md-8" >
-            <p id="amountTendered" data-th-text="${{invoiceDetail.amountTendered}"> </p>
+            <p id="amountTendered" data-th-text="${invoiceDetail.amountTendered}"> </p>
           </div >
         </div >
       </div >
@@ -120,7 +120,7 @@
             <label class="control-label" for="balance" >Balance :</label >
           </div >
           <div class="col-md-8" >
-            <p id="balance" data-th-text="${{invoiceDetail.balance}"> </p>
+            <p id="balance" data-th-text="${invoiceDetail.balance}"> </p>
           </div >
         </div >
       </div >
@@ -134,7 +134,7 @@
             <label class="control-label" for="bankName" >Bank Name Tendered :</label >
           </div >
           <div class="col-md-8" >
-            <p id="bankName" data-th-text="${{invoiceDetail.bankName}"> </p>
+            <p id="bankName" data-th-text="${invoiceDetail.bankName}"> </p>
           </div >
         </div >
       </div >
@@ -145,7 +145,7 @@
             <label class="control-label" for="cardNumber" >Card Number :</label >
           </div >
           <div class="col-md-8" >
-            <p id="cardNumber" data-th-text="${{invoiceDetail.cardNumber}"> </p>
+            <p id="cardNumber" data-th-text="${invoiceDetail.cardNumber}"> </p>
           </div >
         </div >
       </div >
@@ -168,7 +168,7 @@
             <label data-th-for="${invoicePrintOrNot}" >Invoice Print or Not:</label >
           </div >
           <div class="col-md-8 text-left" >
-            <p data-th-text="${{invoiceDetail.invoicePrintOrNot.invoicePrintOrNot}"></p>
+            <p data-th-text="${invoiceDetail.invoicePrintOrNot.invoicePrintOrNot}"></p>
           </div >
         </div >
       </div >

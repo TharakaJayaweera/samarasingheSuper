@@ -73,10 +73,10 @@
         </thead >
         <tbody >
         <tr data-th-each="purchaseOrder, rowCount : ${purchaseOrders}" >
-          <th data-th-text="${{rowCount.count}" ></th >
-          <th data-th-text="${{purchaseOrder.supplier.name}" ></th >
-          <th data-th-text="${{purchaseOrder.code}" ></th >
-          <th data-th-text="${{purchaseOrder.price}" ></th >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${purchaseOrder.supplier.name}" ></th >
+          <th data-th-text="${purchaseOrder.code}" ></th >
+          <th data-th-text="${purchaseOrder.price}" ></th >
           <th  data-th-if="${addState}" >
             <a id="edit" data-th-href="${'/payment/' + purchaseOrder.id}"
                class="btn btn-primary btn-sm mr-2 p-2" >Pay

@@ -15,7 +15,7 @@
     <div class="col " >
       <h4 class="text-info text-center" >
         <strong >
-          Report <br > <span data-th-text="${{message}" ></span >
+          Report <br > <span data-th-text="${message}" ></span >
         </strong >
       </h4 >
     </div >
@@ -64,24 +64,24 @@
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Invoice Count <span data-th-text="${{invoiceTotalCount}" ></span >
-        Total Amount <span data-th-text="${{invoiceCardAmount+invoiceCashAmount}" ></span >
+        Invoice Count <span data-th-text="${invoiceTotalCount}" ></span >
+        Total Amount <span data-th-text="${invoiceCardAmount+invoiceCashAmount}" ></span >
       </p >
     </div >
   </div >
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Invoice Card Payment Count <span data-th-text="${{invoiceCardCount}" ></span >
-        Invoice Card Amount (Rs). <span data-th-text="${{invoiceCardAmount}" ></span >
+        Invoice Card Payment Count <span data-th-text="${invoiceCardCount}" ></span >
+        Invoice Card Amount (Rs). <span data-th-text="${invoiceCardAmount}" ></span >
       </p >
     </div >
   </div >
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Invoice Cash Payment Count <span data-th-text="${{invoiceCashCount}" ></span >
-        Invoice Cash Amount (Rs). <span data-th-text="${{invoiceCashAmount}" ></span >
+        Invoice Cash Payment Count <span data-th-text="${invoiceCashCount}" ></span >
+        Invoice Cash Amount (Rs). <span data-th-text="${invoiceCashAmount}" ></span >
       </p >
     </div >
   </div >
@@ -94,24 +94,24 @@
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Payment Count <span data-th-text="${{paymentTotalCount}" ></span >
-        Total Amount <span data-th-text="${{paymentCardAmount+paymentCardAmount}" ></span >
+        Payment Count <span data-th-text="${paymentTotalCount}" ></span >
+        Total Amount <span data-th-text="${paymentCardAmount+paymentCardAmount}" ></span >
       </p >
     </div >
   </div >
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Payment Card Payment Count <span data-th-text="${{paymentCardCount}" ></span >
-        Payment Card Amount (Rs). <span data-th-text="${{paymentCardAmount}" ></span >
+        Payment Card Payment Count <span data-th-text="${paymentCardCount}" ></span >
+        Payment Card Amount (Rs). <span data-th-text="${paymentCardAmount}" ></span >
       </p >
     </div >
   </div >
   <div class="offset-2 col-8 col-sm-8 col-md-8" >
     <div class="container-fluid" >
       <p >
-        Payment Cash Payment Count <span data-th-text="${{paymentCashCount}" ></span >
-        Payment Cash Amount (Rs). <span data-th-text="${{paymentCardAmount}" ></span >
+        Payment Cash Payment Count <span data-th-text="${paymentCashCount}" ></span >
+        Payment Cash Amount (Rs). <span data-th-text="${paymentCardAmount}" ></span >
       </p >
     </div >
   </div >
@@ -134,10 +134,10 @@
         </thead >
         <tbody >
         <tr data-th-each="invoice, rowCount : ${invoiceByCashierAndTotalAmount}" >
-          <th data-th-text="${{rowCount.count}" ></th >
-          <th data-th-text="${{invoice.name}" ></th >
-          <th data-th-text="${{invoice.count}" ></th >
-          <th data-th-text="${{invoice.total}" ></th >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${invoice.name}" ></th >
+          <th data-th-text="${invoice.count}" ></th >
+          <th data-th-text="${invoice.total}" ></th >
         </tr >
         </tbody >
       </table >
@@ -161,9 +161,9 @@
         </thead >
         <tbody >
         <tr data-th-each="invoiceCashier, rowCount : ${invoiceByCashierAndTotalAmount}" >
-          <th data-th-text="${{rowCount.count}" ></th >
-          <th data-th-text="${{invoiceCashier.name}" ></th >
-          <th data-th-text="${{invoiceCashier.count}" ></th >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${invoiceCashier.name}" ></th >
+          <th data-th-text="${invoiceCashier.count}" ></th >
         </tr >
         </tbody >
       </table >
@@ -187,9 +187,9 @@
         </thead >
         <tbody >
         <tr data-th-each="itemNameAndCount, rowCount : ${itemNameAndItemCount}" >
-          <th data-th-text="${{rowCount.count}" ></th >
-          <th data-th-text="${{itemNameAndCount.name}" ></th >
-          <th data-th-text="${{itemNameAndCount.count}" ></th >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${itemNameAndCount.name}" ></th >
+          <th data-th-text="${itemNameAndCount.count}" ></th >
         </tr >
         </tbody >
       </table >
