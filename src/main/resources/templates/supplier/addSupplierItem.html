@@ -83,7 +83,7 @@
             <option value="" selected > Please Select</option >
             <option data-th-each="item : ${items}"
                     data-th-value="${item.id}"
-                    data-th-text="$item.name}" > Please Select
+                    data-th-text="${item.name}" > Please Select
             </option >
           </select >
         </div >
@@ -105,11 +105,11 @@
             <tbody >
             <tr data-th-each="supplierItem, index : ${supplierDetail.supplierItems}" data-th-if="${supplierItemEdit}" >
               <td >
-                <strong > <span data-th-text="$index.count}" ></span ></strong >
+                <strong > <span data-th-text="${index.count}" ></span ></strong >
               </td >
               <td >
                 <strong >
-                  <span class="control-label" data-th-text="$supplierItem.item.name}" ></span >
+                  <span class="control-label" data-th-text="${supplierItem.item.name}" ></span >
                 </strong >
                 <input type="hidden" data-th-value="${supplierItem.item.id}"
                         data-th-name="${'supplierItems[__${index.index}__].item.id'}" >
@@ -138,7 +138,7 @@
                            th:checked="${itemSupplierStatuses==supplierItem.itemSupplierStatus}" />
                     <label class="custom-control-label"
                            th:for="${index.index}+${itemSupplierStatuses}"
-                           data-th-text="$itemSupplierStatuses.itemSupplierStatus}" > radio
+                           data-th-text="${itemSupplierStatuses.itemSupplierStatus}" > radio
                     </label >
                   </div >
                 </div >
@@ -165,10 +165,10 @@
             </thead >
             <tbody >
             <tr data-th-each="currentlyBuyingItem, index : ${currentlyBuyingItems}" >
-              <td data-th-text="$index.count}" ></td >
-              <td data-th-text="$currentlyBuyingItem.item.name}" ></td >
-              <td data-th-text="$currentlyBuyingItem.price}" ></td >
-              <td data-th-text="$currentlyBuyingItem.itemSupplierStatus.itemSupplierStatus}" ></td >
+              <td data-th-text="${index.count}" ></td >
+              <td data-th-text="${currentlyBuyingItem.item.name}" ></td >
+              <td data-th-text="${currentlyBuyingItem.price}" ></td >
+              <td data-th-text="${currentlyBuyingItem.itemSupplierStatus.itemSupplierStatus}" ></td >
             </tr >
             </tbody >
           </table >

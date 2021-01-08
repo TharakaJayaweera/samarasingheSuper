@@ -79,7 +79,7 @@
             <select id="item" class="form-control" tabindex="9" >
               <option value="" >Please select</option >
               <option data-th-each="ledger : ${ledgers}"
-                      data-th-text="${'Item Name: '+ledger.item.name+'  Sell Price : '+ledger.item.sellPrice+'  Available quantity : '+ledger.quantity+'  Expired Date : '+ledger.expiredDate}"
+                      data-th-text="${{'Item Name: '+ledger.item.name+'  Sell Price : '+ledger.item.sellPrice+'  Available quantity : '+ledger.quantity+'  Expired Date : '+ledger.expiredDate}"
                       data-th-value="${ledger.id}" >
                 Please select
               </option >
@@ -141,7 +141,7 @@
                   />
                   <label class="custom-control-label"
                          data-th-for="${index.index}+${paymentMethod}"
-                         data-th-text="${paymentMethod.paymentMethod}" > radio
+                         data-th-text="${{paymentMethod.paymentMethod}" > radio
                   </label >
                 </div >
               </div >
@@ -159,7 +159,7 @@
                         required >
                   <option value="" >Please select</option >
                   <option data-th-each="discountRatio : ${discountRatios}"
-                          data-th-text="${discountRatio.amount}"
+                          data-th-text="${{discountRatio.amount}"
                           data-th-value="${discountRatio.id}" >
                     Please select
                   </option >
@@ -281,7 +281,7 @@
                     required >
               <option value="" >Please select</option >
               <option data-th-each="customer : ${customers}"
-                      data-th-text="${customer.name+'  '+customer.mobile}"
+                      data-th-text="${{customer.name+'  '+customer.mobile}"
                       data-th-value="${customer.id}" >
                 Please select
               </option >
@@ -309,7 +309,7 @@
                   />
                   <label class="custom-control-label"
                          data-th-for="${index.index}+${invoicePrintOrNot}"
-                         data-th-text="${invoicePrintOrNot.invoicePrintOrNot}" > radio
+                         data-th-text="${{invoicePrintOrNot.invoicePrintOrNot}" > radio
                   </label >
                 </div >
               </div >
@@ -339,7 +339,7 @@
           <!--Save Button-->
           <button class="btn btn-success ml-5" tabindex="12" type="submit" >
             <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
-                data-th-text="${'Save'}"
+                data-th-text="${{'Save'}"
                 id="submit" ></span >
           </button >
           <!--Cancel Button-->

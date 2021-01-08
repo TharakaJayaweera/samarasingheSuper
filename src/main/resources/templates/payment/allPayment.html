@@ -71,11 +71,11 @@
         </thead >
         <tbody >
         <tr data-th-each="payment, rowCount : ${payments}" >
-          <th data-th-text="${rowCount.count}" ></th >
-          <th data-th-text="${payment.purchaseOrder.code}" ></th >
-          <th data-th-text="${payment.code}" ></th >
-          <th data-th-text="${payment.paymentMethod.paymentMethod}" ></th >
-          <th data-th-text="${payment.amount}" ></th >
+          <th data-th-text="${{rowCount.count}" ></th >
+          <th data-th-text="${{payment.purchaseOrder.code}" ></th >
+          <th data-th-text="${{payment.code}" ></th >
+          <th data-th-text="${{payment.paymentMethod.paymentMethod}" ></th >
+          <th data-th-text="${{payment.amount}" ></th >
           <th >
             <a id="edit" data-th-href="${'/purchaseOrder/' + purchaseOrder.id}"
                class="btn btn-primary btn-sm mr-2 p-2" >View Detail

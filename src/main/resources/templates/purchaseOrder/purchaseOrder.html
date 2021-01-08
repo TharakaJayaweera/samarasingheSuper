@@ -55,12 +55,12 @@
                 </thead>
                 <tbody>
                     <tr data-th-each="purchaseOrder, rowCount : ${purchaseOrders}">
-                        <th data-th-text="${rowCount.count}"></th>
-                        <th data-th-text="${purchaseOrder.code}"></th>
-                        <th data-th-text="${purchaseOrder.supplier.name}"></th>
-                        <th data-th-text="${purchaseOrder.purchaseOrderPriority.purchaseOrderPriority}"></th>
-                        <th data-th-text="${purchaseOrder.price}"></th>
-                        <th data-th-text="${{purchaseOrder.createdAt}}"></th>
+                        <th data-th-text="${{rowCount.count}"></th>
+                        <th data-th-text="${{purchaseOrder.code}"></th>
+                        <th data-th-text="${{purchaseOrder.supplier.name}"></th>
+                        <th data-th-text="${{purchaseOrder.purchaseOrderPriority.purchaseOrderPriority}"></th>
+                        <th data-th-text="${{purchaseOrder.price}"></th>
+                        <th data-th-text="${{{purchaseOrder.createdAt}}"></th>
                         <th >
                             <a data-th-href="${'/purchaseOrder/' + purchaseOrder.id}" class="btn btn-primary btn-sm"><i
                                     class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>

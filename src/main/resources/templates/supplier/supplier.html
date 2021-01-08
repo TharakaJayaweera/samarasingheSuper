@@ -58,12 +58,12 @@
                     </thead>
                     <tbody>
                     <tr data-th-each="supplier, rowCount : ${suppliers}">
-                        <th data-th-text="${rowCount.count}"></th>
-                        <th data-th-text="${supplier.code}"></th>
-                        <th data-th-text="${supplier.name}"></th>
-                        <th data-th-text="${supplier.contactOne}"></th>
-                        <th data-th-text="${supplier.email}"></th>
-                        <th data-th-text="${supplier.address}"></th>
+                        <th data-th-text="${{rowCount.count}"></th>
+                        <th data-th-text="${{supplier.code}"></th>
+                        <th data-th-text="${{supplier.name}"></th>
+                        <th data-th-text="${{supplier.contactOne}"></th>
+                        <th data-th-text="${{supplier.email}"></th>
+                        <th data-th-text="${{supplier.address}"></th>
                         <th  data-th-if="${supplierDetailShow !=true}">
                             <a class="btn btn-primary btn-sm" data-th-href="${'/supplierItem/edit/' + supplier.id}"><i
                                   class="fa fa-folder-open" style="font-size: 15px"></i>Edit Item </a>

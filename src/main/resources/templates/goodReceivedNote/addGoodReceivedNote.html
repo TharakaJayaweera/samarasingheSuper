@@ -10,7 +10,7 @@
 <nav data-th-replace="~{fragments/navBar :: navBarFragment}"></nav>
 <a aria-controls="hrefCollapse" aria-expanded="false" class="btn btn-primary col-12" data-toggle="collapse"
    href="#hrefCollapse">Show Purchase Order Detail's - Purchase Order Code :
-    <span data-th-text="${purchaseOrderDetail.code}"></span></a>
+    <span data-th-text="${{purchaseOrderDetail.code}"></span></a>
 <div class="collapse" id="hrefCollapse">
     <!--purchase order details-->
     <section data-th-replace="~{purchaseOrder/purchaseOrder-detail :: purchaseOrderDetailsFragment}"></section>

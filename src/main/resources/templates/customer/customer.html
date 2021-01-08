@@ -50,11 +50,11 @@
                 </thead>
                 <tbody>
                 <tr data-th-each="customer, rowCount : ${customers}">
-                    <th data-th-text="$rowCount.count}"></th>
-                    <th data-th-text="$customer.title}+${'. '}+${customer.name}"></th>
-                    <th data-th-text="$customer.code}"></th>
-                    <th data-th-text="$customer.mobile}"></th>
-                    <th data-th-text="$customer.address}"></th>
+                    <th data-th-text="${rowCount.count}"></th>
+                    <th data-th-text="${customer.title}+${'. '}+${customer.name}"></th>
+                    <th data-th-text="${customer.code}"></th>
+                    <th data-th-text="${customer.mobile}"></th>
+                    <th data-th-text="${customer.address}"></th>
                     <th>
                         <a id="customerView" data-th-href="${'/customer/' + customer.id}" class="btn btn-primary btn-sm"><i
                                 class="fa fa-folder-open" style="font-size: 15px"></i>&nbsp;View</a>

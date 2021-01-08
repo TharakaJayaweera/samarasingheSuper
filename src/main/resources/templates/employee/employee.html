@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                 <tr data-th-each="employee, rowCount : ${employees}">
-                    <th data-th-text="$rowCount.count}"></th>
+                    <th data-th-text="${rowCount.count}"></th>
                     <th>
                         <div class="image"  data-th-if="${employee.fileInfo !=null}" >
                             <img id="img" class="rounded"
@@ -59,11 +59,11 @@
                                  data-th-src="${employee.fileInfo.url}" />
                         </div >
                     </th>
-                    <th data-th-text="$employee.code}"></th>
-                    <th data-th-text="$employee.callingName}"></th>
-                    <th data-th-text="$employee.mobileOne}"></th>
-                    <th data-th-text="$employee.designation.designation}"></th>
-                    <th data-th-text="$employee.employeeStatus.employeeStatus}"></th>
+                    <th data-th-text="${employee.code}"></th>
+                    <th data-th-text="${employee.callingName}"></th>
+                    <th data-th-text="${employee.mobileOne}"></th>
+                    <th data-th-text="${employee.designation.designation}"></th>
+                    <th data-th-text="${employee.employeeStatus.employeeStatus}"></th>
                     <th>
                         <a id="employeeView" data-th-href="${'/employee/' + employee.id}" class="btn btn-outline-secondary btn-sm">&nbsp;View</a>
                         <a id="employeeEdit" data-th-href="${'/employee/edit/' + employee.id}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Edit</a>

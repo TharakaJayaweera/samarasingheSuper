@@ -29,7 +29,7 @@
     <button type="button" class="btn btn-info mb-5 btn-block text-capitalize" data-toggle="collapse"
             data-target="#dataTargetCollapse"
             aria-expanded="false" aria-controls="dataTargetCollapse"
-            data-th-text="${purchaseOrderNeedToPay.supplier.name +' need to pay purchase order list'}" ></button >
+            data-th-text="${{purchaseOrderNeedToPay.supplier.name +' need to pay purchase order list'}" ></button >
     <div class="collapse mx-auto" id="dataTargetCollapse" >
       <div class="container-fluid"  data-th-if="${not #lists.isEmpty(purchaseOrders)}" >
         <div class="table-responsive" >
@@ -47,13 +47,13 @@
             </thead >
             <tbody >
             <tr data-th-each="purchaseOrder, rowCount : ${purchaseOrders}" >
-              <th data-th-text="${rowCount.count}" ></th >
-              <th data-th-text="${purchaseOrder.code}" ></th >
-              <th data-th-text="${purchaseOrder.price}" ></th >
-              <th data-th-text="${purchaseOrder.paidAmount}" ></th >
-              <th data-th-text="${purchaseOrder.needToPaid}" ></th >
-              <th data-th-text="${{purchaseOrder.createdAt}}" ></th >
-              <th data-th-text="${{purchaseOrder.grnAt}}" ></th >
+              <th data-th-text="${{rowCount.count}" ></th >
+              <th data-th-text="${{purchaseOrder.code}" ></th >
+              <th data-th-text="${{purchaseOrder.price}" ></th >
+              <th data-th-text="${{purchaseOrder.paidAmount}" ></th >
+              <th data-th-text="${{purchaseOrder.needToPaid}" ></th >
+              <th data-th-text="${{{purchaseOrder.createdAt}}" ></th >
+              <th data-th-text="${{{purchaseOrder.grnAt}}" ></th >
             </tr >
             </tbody >
           </table >
@@ -78,13 +78,13 @@
         </thead >
         <tbody >
         <tr data-th-each="payment ,rowCount : ${purchaseOrderNeedToPay.payments}" >
-          <th data-th-text="${rowCount.count}" ></th >
-          <th data-th-text="${payment.code}" ></th >
-          <th data-th-text="${payment.amount}" ></th >
-          <th data-th-text="${payment.bankName}" ></th >
-          <th data-th-text="${payment.paymentMethod.paymentMethod}" ></th >
-          <th data-th-text="${payment.amount}" ></th >
-          <th data-th-text="${{payment.createdAt}}" ></th >
+          <th data-th-text="${{rowCount.count}" ></th >
+          <th data-th-text="${{payment.code}" ></th >
+          <th data-th-text="${{payment.amount}" ></th >
+          <th data-th-text="${{payment.bankName}" ></th >
+          <th data-th-text="${{payment.paymentMethod.paymentMethod}" ></th >
+          <th data-th-text="${{payment.amount}" ></th >
+          <th data-th-text="${{{payment.createdAt}}" ></th >
         </tr >
         </tbody >
       </table >
@@ -111,7 +111,7 @@
                      data-th-checked="${genders==gender}" />
               <label class="custom-control-label"
                      data-th-for="${index.index}+${paymentMethod}"
-                     data-th-text="${paymentMethod.paymentMethod}" > radio
+                     data-th-text="${{paymentMethod.paymentMethod}" > radio
               </label >
             </div >
           </div >
@@ -201,7 +201,7 @@
         <!--Save Button-->
         <button class="btn btn-success ml-5" tabindex="12" type="submit" >
           <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp;&nbsp;<span
-              data-th-text="${'Save'}"
+              data-th-text="${{'Save'}"
               id="submit" ></span >
         </button >
         <!--Cancel Button-->

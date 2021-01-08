@@ -20,7 +20,7 @@
         <div class="col">
             <h2 class="text-light text-center">
                 <strong>
-                    <p data-th-text="$categoryDetail.name}"></p>
+                    <p data-th-text="${categoryDetail.name}"></p>
                 </strong>
             </h2>
         </div>
@@ -43,7 +43,7 @@
                         <label class="control-label" for="id">ID :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="id" data-th-text="$categoryDetail.id}" class="display_detail"></p>
+                        <p id="id" data-th-text="${categoryDetail.id}" class="display_detail"></p>
                     </div>
                 </div>
                 <!--Main Category-->
@@ -52,7 +52,7 @@
                         <label class="control-label" for="mainCategory">Main Category :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="mainCategory" data-th-text="$categoryDetail.mainCategory.mainCategory}"
+                        <p id="mainCategory" data-th-text="${categoryDetail.mainCategory.mainCategory}"
                            class="display_detail"></p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         <label class="control-label" for="name">Name :</label>
                     </div>
                     <div class="col-md-4">
-                        <p id="name" data-th-text="$categoryDetail.name}"
+                        <p id="name" data-th-text="${categoryDetail.name}"
                            class="display_detail"></p>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
         <div class="col">
             <h4 class="text-light text-center">
                 <strong>
-                    <span id="formHeader" data-th-text="$addStatus==true?'New User':'Update User'}"></span>
+                    <span id="formHeader" data-th-text="${addStatus==true?'New User':'Update User'}"></span>
                 </strong>
             </h4>
         </div>
@@ -86,7 +86,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <strong><span id="employeeNotFound" data-th-text="$employeeNotFound}"></span></strong>
+    <strong><span id="employeeNotFound" data-th-text="${employeeNotFound}"></span></strong>
     <script>
         $(".alert").alert();
     </script>
@@ -116,7 +116,7 @@
                         <select class="form-control" data-th-field="*{employee}" data-th-each="e : ${employee}" name="employee"
                                 id="employee" required>
                             <option id="employeeList"
-                                    data-th-text="$e.title.title} + ${' '} + ${e.name} +${' - '} + ${e.nic}"
+                                    data-th-text="${e.title.title} + ${' '} + ${e.name} +${' - '} + ${e.nic}"
                                     data-th-value="${e.id}"
                                     data-th-field="*{employee}" value="">Please select
                             </option>
@@ -124,7 +124,7 @@
                         <div id="employeeNameBox" data-th-if="${addStatus==false}">
                             <strong>
                                 <span id="employeeName"
-                                      data-th-text="$user.employee.title.title} + ${' '} + ${user.employee.name} +${' - '} + ${user.employee.nic}"></span>
+                                      data-th-text="${user.employee.title.title} + ${' '} + ${user.employee.name} +${' - '} + ${user.employee.nic}"></span>
                                 <input type="hidden" id="employeeSelected" data-th-field="*{employee}">
                             </strong>
                         </div>
@@ -158,7 +158,7 @@
                     <label class="control-label" for="roles">Roles :</label>
                     <select id="roles" data-th-field="*{roles}" class="form-control" size="6" multiple required>
                         <option id="roleList" data-th-each="role, rowCount : ${roleList}"
-                                data-th-text="$rowCount.count} +${'. '}+${role.roleName}"
+                                data-th-text="${rowCount.count} +${'. '}+${role.roleName}"
                                 data-th-value="${role.id}"
                                 data-th-field="*{roles}" value=""></option>
                     </select>
@@ -169,7 +169,7 @@
             <div class="form-group col-md-12 col-sm-12 text-center flex-column">
                 <button class="btn btn-success" type="submit">
                     <i class="fa fa-save" style="font-size: 20px"></i>&nbsp; &nbsp;<span
-                        id="submit" data-th-text="$addStatus==true?'Save': 'Update'}">                        </span>
+                        id="submit" data-th-text="${addStatus==true?'Save': 'Update'}">                        </span>
                 </button>
             </div>
         </div>
@@ -177,7 +177,7 @@
         <div class="form-row">
             <label id="errorLabel" data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '">Errors: </label>
             <ul>
-                <li id="errorDisplay" class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="$err}"></li>
+                <li id="errorDisplay" class="error" data-th-each="err: ${#fields.errors('*')}" data-th-text="${err}"></li>
             </ul>
         </div>
     </form>

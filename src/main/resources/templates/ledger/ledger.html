@@ -19,7 +19,7 @@
     <div class="col" >
       <h2 class="text-white text-center" >
         <strong >
-          <span data-th-text="${title}" ></span >
+          <span data-th-text="${{title}" ></span >
         </strong >
       </h2 >
     </div >
@@ -78,13 +78,13 @@
         </thead >
         <tbody >
         <tr data-th-each="ledger, rowCount : ${ledgers}" >
-          <th data-th-text="$rowCount.count}" ></th >
-          <th data-th-text="$ledger.item.name}" ></th >
-          <th data-th-text="$ledger.item.rop}" ></th >
-          <th data-th-text="$ledger.quantity}" ></th >
-          <th data-th-text="$ledger.sellPrice}" ></th >
-          <th data-th-text="$ledger.manufactureDate}" ></th >
-          <th data-th-text="$ledger.expiredDate}" ></th >
+          <th data-th-text="${rowCount.count}" ></th >
+          <th data-th-text="${ledger.item.name}" ></th >
+          <th data-th-text="${ledger.item.rop}" ></th >
+          <th data-th-text="${ledger.quantity}" ></th >
+          <th data-th-text="${ledger.sellPrice}" ></th >
+          <th data-th-text="${ledger.manufactureDate}" ></th >
+          <th data-th-text="${ledger.expiredDate}" ></th >
           <th >
             <a data-th-href="${'/purchaseOrder/supplier/' + ledger.goodReceivedNote.purchaseOrder.supplier.id}"
                class="btn btn-primary btn-sm" ><i

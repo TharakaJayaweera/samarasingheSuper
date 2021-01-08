@@ -25,7 +25,7 @@
     <div class="col" >
       <h4 class="text-info text-center" >
         <strong >
-          <span data-th-text="${addStatus==true?'New Employee':'Update Employee Details'}" ></span >
+          <span data-th-text="${{addStatus==true?'New Employee':'Update Employee Details'}" ></span >
         </strong >
       </h4 >
     </div >
@@ -71,7 +71,7 @@
               <select id="title" data-th-field="*{title}" class="form-control" tabindex="3" required >
                 <option value="" >Please select</option >
                 <option data-th-each="titles : ${title}"
-                        data-th-text="${titles.title}"
+                        data-th-text="${{titles.title}"
                         data-th-value="${titles}"
                         data-th-selected="${titles==employee.title?'selected':'unselected'}" ></option >
               </select >
@@ -128,7 +128,7 @@
                        data-th-checked="${genders==gender}"/>
                 <label class="custom-control-label"
                        data-th-for="${index.index}+${genders}"
-                       data-th-text="${genders.gender}"> radio
+                       data-th-text="${{genders.gender}"> radio
                 </label>
               </div>
             </div >
@@ -155,7 +155,7 @@
                   <select id="bloodGroup" data-th-field="*{bloodGroup}" class="form-control" tabindex="9" required>
                       <option value="">Please select</option>
                       <option data-th-each="bloodGroups : ${bloodGroup}"
-                              data-th-text="${bloodGroups.bloodGroup}"
+                              data-th-text="${{bloodGroups.bloodGroup}"
                               data-th-value="${bloodGroups}"
                               data-th-selected="${bloodGroups==employee.bloodGroup?'selected':'unselected'}">Please select</option>
                   </select>
@@ -171,7 +171,7 @@
                       required >
                 <option value="" >Please select</option >
                 <option data-th-each="designations : ${designation}"
-                        data-th-text="${designations.designation}"
+                        data-th-text="${{designations.designation}"
                         data-th-value="${designations}"
                         data-th-selected="${designations==employee.designation?'selected':'unselected'}" ></option >
               </select >
@@ -190,7 +190,7 @@
                       required >
                 <option value="" >Please select</option >
                 <option data-th-each="civilStatu : ${civilStatus}"
-                        data-th-text="${civilStatu.CivilStatus}"
+                        data-th-text="${{civilStatu.CivilStatus}"
                         data-th-value="${civilStatu}"
                         data-th-selected="${civilStatu==employee.civilStatus?'selected':'unselected'}" ></option >
               </select >
@@ -297,7 +297,7 @@
                       required >
                 <option value="" >Please select</option >
                 <option data-th-each="employeeStatuss : ${employeeStatus}"
-                        data-th-text="${employeeStatuss.employeeStatus}"
+                        data-th-text="${{employeeStatuss.employeeStatus}"
                         data-th-value="${employeeStatuss}"
                         data-th-selected="${employeeStatuss==employee.employeeStatus?'selected':'unselected'}" ></option >
               </select >
@@ -338,7 +338,7 @@
                 <label class="control-label" for="createdAt" >Created At :</label >
               </div >
               <div class="col-md-8" >
-                <input id="createdAt" data-th-text="${{createdAt}}" class="form-control" type="text"
+                <input id="createdAt" data-th-text="${{{createdAt}}" class="form-control" type="text"
                        readonly />
               </div >
             </div >
@@ -349,7 +349,7 @@
           <div class="form-group col-md-12 col-sm-12 text-center flex-column " >
             <button class="btn btn-success" type="submit" tabindex="21" >
               <i class="fa fa-save " style="font-size: 20px" ></i >&nbsp; &nbsp;<span id="submit"
-                                                                                      data-th-text="${addStatus==true?'Save': 'Update'}" ></span >
+                                                                                      data-th-text="${{addStatus==true?'Save': 'Update'}" ></span >
             </button >
             <button class="btn btn-danger" type="reset" >
               <i class="fa fa-redo" ></i > <span id="reset" >Reset</span >
@@ -359,7 +359,7 @@
         <div class="form-row" >
           <label id="errorLabel"  data-th-if="${#fields.hasErrors('*')}" data-th-text="'Errors: '" >Errors: </label >
           <ul >
-            <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${err}" class="error" ></li >
+            <li id="error" data-th-each="err : ${#fields.errors('*')}" data-th-text="${{err}" class="error" ></li >
           </ul >
         </div >
       </div >

@@ -38,8 +38,8 @@
                 </thead>
                 <tbody>
                 <tr data-th-each="role, rowCount : ${roles}">
-                    <th data-th-text="$rowCount.count}"></th>
-                    <th data-th-text="$role.roleName}"></th>
+                    <th data-th-text="${rowCount.count}"></th>
+                    <th data-th-text="${role.roleName}"></th>
                     <th data-th-if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                         <a id="edit" data-th-href="${'/role/edit/' + role.id}" class="btn btn-primary btn-sm mr-2 p-2">Edit
                         </a>
