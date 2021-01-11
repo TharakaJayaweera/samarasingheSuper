@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
 <head>
     <title></title>
 </head>
@@ -7,7 +7,7 @@
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-dark " style="background-color: rgba(85,14,204,0.49);height:60px;"
-     th:fragment="navBarFragment">
+     data-th-fragment="navBarFragment">
     <a class="navbar-brand" href="#">
 
         <img data-th-src="${'../img/logo.png'}" style="width:50px;height:50px;" id="logo" class="animated-spin">
@@ -20,7 +20,7 @@
 </nav>
 
 <nav class="navbar navbar-expand-sm navbar-dark " style="background-color:rgba(27,5,75,0.91);"
-     th:fragment="navBarFragment">
+     data-th-fragment="navBarFragment">
     <a class="navbar-brand" href="#"><i class="fa fa-home" style="font-size: 18px"></i></a>
 
 
@@ -43,7 +43,6 @@
                     <a data-th-href="@{'/goodReceivedNote'}" class="nav-link"> GRN Management </a>
                     <a data-th-href="@{'/payment'}" class="nav-link"> Payment Management </a>
                     <a data-th-href="@{'/invoice'}" class="nav-link"> Invoice Management </a>
-                    <a data-th-href="@{'/ledger'}" class="nav-link"> Ledger Management </a>
                     <a data-th-href="@{'/discout'}" class="nav-link"> Discount Management </a>
                     <a data-th-href="@{'/customer'}" class="nav-link"> Customer Management </a>
 
@@ -73,12 +72,12 @@
                    aria-expanded="false"> <i class="fa fa-book-open"></i> Report</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
                     <a data-th-href="@{'/report/manager'}" class="nav-link"> Manager Report</a>
-                    <a class="dropdown-itemBatch" href="#">Action 2</a>
+                    <a data-th-href="@{'/ledger'}" class="nav-link"> All Items</a>
                 </div>
             </li>
         </ul>
     </div>
-    <!--login /logout /profil /password-change link according to sec confi-->
+    <!--login /logout /profile /password-change link according to sec confi-->
     <div>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-end">
             <li class="nav-item dropdown" data-sec-authorize="isAuthenticated()">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header :: headerFragment}">
+<html lang="en" >
+<head data-th-replace="~{fragments/header :: headerFragment}">
     <meta charset="UTF-8">
     <title>Thymeleaf Springboot </title>
 
@@ -18,12 +18,12 @@
 
     <h2 style="font-size:24px;">Samarasinghe Super</h2> <br/> <br/>
 
-    <form th:action="${'/login'}" method="post">
+    <form  data-th-action="${'/login'}" method="post">
         <p> User Name :</p>
-        <input type="text" id="username" th:name="${'username'}" placeholder="Enter User Name" required/>
+        <input type="text" id="username"  data-th-name="${'username'}" placeholder="Enter User Name" required/>
 
         <p>Password :</p>
-        <input type="password" id="inputPassword" th:name="${'password'}" placeholder="Enter Password" required>
+        <input type="password" id="inputPassword"  data-th-name="${'password'}" placeholder="Enter Password" required>
 
         <div style="margin-top:10px">
             <button id="btnLogin" class="col-md-12 btn btn-primary"><i class="fa fa-key"
@@ -31,11 +31,11 @@
             </button>
         </div>
 
-        <div class="container-fluid " th:if="${param.error}">
+        <div class="container-fluid " data-th-if="${param.error}">
             <p class="bg-white text-capitalize text-danger text-lg-center">Invalid username or password. </p>
         </div>
         <div class="container-fluid ">
-            <p id="errorMessage" th:text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
+            <p id="errorMessage" data-th-text="${err}" class="bg-white text-capitalize text-danger text-lg-center"></p>
         </div>
 
         <div>
@@ -46,9 +46,9 @@
 
 </div>
 
-<div  th:replace="~{fragments/footer :: footerFragment}"></div>
+<div  data-th-replace="~{fragments/footer :: footerFragment}"></div>
 <!--script include-->
-<script th:replace="~{fragments/script :: scriptFragment}"></script>
+<script data-th-replace="~{fragments/script :: scriptFragment}"></script>
 
 </body>
 </html>

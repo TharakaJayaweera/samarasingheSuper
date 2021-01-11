@@ -2,6 +2,7 @@ package lk.samarasingher_super.asset.report;
 
 import lk.samarasingher_super.asset.common_asset.model.NameCount;
 import lk.samarasingher_super.asset.common_asset.model.ParameterCount;
+import lk.samarasingher_super.asset.common_asset.model.TwoDate;
 import lk.samarasingher_super.asset.employee.entity.Employee;
 import lk.samarasingher_super.asset.employee.service.EmployeeService;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
@@ -18,9 +19,7 @@ import lk.samarasingher_super.util.service.DateTimeAgeService;
 import lk.samarasingher_super.util.service.OperatorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -174,12 +173,11 @@ public class ReportController {
   }
 
 
-  @GetMapping( "/manager/search" )
-  public String getAllInvoiceAndPaymentBetweenTwoDate(@RequestAttribute( "startDate" ) LocalDate startDate,
-                                                      @RequestAttribute( "endDate" ) LocalDate endDate, Model model) {
-    String message = "This report is between from " + startDate.toString() + " to " + endDate.toString();
-    LocalDateTime startDateTime = dateTimeAgeService.dateTimeToLocalDateStartInDay(startDate);
-    LocalDateTime endDateTime = dateTimeAgeService.dateTimeToLocalDateEndInDay(endDate);
+  @PostMapping( "/manager/search" )
+  public String getAllInvoiceAndPaymentBetweenTwoDate(@ModelAttribute("twoDate") TwoDate twoDate, Model model) {
+    String message = "This report is between from " + twoDate.getStartDate().toString() + " to " + twoDate.getEndDate().toString();
+    LocalDateTime startDateTime = dateTimeAgeService.dateTimeToLocalDateStartInDay(twoDate.getStartDate());
+    LocalDateTime endDateTime = dateTimeAgeService.dateTimeToLocalDateEndInDay(twoDate.getEndDate());
     return commonMethod(paymentService.findByCreatedAtIsBetween(startDateTime, endDateTime),
                         invoiceService.findByCreatedAtIsBetween(startDateTime, endDateTime), model, message,
                         startDateTime, endDateTime);
