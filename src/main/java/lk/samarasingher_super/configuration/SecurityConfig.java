@@ -80,12 +80,11 @@ private final String[] ADMIN = { "/role/**", "/user/**","/employee/save","/emplo
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-  /* http.csrf().disable();
+   http.csrf().disable();
     http.authorizeRequests().antMatchers("/").permitAll();
-*/
     // For developing easy to give permission all lin
 
-
+/*
     http.authorizeRequests(
         authorizeRequests ->
             authorizeRequests
@@ -135,7 +134,7 @@ private final String[] ADMIN = { "/role/**", "/user/**","/employee/save","/emplo
                     .sessionRegistry(sessionRegistry()))
         //Cross site disable
         .csrf(AbstractHttpConfigurer::disable)
-        .exceptionHandling();
+        .exceptionHandling();*/
 
   }
 }
