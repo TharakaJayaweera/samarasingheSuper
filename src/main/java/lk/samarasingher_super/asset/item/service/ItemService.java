@@ -1,6 +1,6 @@
 package lk.samarasingher_super.asset.item.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.item.dao.ItemDao;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -11,6 +11,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @CacheConfig( cacheNames = "item" )
@@ -23,7 +24,9 @@ public class ItemService implements AbstractService<Item, Integer> {
     }
 
     public List<Item> findAll() {
-        return itemDao.findAll();
+        return itemDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Item findById(Integer id) {
@@ -32,13 +35,13 @@ public class ItemService implements AbstractService<Item, Integer> {
 
     public Item persist(Item item) {
         if(item.getId()==null){
-            item.setLiveOrDead(LiveOrDead.ACTIVE);}
+            item.setLiveDead(LiveDead.ACTIVE);}
         return itemDao.save(item);
     }
 
     public boolean delete(Integer id) {
         Item item =  itemDao.getOne(id);
-        item.setLiveOrDead(LiveOrDead.STOP);
+        item.setLiveDead(LiveDead.STOP);
         itemDao.save(item);
         return false;
     }

@@ -1,6 +1,7 @@
 package lk.samarasingher_super.asset.invoice.service;
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import java.util.stream.Collectors;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.invoice.dao.InvoiceDao;
 import lk.samarasingher_super.asset.invoice.entity.Invoice;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -21,7 +22,9 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
 
     public List< Invoice > findAll() {
-        return invoiceDao.findAll();
+        return invoiceDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Invoice findById(Integer id) {
@@ -30,13 +33,13 @@ public class InvoiceService implements AbstractService< Invoice, Integer > {
 
     public Invoice persist(Invoice invoice) {
         if(invoice.getId()==null){
-            invoice.setLiveOrDead(LiveOrDead.ACTIVE);}
+            invoice.setLiveDead(LiveDead.ACTIVE);}
         return invoiceDao.save(invoice);
     }
 
     public boolean delete(Integer id) {
         Invoice invoice =  invoiceDao.getOne(id);
-        invoice.setLiveOrDead(LiveOrDead.STOP);
+        invoice.setLiveDead(LiveDead.STOP);
         invoiceDao.save(invoice);
         return false;
     }

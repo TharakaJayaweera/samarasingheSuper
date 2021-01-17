@@ -26,6 +26,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -52,7 +53,6 @@ public class EmployeeController {
     this.userService = userService;
     this.makeAutoGenerateNumberService = makeAutoGenerateNumberService;
   }
-//----> Employee details management - start <----//
 
   // Common things for an employee add and update
   private String commonThings(Model model) {
@@ -77,19 +77,19 @@ public class EmployeeController {
   //Send all employee data
   @RequestMapping
   public String employeePage(Model model) {
+    System.out.println(" im in");
     List< Employee > employees = new ArrayList<>();
     for ( Employee employee : employeeService.findAll()
         .stream()
-        .filter(x -> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+        .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
         .collect(Collectors.toList())
     ) {
       employee.setFileInfo(employeeFilesService.employeeFileDownloadLinks(employee));
       employees.add(employee);
     }
-    /*  Employee employee = employeeService.findById(id);*/
+    System.out.println("dfsdfs "+employees.size());
     model.addAttribute("employees", employees);
     model.addAttribute("contendHeader", "Employee");
-//        /* model.addAttribute("files", employeeFilesService.employeeFileDownloadLinks(employee));*/
     return "employee/employee";
   }
 
@@ -162,7 +162,7 @@ public class EmployeeController {
 
     try {
       //save employee images file
-      if ( employee.getFile().getOriginalFilename() != null ) {
+      if ( employee.getFile().getOriginalFilename() != null && !Objects.requireNonNull(employee.getFile().getContentType()).equals("application/octet-stream")) {
         EmployeeFiles employeeFiles = employeeFilesService.findByEmployee(employeeSaved);
         if ( employeeFiles != null ) {
           // update new contents
@@ -178,7 +178,6 @@ public class EmployeeController {
         }
         employeeFilesService.persist(employeeFiles);
       }
-      employee = employeeSaved;
       return "redirect:/employee";
 
     } catch ( Exception e ) {

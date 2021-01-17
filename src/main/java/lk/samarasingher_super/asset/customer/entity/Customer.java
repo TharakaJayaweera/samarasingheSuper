@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.customer.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.common_asset.model.enums.Title;
 import lk.samarasingher_super.util.audit.AuditEntity;
 import lombok.AllArgsConstructor;
@@ -47,6 +47,6 @@ public class Customer extends AuditEntity {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private LiveOrDead liveOrDead;
+    private LiveDead liveDead;
 
 }

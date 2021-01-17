@@ -1,7 +1,8 @@
 package lk.samarasingher_super.asset.supplier.service;
 
+import java.util.stream.Collectors;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.supplier.entity.Supplier;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
 import lk.samarasingher_super.asset.supplier.dao.SupplierDao;
 import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
 import lk.samarasingher_super.util.interfaces.AbstractService;
@@ -24,7 +25,9 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     }
 
     public List<Supplier> findAll() {
-        return supplierDao.findAll();
+        return supplierDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     public Supplier findById(Integer id) {
@@ -34,14 +37,14 @@ public class SupplierService implements AbstractService<Supplier, Integer> {
     public Supplier persist(Supplier supplier) {
         if (supplier.getId() == null) {
             supplier.setItemSupplierStatus(ItemSupplierStatus.CURRENTLY_BUYING);
-        supplier.setLiveOrDead(LiveOrDead.ACTIVE);
+        supplier.setLiveDead(LiveDead.ACTIVE);
         }
         return supplierDao.save(supplier);
     }
 
     public boolean delete(Integer id) {
         Supplier supplier =  supplierDao.getOne(id);
-        supplier.setLiveOrDead(LiveOrDead.STOP);
+        supplier.setLiveDead(LiveDead.STOP);
         supplierDao.save(supplier);
         return false;
     }

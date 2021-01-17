@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.supplier.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
 import lk.samarasingher_super.asset.supplier_item.entity.SupplierItem;
 import lk.samarasingher_super.asset.supplier_item.entity.enums.ItemSupplierStatus;
@@ -44,7 +44,7 @@ public class Supplier extends AuditEntity {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    private LiveOrDead liveOrDead;
+    private LiveDead liveDead;
 
     @Enumerated( EnumType.STRING )
     private ItemSupplierStatus itemSupplierStatus;

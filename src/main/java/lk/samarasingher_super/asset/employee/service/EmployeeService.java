@@ -1,9 +1,12 @@
 package lk.samarasingher_super.asset.employee.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+
+import java.util.stream.Collectors;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.employee.dao.EmployeeDao;
 import lk.samarasingher_super.asset.employee.entity.Employee;
+import lk.samarasingher_super.asset.employee.entity.enums.Designation;
 import lk.samarasingher_super.util.interfaces.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import java.util.stream.Collectors;
 @Service
 // spring transactional annotation need to tell spring to this method work through the project
 @CacheConfig( cacheNames = "employee" )
@@ -28,7 +32,9 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
 
     @Cacheable
     public List< Employee > findAll() {
-        return employeeDao.findAll();
+        return employeeDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
     @Cacheable
@@ -41,13 +47,13 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
     @Transactional
     public Employee persist(Employee employee) {
         if(employee.getId()==null){
-            employee.setLiveOrDead(LiveOrDead.ACTIVE);}
+            employee.setLiveDead(LiveDead.ACTIVE);}
         return employeeDao.save(employee);
     }
 
     public boolean delete(Integer id) {
         Employee employee =  employeeDao.getOne(id);
-        employee.setLiveOrDead(LiveOrDead.STOP);
+        employee.setLiveDead(LiveDead.STOP);
         employeeDao.save(employee);
         return false;
     }
@@ -80,4 +86,6 @@ public class EmployeeService implements AbstractService< Employee, Integer > {
     public Employee findByNic(String nic) {
         return employeeDao.findByNic(nic);
     }
+
+
 }

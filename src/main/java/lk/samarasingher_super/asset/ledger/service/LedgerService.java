@@ -1,7 +1,8 @@
 package lk.samarasingher_super.asset.ledger.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import java.util.stream.Collectors;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.item.entity.Item;
 import lk.samarasingher_super.asset.ledger.dao.LedgerDao;
 import lk.samarasingher_super.asset.ledger.entity.Ledger;
@@ -27,7 +28,9 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
 
     public List<Ledger> findAll() {
-        return ledgerDao.findAll();
+        return ledgerDao.findAll().stream()
+            .filter(x -> LiveDead.ACTIVE.equals(x.getLiveDead()))
+            .collect(Collectors.toList());
     }
 
 
@@ -38,13 +41,13 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
 
     public Ledger persist(Ledger ledger) {
         if(ledger.getId()==null){
-            ledger.setLiveOrDead(LiveOrDead.ACTIVE);}
+            ledger.setLiveDead(LiveDead.ACTIVE);}
         return ledgerDao.save(ledger);
     }
 
     public boolean delete(Integer id) {
         Ledger ledger =  ledgerDao.getOne(id);
-        ledger.setLiveOrDead(LiveOrDead.STOP);
+        ledger.setLiveDead(LiveDead.STOP);
         ledgerDao.save(ledger);
         return false;
     }
@@ -68,8 +71,12 @@ public class LedgerService implements AbstractService< Ledger, Integer> {
     }
 
     public List<Ledger> findByCreatedAtIsBetween(LocalDateTime startDate, LocalDateTime endDate) {
-        return ledgerDao.findByCreatedAtIsBetween(startDate, endDate);
+        return ledgerDao.findByCreatedAtBetween(startDate, endDate);
     }
+
+  public List<Ledger> findByExpiredDateBetween(LocalDate from, LocalDate to) {
+        return ledgerDao.findByExpiredDateBetween(from,to);
+  }
 
    /* public Ledger findByItem(Item item) {
         return ledgerDao.findByItem(item);

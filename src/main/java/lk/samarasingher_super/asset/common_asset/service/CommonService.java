@@ -75,8 +75,6 @@ public class CommonService {
     public String purchaseOrder(Supplier supplier, Model model, String htmlFileLocation) {
         List<Supplier> suppliers = commonSupplierSearch(supplier);
 
-        System.out.println(" i am here" + suppliers.size());
-
         model.addAttribute("searchAreaShow", false);
         if (suppliers.size() == 1) {
             model.addAttribute("supplierDetail", suppliers.get(0));
@@ -117,26 +115,6 @@ public class CommonService {
             items.add(supplierItem.getItem());
         }
         return items;
-    }
-
-    //common things to employee and offender - start
-    public void commonUrlBuilder(Model model) {
-        model.addAttribute("addStatus", true);
-        // model.addAttribute("designations", Designation.values());
-/*        model.addAttribute("provinces", Province.values());
-        model.addAttribute("districtUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getDistrict", "")
-                .build()
-                .toString());
-        model.addAttribute("stationUrl", MvcUriComponentsBuilder
-                .fromMethodName(WorkingPlaceRestController.class, "getStation", "")
-                .build()
-                .toString());*/
-        Object[] arg = {"designation", "id"};
-        model.addAttribute("employeeUrl", MvcUriComponentsBuilder
-            .fromMethodName(EmployeeRestController.class, "getEmployeeByWorkingPlace", arg)
-            .build()
-            .toString());
     }
 
 

@@ -51,7 +51,8 @@ public class InvoiceController {
   @GetMapping
   public String invoice(Model model) {
     model.addAttribute("invoices",
-                       invoiceService.findByCreatedAtIsBetween(dateTimeAgeService.dateTimeToLocalDateStartInDay(dateTimeAgeService.getPastDateByMonth(3)), dateTimeAgeService.dateTimeToLocalDateEndInDay(LocalDate.now())));
+                       invoiceService.findAll());
+                       /*invoiceService.findByCreatedAtIsBetween(dateTimeAgeService.dateTimeToLocalDateStartInDay(dateTimeAgeService.getPastDateByMonth(3)), dateTimeAgeService.dateTimeToLocalDateEndInDay(LocalDate.now())));*/
     model.addAttribute("firstInvoiceMessage", true);
     return "invoice/invoice";
   }
@@ -75,14 +76,11 @@ public class InvoiceController {
         .fromMethodName(LedgerController.class, "findId", "")
         .build()
         .toString());
-//   System.out.println(MvcUriComponentsBuilder
-//                           .fromMethodName(LedgerController.class, "findId", "")
-//                           .build()
-//                           .toString());
+    System.out.println("Sixe" + ledgerService.findAll().size());
     //send not expired and not zero quantity
     model.addAttribute("ledgers", ledgerService.findAll()
         .stream()
-        .filter(x -> 0 < Integer.parseInt(x.getQuantity()) && x.getExpiredDate().isBefore(LocalDate.now()))
+        .filter(x -> 0 < Integer.parseInt(x.getQuantity()) && x.getExpiredDate().isAfter(LocalDate.now()))
         .collect(Collectors.toList()));
     return "invoice/addInvoice";
   }
@@ -94,7 +92,9 @@ public class InvoiceController {
 
   @GetMapping( "/{id}" )
   public String viewDetails(@PathVariable Integer id, Model model) {
-    model.addAttribute("invoiceDetail", invoiceService.findById(id));
+    Invoice invoice = invoiceService.findById(id);
+    model.addAttribute("invoiceDetail", invoice);
+    model.addAttribute("customerDetail", invoice.getCustomer());
     return "invoice/invoice-detail";
   }
 
@@ -116,6 +116,8 @@ public class InvoiceController {
     }
     invoice.setInvoiceValidOrNot(InvoiceValidOrNot.VALID);
     invoiceService.persist(invoice);
+    //todo - if invoice is required needed to send pdf to backend
+
     return "redirect:/invoice/add";
   }
 

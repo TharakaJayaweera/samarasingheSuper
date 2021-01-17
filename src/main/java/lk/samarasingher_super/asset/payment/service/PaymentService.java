@@ -1,7 +1,7 @@
 package lk.samarasingher_super.asset.payment.service;
 
 
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.payment.dao.PaymentDao;
 import lk.samarasingher_super.asset.payment.entity.Payment;
 import lk.samarasingher_super.asset.purchase_order.entity.PurchaseOrder;
@@ -10,7 +10,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentService implements AbstractService< Payment, Integer > {
@@ -30,13 +32,13 @@ public class PaymentService implements AbstractService< Payment, Integer > {
 
     public Payment persist(Payment payment) {
         if(payment.getId()==null){
-            payment.setLiveOrDead(LiveOrDead.ACTIVE);}
+            payment.setLiveDead(LiveDead.ACTIVE);}
         return paymentDao.save(payment);
     }
 
     public boolean delete(Integer id) {
         Payment payment =  paymentDao.getOne(id);
-        payment.setLiveOrDead(LiveOrDead.STOP);
+        payment.setLiveDead(LiveDead.STOP);
         paymentDao.save(payment);
         return false;
     }
@@ -55,5 +57,9 @@ public class PaymentService implements AbstractService< Payment, Integer > {
 
     public Payment lastPayment() {
         return paymentDao.findFirstByOrderByIdDesc();
+    }
+
+  public List< Payment> findByCreatedAtIsBetween(LocalDateTime from, LocalDateTime to) {
+  return paymentDao.findByCreatedAtIsBetween(from,to);
     }
 }

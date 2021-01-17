@@ -2,7 +2,7 @@ package lk.samarasingher_super.asset.category.controller;
 
 import lk.samarasingher_super.asset.category.entity.Category;
 import lk.samarasingher_super.asset.category.service.CategoryService;
-import lk.samarasingher_super.asset.common_asset.model.enums.LiveOrDead;
+import lk.samarasingher_super.asset.common_asset.model.enums.LiveDead;
 import lk.samarasingher_super.asset.item.entity.enums.MainCategory;
 import lk.samarasingher_super.util.interfaces.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public  class CategoryController implements AbstractController<Category, Integer
     @GetMapping
     public String findAll(Model model) {
         model.addAttribute("categorys", categoryService.findAll().stream()
-            .filter(x-> LiveOrDead.ACTIVE.equals(x.getLiveOrDead()))
+            .filter(x-> LiveDead.ACTIVE.equals(x.getLiveDead()))
             .collect(Collectors.toList()));
         return "category/category";
     }
@@ -75,7 +75,9 @@ public  class CategoryController implements AbstractController<Category, Integer
 
     @GetMapping( "/{id}" )
     public String view(@PathVariable Integer id, Model model) {
-        model.addAttribute("categoryDetail", categoryService.findById(id));
+        Category category = categoryService.findById(id);
+        model.addAttribute("categoryDetail",category );
+        model.addAttribute("items",category.getItems());
         return "category/category-detail";
     }
 }

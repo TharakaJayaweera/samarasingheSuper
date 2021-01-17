@@ -75,7 +75,7 @@ public class PurchaseOrderController {
 
     @PostMapping( "/save" )
     public String purchaseOrderPersist(@Valid @ModelAttribute PurchaseOrder purchaseOrder,
-                                       BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                                       BindingResult bindingResult) {
         if ( bindingResult.hasErrors() ) {
             return "redirect:/purchaseOrder/" + purchaseOrder.getId();
         }
@@ -136,7 +136,7 @@ public class PurchaseOrderController {
 
     @GetMapping( "view/{id}" )
     public String viewPurchaseOrderDetail(@PathVariable Integer id, Model model) {
-        model.addAttribute("purchaseOrder-details", purchaseOrderService.findById(id));
+        model.addAttribute("purchaseOrderDetail", purchaseOrderService.findById(id));
         return "purchaseOrder/purchaseOrder-detail";
     }
 
@@ -145,7 +145,6 @@ public class PurchaseOrderController {
         PurchaseOrder purchaseOrder = purchaseOrderService.findById(id);
         purchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.NOT_PROCEED);
         purchaseOrderService.persist(purchaseOrder);
-        //model.addAttribute("purchaseOrder-details", purchaseOrderService.findById(id));
         return "redirect:/purchaseOrder/all";
     }
 
